@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rmax | Internet Service Provider</title>
+    <title>Rmax | Premium Internet Service Provider</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,7 +16,7 @@
                     colors: {
                         brand: {
                             white: '#FFFFFF',
-                            bg: '#F8F9FA',      
+                            bg: '#F4F4F5',      
                             black: '#0A0A0A',   
                             red: '#E50914',     
                             redhover: '#CC0812',
@@ -24,26 +24,19 @@
                     },
                     boxShadow: {
                         'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
-                        'red-glow': '0 10px 30px -10px rgba(229,9,20,0.3)',
+                        'red-glow': '0 10px 40px -10px rgba(229,9,20,0.5)',
                     },
                     animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #F8F9FA; color: #0A0A0A; overflow-x: hidden; }
+        body { background-color: #0A0A0A; color: #FFFFFF; overflow-x: hidden; }
         
-        .reveal-up { animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        .reveal-up { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(40px); }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
@@ -55,12 +48,12 @@
             transition: all 0.5s ease;
         }
         .btn-speed:hover::after { left: 100%; }
-        .btn-speed:hover i { transform: translateX(4px); transition: transform 0.3s ease; }
+        .btn-speed:hover i { transform: translateX(5px); transition: transform 0.3s ease; }
 
-        .bento-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.04); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border-color: rgba(229,9,20,0.2); }
+        .bento-card { background: #18181B; border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5); border-color: rgba(229,9,20,0.4); }
         
-        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
         /* WhatsApp Floating Button */
         .wa-float {
@@ -84,12 +77,11 @@
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-2 cursor-pointer">
-                    <div class="w-10 h-10 bg-brand-black rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
-                    <span class="font-extrabold text-2xl tracking-tight text-brand-black">Rmax</span>
-                </div>
-                <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
-                    <a href="index.html" class="text-brand-black">Home</a>
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                    <img src="https://via.placeholder.com/150x40/0A0A0A/FFFFFF?text=LOGO+HERE" alt="Rmax Logo" class="h-10 object-contain">
+                </a>
+                <div class="hidden lg:flex space-x-8 items-center font-medium text-sm text-gray-300">
+                    <a href="index.html" class="text-white font-bold">Home</a>
                     <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
                     <div class="relative group cursor-pointer">
                         <span class="hover:text-brand-red transition-colors flex items-center gap-1">Services <i class="fa-solid fa-chevron-down text-xs"></i></span>
@@ -99,9 +91,9 @@
                     <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
                     <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
                 </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors">My Account</a>
-                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover btn-speed transition-colors">Enquire Now</a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors text-gray-300">My Account</a>
+                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover btn-speed transition-all">Enquire Now</a>
                 </div>
             </div>
         </div>
@@ -112,164 +104,62 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-1.5 text-sm font-bold text-gray-600 mb-8 reveal-up shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Internet Service Provider
+    <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-32 overflow-hidden bg-brand-black">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://via.placeholder.com/1920x1080/111111/333333?text=Hero+Background+Pattern+or+Image')] bg-cover bg-center"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-red rounded-full blur-[150px] opacity-30"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 text-sm font-bold text-gray-300 mb-8 reveal-up bg-white/5 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Premium Internet Service Provider
+                </div>
+                <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight mb-6 text-white reveal-up leading-tight">
+                    Explore Rmax's <br>
+                    <span class="text-brand-red">Unlimited Fast Internet</span>
+                </h1>
+                <p class="mt-4 text-xl text-gray-400 mb-10 reveal-up delay-100 font-medium leading-relaxed">
+                    Enjoy more for less. A one-stop solution for all your Internet and IT-Infra needs, built for high-performance enterprises.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 reveal-up delay-200">
+                    <a href="contact.html" class="bg-white text-brand-black px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-200 transition-all btn-speed shadow-premium text-center">
+                        Enquire Now <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
             </div>
-            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 text-brand-black reveal-up leading-tight">
-                Explore Rmax's <br>
-                <span class="text-brand-red">Unlimited Fast Internet</span>
-            </h1>
-            <p class="mt-4 text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto mb-10 reveal-up delay-100 font-medium">
-                And enjoy more for less. A one-stop solution for all your Internet and IT-Infra needs.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal-up delay-200">
-                <a href="contact.html" class="bg-brand-black text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition-all btn-speed shadow-premium">
-                    Enquire Now <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
+            
+            <div class="reveal-up delay-200 hidden lg:block">
+                <img src="https://via.placeholder.com/800x600/18181B/FFFFFF?text=Hero+Product/Service+Image" alt="Hero Interface" class="w-full h-auto rounded-3xl shadow-2xl border border-white/10">
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-white border-t border-gray-100">
+    <section class="py-24 bg-white text-brand-black">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-brand-black mb-6">One-Stop Solution</h2>
             <p class="text-xl text-brand-red font-bold mb-8">For all your Internet and IT-Infra needs</p>
-            <p class="text-lg text-gray-500 max-w-4xl mx-auto leading-relaxed mb-6">
-                With over 2 decades of industry-leading expertise, Rmax has led the way in empowering countless companies across diverse verticals to thrive in the digital era with simplified & transformative Internet connectivity and IT infrastructure solutions.
-            </p>
-            <p class="text-lg text-brand-black font-semibold max-w-3xl mx-auto leading-relaxed mb-12">
-                With Rmax as your trusted partner, we handle it all, so you can just focus on what matters most - "growing your business with ease".
-            </p>
-            <a href="about.html" class="text-brand-red font-bold hover:text-brand-redhover transition-colors">Learn more <i class="fa-solid fa-arrow-right text-sm ml-1"></i></a>
-        </div>
-    </section>
-
-    <section class="py-20 bg-brand-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-brand-black mb-10">ALL SERVICES</h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center group hover:border-brand-red transition-colors cursor-pointer">
-                    <i class="fa-solid fa-network-wired text-3xl text-brand-black mb-3 group-hover:text-brand-red transition-colors"></i>
-                    <h4 class="font-bold text-sm">IT INFRASTRUCTURE</h4>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-16 text-left">
+                <div>
+                    <img src="https://via.placeholder.com/600x600/F4F4F5/0A0A0A?text=IT+Infrastructure+Image" alt="IT Solutions" class="rounded-3xl shadow-premium w-full object-cover">
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center group hover:border-brand-red transition-colors cursor-pointer">
-                    <i class="fa-solid fa-wifi text-3xl text-brand-black mb-3 group-hover:text-brand-red transition-colors"></i>
-                    <h4 class="font-bold text-sm">WIFI</h4>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center group hover:border-brand-red transition-colors cursor-pointer">
-                    <i class="fa-solid fa-globe text-3xl text-brand-black mb-3 group-hover:text-brand-red transition-colors"></i>
-                    <h4 class="font-bold text-sm">INTERNET</h4>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center group hover:border-brand-red transition-colors cursor-pointer">
-                    <i class="fa-solid fa-cloud-arrow-up text-3xl text-brand-black mb-3 group-hover:text-brand-red transition-colors"></i>
-                    <h4 class="font-bold text-sm">DATA STORAGE</h4>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center group hover:border-brand-red transition-colors cursor-pointer">
-                    <i class="fa-solid fa-shield-halved text-3xl text-brand-black mb-3 group-hover:text-brand-red transition-colors"></i>
-                    <h4 class="font-bold text-sm">SECURITY</h4>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bento-card p-10 bg-brand-black text-white border-none flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-3xl font-bold mb-4">Leased Line</h3>
-                        <p class="text-gray-400 mb-6 leading-relaxed">Experience true 1:1 Leased Line with Dual-link technology. Elevate productivity with dedicated internet connectivity, rapid data transfers, and top-tier security. Offering uninterrupted access options through RF and OFC, boasting an outstanding uptime of 99.97%.</p>
-                        <p class="text-brand-red font-bold text-lg">Double your speed, reliability, and opportunities now.</p>
-                    </div>
-                    <div class="mt-8">
-                        <a href="services.html" class="inline-block border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-brand-black transition-colors">Learn more</a>
-                    </div>
-                </div>
-                <div class="bento-card p-10 bg-white flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-3xl font-bold mb-4 text-brand-black">IT Infrastructure Solutions</h3>
-                        <p class="text-gray-500 mb-6 leading-relaxed">Comprehensive IT Infrastructure Solutions. From cutting-edge hardware procurement to seamless network integration, our solutions encompass it all. Harness the power of advanced technology backed by over 60 years of combined technical experience.</p>
-                    </div>
-                    <div class="mt-8">
-                        <a href="services.html" class="inline-block bg-brand-black text-white px-6 py-2 rounded-full hover:bg-brand-red transition-colors">Learn more</a>
-                    </div>
+                <div>
+                    <p class="text-lg text-gray-500 leading-relaxed mb-6">
+                        With over 2 decades of industry-leading expertise, Rmax has led the way in empowering countless companies across diverse verticals to thrive in the digital era with simplified & transformative Internet connectivity and IT infrastructure solutions.
+                    </p>
+                    <p class="text-xl text-brand-black font-bold leading-relaxed mb-8">
+                        With Rmax as your trusted partner, we handle it all, so you can just focus on what matters most - "growing your business with ease".
+                    </p>
+                    <a href="about.html" class="text-brand-red font-bold hover:text-brand-redhover transition-colors text-lg flex items-center gap-2">Learn more <i class="fa-solid fa-arrow-right text-sm"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-brand-black mb-12 text-center">Why Rmax</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="flex items-start gap-4">
-                    <div class="text-brand-red font-extrabold text-3xl opacity-20 mt-1">01</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-brand-black">Dedicated Account Manager</h4>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="text-brand-red font-extrabold text-3xl opacity-20 mt-1">02</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-brand-black">24/7 Proactive monitoring & NOC support</h4>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="text-brand-red font-extrabold text-3xl opacity-20 mt-1">03</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-brand-black">Reliable Connectivity with Unmatched Uptime</h4>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="text-brand-red font-extrabold text-3xl opacity-20 mt-1">04</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-brand-black">Maximize Productivity and Save Costs</h4>
-                        <p class="text-sm text-gray-500 mt-1">With Smart Office Solutions</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="text-brand-red font-extrabold text-3xl opacity-20 mt-1">05</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-brand-black">Trusted by Clients Across Industries</h4>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="text-brand-red font-extrabold text-3xl opacity-20 mt-1">06</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-brand-black">Enhanced Scalability, Security & flexibility</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-brand-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-brand-black mb-10">Blogs & Offers</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="bento-card h-64 flex items-center justify-center bg-gray-100">
-                    <span class="font-bold text-gray-400">BLOG 1</span>
-                </div>
-                <div class="bento-card h-64 flex items-center justify-center bg-gray-100">
-                    <span class="font-bold text-gray-400">BLOG 2</span>
-                </div>
-                <div class="bento-card h-64 flex items-center justify-center bg-gray-100">
-                    <span class="font-bold text-gray-400">BLOG 3</span>
-                </div>
-                <div class="bento-card h-64 flex items-center justify-center bg-brand-red text-white">
-                    <span class="font-bold text-2xl">OFFER <i class="fa-solid fa-tag ml-2"></i></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-brand-black text-white pt-20 pb-8 border-t-[8px] border-brand-red">
+    <footer class="bg-brand-black text-white pt-20 pb-8 border-t-[4px] border-brand-red">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
-                        <span class="font-extrabold text-2xl tracking-tight text-white">Rmax</span>
-                    </div>
+                    <img src="https://via.placeholder.com/150x40/E50914/FFFFFF?text=LOGO+HERE" alt="Rmax Logo" class="h-10 object-contain mb-6">
                     <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
                         <strong>Corporate Office:</strong><br>
                         6th Floor, Rajiv Gandhi Salai,<br>
@@ -277,68 +167,12 @@
                         Perungudi, Chennai,<br>
                         Tamil Nadu - 600096
                     </address>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
-                    </div>
                 </div>
-
-                <div>
-                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Get in Touch</h4>
-                    <ul class="space-y-6 text-sm">
-                        <li>
-                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Business Enquiry</p>
-                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors">+91 915 091 1101</a>
-                        </li>
-                        <li>
-                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">24/7 Customer Support</p>
-                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors">+91 720 022 8880</a>
-                        </li>
-                        <li>
-                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
-                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">info@rmax.in</a>
-                        </li>
-                    </ul>
                 </div>
-
-                <div>
-                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
-                    <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
-                        <li><a href="plans.html" class="hover:text-white transition-colors">Plans</a></li>
-                        <li><a href="partners.html" class="hover:text-white transition-colors">Franchise & Partners</a></li>
-                        <li><a href="careers.html" class="hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="help.html" class="hover:text-white transition-colors">Get Help / Speed Test</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Location</h4>
-                    <div class="w-full h-48 bg-gray-800 rounded-xl overflow-hidden border border-white/10 relative">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.828692737526!2d80.2442!3d12.9699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzExLjYiTiA4MMKwMTQnMzkuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0; filter: grayscale(1) opacity(0.8);" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2026 Rmax ISP. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
-                    <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
-                </div>
+                <p>© 2026 Rmax ISP. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
 </body>
 </html>
