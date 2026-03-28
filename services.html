@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Rmax ISP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Outfit', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], }, colors: { brand: { black: '#0a0a0a', red: '#E50914', white: '#ffffff', } } } } }
+    </script>
+    <style> body { background-color: #0a0a0a; color: #ffffff; } .glass-nav { background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); } </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-brand-red to-red-900 rounded-xl flex items-center justify-center text-white font-display font-bold text-2xl">R</div>
+                    <span class="font-display font-bold text-3xl tracking-wide">Rmax</span>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center font-medium text-sm tracking-wider text-gray-300">
+                    <a href="index.html" class="hover:text-white transition-colors relative group">Home<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-red transition-all group-hover:w-full"></span></a>
+                    <a href="about.html" class="hover:text-white transition-colors relative group">About Us<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-red transition-all group-hover:w-full"></span></a>
+                    <a href="services.html" class="text-brand-red">Services</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-48 pb-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h1 class="text-5xl md:text-7xl font-display font-bold mb-16 text-center border-b border-white/10 pb-16">Enterprise <span class="text-brand-red">Solutions</span></h1>
+
+            <div class="space-y-24">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <div class="text-brand-red mb-4 text-4xl"><i class="fa-solid fa-earth-americas"></i></div>
+                        <h2 class="text-4xl font-display font-bold mb-4">Internet Leased Line (ILL)</h2>
+                        <p class="text-gray-400 mb-6 text-lg">Designed to meet demanding requirements, ensuring seamless data transfer and efficient communication[cite: 145].</p>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Dedicated True 1:1 Leased Line[cite: 148].</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Dual-Link Redundancy (RF and Fiber Optic)[cite: 151].</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Unmatched Uptime of 99.97%[cite: 163].</li>
+                        </ul>
+                    </div>
+                    <div class="order-1 lg:order-2 h-80 bg-gradient-to-tr from-brand-red/20 to-transparent border border-brand-red/30 rounded-3xl backdrop-blur flex items-center justify-center">
+                        <span class="text-gray-500 italic">[High-End Fiber Optic Graphic]</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="h-80 bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-3xl backdrop-blur flex items-center justify-center">
+                        <span class="text-gray-500 italic">[Secure Server Network Graphic]</span>
+                    </div>
+                    <div>
+                        <div class="text-brand-red mb-4 text-4xl"><i class="fa-solid fa-network-wired"></i></div>
+                        <h2 class="text-4xl font-display font-bold mb-4">MPLS & VPN Services</h2>
+                        <p class="text-gray-400 mb-6 text-lg">Welcome to the future of secure business communications[cite: 248].</p>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> <strong>MPLS:</strong> Protocol-independent, assures Quality of Service (QoS)[cite: 252].</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> <strong>VPN:</strong> Cost-effective remote access over public networks[cite: 254, 256].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
