@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Rmax ISP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], },
+                    colors: {
+                        brand: {
+                            white: '#FFFFFF', bg: '#F8F9FA', black: '#0A0A0A', red: '#E50914', redhover: '#CC0812',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'red-glow': '0 10px 30px -10px rgba(229,9,20,0.3)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F8F9FA; color: #0A0A0A; overflow-x: hidden; }
+        .reveal-up { animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .bento-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.04); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border-color: rgba(229,9,20,0.2); }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+        /* Timeline Styles */
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; border-radius: 50%; background-color: #E50914; border: 4px solid #F8F9FA; z-index: 10; transition: transform 0.3s ease; }
+        .timeline-item:hover .timeline-dot { transform: translateX(-50%) scale(1.3); box-shadow: 0 0 15px rgba(229,9,20,0.4); }
+        @media (max-width: 768px) {
+            .timeline-dot { left: 0; transform: translateX(-50%); }
+            .timeline-item:hover .timeline-dot { transform: translateX(-50%) scale(1.3); }
+        }
+
+        /* WhatsApp Floating Button */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background-color: #25d366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); }
+        .wa-pulse {
+            position: absolute; width: 100%; height: 100%; background: #25d366;
+            border-radius: 50%; z-index: -1; animation: waPulse 2s infinite; opacity: 0.6;
+        }
+        @keyframes waPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-red selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-brand-black rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
+                    <span class="font-extrabold text-2xl tracking-tight text-brand-black">Rmax</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
+                    <a href="index.html" class="hover:text-brand-red transition-colors">Home</a>
+                    <a href="about.html" class="text-brand-black">About Us</a>
+                    <div class="relative group cursor-pointer">
+                        <span class="hover:text-brand-red transition-colors flex items-center gap-1">Services <i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </div>
+                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
+                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
+                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors">My Account</a>
+                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <a href="https://wa.me/919150911101" target="_blank" class="wa-float group" aria-label="Chat on WhatsApp">
+        <div class="wa-pulse"></div>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-24 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/20 rounded-full px-4 py-1.5 text-sm font-bold text-brand-red mb-8 reveal-up shadow-sm">
+                Since 2005
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-brand-black reveal-up leading-tight">
+                For Over <span class="text-brand-red">2 Decades</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8 reveal-up delay-100">
+                In the heart of Chennai's bustling IT landscape, Rmax emerged as a community-based Internet Service Provider. We began as pioneers, bringing high-speed wired and wireless Internet services to the vibrant district of Thiruvallur.
+            </p>
+            <p class="text-lg text-brand-black font-semibold max-w-3xl mx-auto leading-relaxed reveal-up delay-200">
+                Our purpose was then, as it is now, simple yet transformative: to connect the unconnected and to empower society with affordable and reliable Internet and IT infrastructure solutions.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white relative -mt-10 z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bento-card p-8 text-center">
+                    <h3 class="text-5xl font-extrabold text-brand-red mb-2">2000+</h3>
+                    <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Clients</p>
+                </div>
+                <div class="bento-card p-8 text-center">
+                    <h3 class="text-5xl font-extrabold text-brand-black mb-2">80+</h3>
+                    <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Offerings & Services</p>
+                </div>
+                <div class="bento-card p-8 text-center">
+                    <h3 class="text-5xl font-extrabold text-brand-red mb-2">100+</h3>
+                    <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Years Combined Expertise</p>
+                </div>
+                <div class="bento-card p-8 text-center">
+                    <h3 class="text-5xl font-extrabold text-brand-black mb-2">2000+</h3>
+                    <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Projects Delivered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bento-card p-12 group">
+                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-brand-black mb-4">Our Mission</h2>
+                    <p class="text-gray-500 leading-relaxed text-lg mb-4">
+                        At Rmax, we are dedicated to bridging the digital divide. We aim to empower not only businesses but the entire society with affordable, dependable, and advanced Internet and IT infrastructure solutions.
+                    </p>
+                    <p class="text-gray-500 leading-relaxed text-lg">
+                        We believe in being the driving force behind the digital transformation of organizations and communities.
+                    </p>
+                </div>
+
+                <div class="bento-card p-12 group">
+                    <div class="w-14 h-14 bg-gray-100 text-brand-black rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:text-brand-red transition-colors">
+                        <i class="fa-regular fa-eye"></i>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-brand-black mb-4">Our Vision</h2>
+                    <p class="text-gray-500 leading-relaxed text-lg mb-4">
+                        To become the benchmark for excellence in connectivity services. We aspire to be recognized not only for our technological prowess but also for our unwavering commitment to legal compliance, security, and ethical business practices.
+                    </p>
+                    <p class="text-brand-black font-semibold leading-relaxed text-lg">
+                        Our dream is a future where every corner of India is illuminated with the brilliance of connectivity.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bento-card p-12 bg-brand-black text-white border-none mt-8 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-9xl text-white/5 font-serif">"</div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                    <div class="lg:col-span-1">
+                        <div class="w-24 h-24 bg-brand-red rounded-full flex items-center justify-center text-3xl font-bold mb-6">VT</div>
+                        <h3 class="text-2xl font-bold">Vasanth Thiruvengadam</h3>
+                        <p class="text-gray-400 font-semibold mb-6">Founder & Managing Director</p>
+                        <div class="flex gap-4 mb-2">
+                            <span class="bg-white/10 px-3 py-1 rounded text-xs font-bold text-brand-red">20+ Years Leadership</span>
+                            <span class="bg-white/10 px-3 py-1 rounded text-xs font-bold text-gray-300">200+ Employees</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2">
+                        <p class="text-lg text-gray-300 leading-relaxed italic mb-6">
+                            "Amidst the thriving technological renaissance of Chennai in the mid-2000s, a digital transformation was sweeping across the city. It was in the midst of this transformative period that Rmax was born. Our journey began with a team of young, vibrant tech enthusiasts with a simple yet revolutionary goal - to connect the unconnected."
+                        </p>
+                        <p class="text-lg text-gray-300 leading-relaxed italic">
+                            "Today, Rmax isn't just an ISP; it's a partner in your digital journey, a testament to growth, and a symbol of the thriving tech landscape."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-brand-black mb-4">Our <span class="text-brand-red">Journey</span></h2>
+                <p class="text-xl text-gray-500">A timeline of innovation and connectivity.</p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-100"></div>
+                <div class="md:hidden absolute left-0 w-0.5 h-full bg-gray-100"></div>
+
+                <div class="space-y-12">
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="md:w-5/12 text-left md:text-right pr-0 md:pr-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-black mb-2">2003</h3>
+                            <p class="text-gray-500 font-medium">Started off as a reliable Hardware & Network Services provider.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="hidden md:block md:w-5/12"></div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="hidden md:block md:w-5/12"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="md:w-5/12 text-left pl-0 md:pl-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-red mb-2">2005</h3>
+                            <p class="text-gray-500 font-medium">Introduced the first groundbreaking broadband service in Thiruvallur, revolutionizing suburb regions.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="md:w-5/12 text-left md:text-right pr-0 md:pr-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-black mb-2">2007</h3>
+                            <p class="text-gray-500 font-medium">Spearheaded Thiruvallur's first high-speed wired & wireless internet services for commercial and residential users.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="hidden md:block md:w-5/12"></div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="hidden md:block md:w-5/12"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="md:w-5/12 text-left pl-0 md:pl-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-black mb-2">2010</h3>
+                            <p class="text-gray-500 font-medium">Initiated Computer Education program to empower underprivileged candidates with computer literacy.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="md:w-5/12 text-left md:text-right pr-0 md:pr-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-red mb-2">2014</h3>
+                            <p class="text-gray-500 font-medium">Secured own ISP license from the Dept. of Telecommunications, Govt. of India.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="hidden md:block md:w-5/12"></div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="hidden md:block md:w-5/12"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="md:w-5/12 text-left pl-0 md:pl-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-black mb-2">2016</h3>
+                            <p class="text-gray-500 font-medium">Transitioned to a cutting-edge Level-3 Data Center, offering secure and scalable colocation services.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="md:w-5/12 text-left md:text-right pr-0 md:pr-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-black mb-2">2021</h3>
+                            <p class="text-gray-500 font-medium">Introduced cloud data center services, harnessing virtualization and advanced cloud computing.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="hidden md:block md:w-5/12"></div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center justify-between timeline-item w-full pl-8 md:pl-0">
+                        <div class="hidden md:block md:w-5/12"></div>
+                        <div class="timeline-dot"></div>
+                        <div class="md:w-5/12 text-left pl-0 md:pl-8 w-full">
+                            <h3 class="text-3xl font-bold text-brand-red mb-2">2023</h3>
+                            <p class="text-gray-900 font-bold bg-brand-red/10 px-4 py-2 rounded-lg inline-block">Marked the 20th year completion milestone.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-black text-white pt-20 pb-8 border-t-[8px] border-brand-red">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
+                        <span class="font-extrabold text-2xl tracking-tight text-white">Rmax</span>
+                    </div>
+                    <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
+                        <strong>Corporate Office:</strong><br>
+                        6th Floor, Rajiv Gandhi Salai,<br>
+                        Srinivasa Nagar, Kandanchavadi,<br>
+                        Perungudi, Chennai,<br>
+                        Tamil Nadu - 600096
+                    </address>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Get in Touch</h4>
+                    <ul class="space-y-6 text-sm">
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Business Enquiry</p>
+                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors">+91 915 091 1101</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">24/7 Customer Support</p>
+                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors">+91 720 022 8880</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
+                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">info@rmax.in</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="plans.html" class="hover:text-white transition-colors">Plans</a></li>
+                        <li><a href="partners.html" class="hover:text-white transition-colors">Franchise & Partners</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="help.html" class="hover:text-white transition-colors">Get Help / Speed Test</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Location</h4>
+                    <div class="w-full h-48 bg-gray-800 rounded-xl overflow-hidden border border-white/10 relative">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.828692737526!2d80.2442!3d12.9699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzExLjYiTiA4MMKwMTQnMzkuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: grayscale(1) opacity(0.8);" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>© 2026 Rmax ISP. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
+                    <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
