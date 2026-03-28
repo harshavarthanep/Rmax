@@ -3,70 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partners & Franchise | Rmax</title>
+    <title>Partners & Franchise | Rmax ISP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], }, colors: { brand: { white: '#FFFFFF', bg: '#F8F9FA', black: '#0A0A0A', red: '#E50914', } } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], },
+                    colors: {
+                        brand: {
+                            white: '#FFFFFF', bg: '#F8F9FA', black: '#0A0A0A', red: '#E50914', redhover: '#CC0812',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'red-glow': '0 10px 30px -10px rgba(229,9,20,0.3)',
+                        'dropdown': '0 10px 40px -10px rgba(0,0,0,0.1)',
+                    },
+                }
+            }
+        }
     </script>
-    <style> 
-        body { background-color: #F8F9FA; color: #0A0A0A; } 
-        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+    <style>
+        body { background-color: #F8F9FA; color: #0A0A0A; overflow-x: hidden; }
+        .reveal-up { animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .bento-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.04); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border-color: rgba(229,9,20,0.2); }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+        /* Dropdown specific styles */
+        .dropdown-menu { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateY(10px); }
+        .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+        .sub-dropdown { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateX(10px); left: 100%; top: 0; }
+        .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
+
+        /* Form Input Styles */
+        .form-input { width: 100%; padding: 1rem 1.25rem; border-radius: 0.75rem; border: 1px solid #E5E7EB; background-color: #F9FAFB; transition: all 0.3s ease; outline: none; }
+        .form-input:focus { border-color: #E50914; box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.1); background-color: #FFFFFF; }
+
+        /* WhatsApp Floating Button */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background-color: #25d366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); }
+        .wa-pulse {
+            position: absolute; width: 100%; height: 100%; background: #25d366;
+            border-radius: 50%; z-index: -1; animation: waPulse 2s infinite; opacity: 0.6;
+        }
+        @keyframes waPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-brand-red selection:text-white">
 
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-2 cursor-pointer">
                     <div class="w-10 h-10 bg-brand-black rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
                     <span class="font-extrabold text-2xl tracking-tight text-brand-black">Rmax</span>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center font-semibold text-sm text-gray-500">
+                <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
                     <a href="index.html" class="hover:text-brand-red transition-colors">Home</a>
-                    <a href="about.html" class="hover:text-brand-red transition-colors">About</a>
-                    <a href="services.html" class="hover:text-brand-red transition-colors">Services</a>
+                    <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
+                    
+                    <div class="relative group py-6">
+                        <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-xs ml-1"></i></span>
+                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                            <div class="group/sub relative px-2 py-1">
+                                <a href="services.html#internet" class="flex justify-between items-center px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
+                                    Internet <i class="fa-solid fa-angle-right text-xs"></i>
+                                </a>
+                                <div class="sub-dropdown absolute w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Home</div>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Fibernet Broadband</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2">Wireless Broadband</a>
+                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider border-t border-gray-100 pt-3">Business</div>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Enterprise Broadband</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Internet Leased Line (ILL)</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">IoT Connectivity</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Point to Point</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Managed WiFi</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">MPLS & VPN</a>
+                                </div>
+                            </div>
+                            <div class="px-2 py-1">
+                                <a href="services.html#it-infra" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
+                            </div>
+                            <div class="px-2 py-1">
+                                <a href="services.html#security" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
                     <a href="partners.html" class="text-brand-black">Partners</a>
+                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors">My Account</a>
+                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="pt-48 pb-24">
+    <a href="https://wa.me/919150911101" target="_blank" class="wa-float group" aria-label="Chat on WhatsApp">
+        <div class="wa-pulse"></div>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-24 border-b border-gray-100 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6">Expand <span class="text-brand-red">Horizons</span></h1>
-            <p class="text-2xl text-gray-500 mb-16 max-w-4xl mx-auto">Explore Lucrative Channel Partner and Franchise Opportunities in the dynamic ISP world[cite: 362, 364].</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-left">
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-                    <i class="fa-solid fa-chart-line text-3xl text-brand-red mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">High Demand Services</h3>
-                    <p class="text-sm text-gray-500">Access to the latest industry trends and cutting edge products[cite: 370].</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-brand-black reveal-up leading-tight">
+                Connect. Grow. <br><span class="text-brand-red">Succeed!</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 reveal-up delay-100">Expand Horizons With Our Partnership Opportunities</h2>
+            <p class="text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8 reveal-up delay-200">
+                Welcome to Rmax, your gateway to success! We strongly believe partnerships are the cornerstone of our business philosophy, driving mutual growth and fostering meaningful connections.
+            </p>
+            <p class="text-lg font-semibold text-brand-red max-w-3xl mx-auto reveal-up delay-200">
+                Our current opportunity is open for committed relationships across Tamil Nadu, India.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="bg-brand-black text-white rounded-[2rem] p-10 md:p-16 shadow-premium relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-red rounded-full opacity-20 blur-3xl"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div>
+                        <h2 class="text-4xl font-extrabold mb-6 leading-tight">Explore Lucrative Channel Partner and Franchise Opportunities</h2>
+                        <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                            Are you ready to embark on an exciting journey towards entrepreneurial success? Whether you're an established business or an ambitious entrepreneur, our partnership programs offer a path to unlocking your full potential.
+                        </p>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Stay ahead of the curve with access to the latest industry trends, products, and services. Lead the way and set new standards of excellence with our support.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                            <i class="fa-solid fa-globe text-3xl text-brand-red mb-3"></i>
+                            <h4 class="font-bold text-sm">High Demand Services</h4>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                            <i class="fa-regular fa-handshake text-3xl text-white mb-3"></i>
+                            <h4 class="font-bold text-sm">Flexible Business Model</h4>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                            <i class="fa-solid fa-money-bill-trend-up text-3xl text-brand-red mb-3"></i>
+                            <h4 class="font-bold text-sm">Recurring Revenue</h4>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                            <i class="fa-solid fa-chalkboard-user text-3xl text-white mb-3"></i>
+                            <h4 class="font-bold text-sm">Comprehensive Training</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-                    <i class="fa-solid fa-handshake text-3xl text-brand-black mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Flexible Business Model</h3>
-                    <p class="text-sm text-gray-500">A proven blueprint for success with a decade of industry experience[cite: 377, 378].</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-                    <i class="fa-solid fa-money-bill-trend-up text-3xl text-brand-red mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Recurring Revenue</h3>
-                    <p class="text-sm text-gray-500">Join a legacy of success, innovation, and trust[cite: 398].</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-                    <i class="fa-solid fa-chalkboard-user text-3xl text-brand-black mb-4"></i>
-                    <h3 class="font-bold text-xl mb-2">Comprehensive Training</h3>
-                    <p class="text-sm text-gray-500">Access cutting-edge training programs and dedicated support[cite: 384].</p>
-                </div>
-            </div>
-            
-            <div class="mt-20 bg-brand-black text-white p-12 rounded-3xl text-center">
-                <h2 class="text-3xl font-bold mb-6">Join the fast lane today [cite: 356]</h2>
-                <a href="contact.html" class="inline-block bg-brand-red px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-black transition-colors">Start Your Journey</a>
             </div>
         </div>
     </section>
+
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-black mb-4">Why Partner <span class="text-brand-red">With Us?</span></h2>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">Fostering strong, mutually beneficial partnerships that drive growth and innovation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bento-card p-8 group">
+                    <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-black">Proven Business Model</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">With a decade of industry experience, we provide a solid foundation for your entrepreneurial endeavors, allowing franchisees to benefit from a blueprint for success.</p>
+                </div>
+                <div class="bento-card p-8 group">
+                    <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-black">Strong Brand Recognition</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We've forged a legacy of trust, reliability, and excellence. Benefit from the prestige of our trusted brand, giving you an instant edge in the market.</p>
+                </div>
+                <div class="bento-card p-8 group">
+                    <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-black">Comprehensive Support & Training</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">From initial setup to ongoing operations. Access cutting-edge training programs and resources designed to equip you with the skills to thrive.</p>
+                </div>
+                <div class="bento-card p-8 group">
+                    <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-black">Exclusive Territories</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Enjoy exclusive territories that offer ample growth opportunities without the fear of internal competition.</p>
+                </div>
+                <div class="bento-card p-8 group lg:col-span-2">
+                    <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-black">Comprehensive Marketing Assistance</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">From digital campaigns to local advertising, our marketing team will help you build brand awareness and attract customers. We provide customized marketing materials and strategies tailored to your specific region.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-brand-black mb-4">Join the <span class="text-brand-red">Legacy Today!</span></h2>
+                <p class="text-xl text-gray-500 max-w-3xl mx-auto">When you partner with Rmax, you're not just aligning with a brand - you're joining a legacy of success, innovation, and trust. Let's build a brighter future together.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 bg-white rounded-3xl p-8 lg:p-12 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] border border-gray-100">
+                
+                <div class="lg:col-span-1 space-y-8 pr-0 lg:pr-8 border-b lg:border-b-0 lg:border-r border-gray-100 pb-8 lg:pb-0">
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-red tracking-widest uppercase mb-2"><i class="fa-solid fa-building mr-2"></i> Corporate Office</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">6th Floor, Rajiv Gandhi Salai,<br>Srinivasa Nagar, Kandanchavadi, Perungudi,<br>Chennai, Tamil Nadu - 600096</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-brand-black tracking-widest uppercase mb-2"><i class="fa-solid fa-store mr-2"></i> Front Office</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">#45, J.N. Road,<br>Thiruvallur - 602001</p>
+                    </div>
+                    <div class="pt-4 space-y-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 rounded-full bg-red-50 text-brand-red flex items-center justify-center group-hover:bg-brand-red group-hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase">Email Us</p>
+                                <a href="mailto:info@rmax.in" class="text-sm font-semibold text-brand-black hover:text-brand-red block">info@rmax.in</a>
+                                <a href="mailto:helpdesk@rmaxisp.in" class="text-sm font-semibold text-brand-black hover:text-brand-red block">helpdesk@rmaxisp.in</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 text-brand-black flex items-center justify-center group-hover:bg-brand-red group-hover:text-white transition-colors"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase">Business Enquiry</p>
+                                <a href="tel:+919150911101" class="text-sm font-bold text-brand-black hover:text-brand-red">+91 915 091 1101</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 text-brand-black flex items-center justify-center group-hover:bg-brand-red group-hover:text-white transition-colors"><i class="fa-solid fa-headset"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase">24/7 Customer Support</p>
+                                <a href="tel:+917200228880" class="text-sm font-bold text-brand-black hover:text-brand-red">+91 720 022 8880</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-bold text-brand-black mb-2">Get in touch with us</h3>
+                    <p class="text-gray-500 mb-8">Enter Your Contact Details, and We'll Be in Touch Shortly to discuss partnership opportunities.</p>
+                    
+                    <form action="#" method="POST" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="sr-only">Name*</label>
+                                <input type="text" id="name" name="name" placeholder="Name*" required class="form-input">
+                            </div>
+                            <div>
+                                <label for="phone" class="sr-only">Phone*</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Phone*" required class="form-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only">Email ID*</label>
+                            <input type="email" id="email" name="email" placeholder="Email ID*" required class="form-input">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Message*</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Message*" required class="form-input resize-none"></textarea>
+                            <p class="text-xs text-gray-400 mt-2">Limit is 50 words. Words remaining: 50.</p>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center gap-3 w-full sm:w-auto">
+                                <input type="checkbox" id="robot" class="w-5 h-5 accent-brand-red">
+                                <label for="robot" class="text-sm text-gray-600 font-medium">I'm not a robot</label>
+                                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="h-8 ml-4">
+                            </div>
+                            
+                            <button type="submit" class="w-full sm:w-auto bg-brand-black text-white px-10 py-3.5 rounded-full font-bold tracking-wide hover:bg-brand-red transition-colors shadow-lg shadow-black/10">
+                                SUBMIT
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-black text-white pt-20 pb-8 border-t-[8px] border-brand-red">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
+                        <span class="font-extrabold text-2xl tracking-tight text-white">Rmax</span>
+                    </div>
+                    <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
+                        <strong>Corporate Office:</strong><br>
+                        6th Floor, Rajiv Gandhi Salai,<br>
+                        Srinivasa Nagar, Kandanchavadi,<br>
+                        Perungudi, Chennai,<br>
+                        Tamil Nadu - 600096
+                    </address>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Get in Touch</h4>
+                    <ul class="space-y-6 text-sm">
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Business Enquiry</p>
+                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors">+91 915 091 1101</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">24/7 Customer Support</p>
+                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors">+91 720 022 8880</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
+                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">info@rmax.in</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="plans.html" class="hover:text-white transition-colors">Plans</a></li>
+                        <li><a href="partners.html" class="text-brand-red">Franchise & Partners</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="help.html" class="hover:text-white transition-colors">Get Help / Speed Test</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Location</h4>
+                    <div class="w-full h-48 bg-gray-800 rounded-xl overflow-hidden border border-white/10 relative">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.828692737526!2d80.2442!3d12.9699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzExLjYiTiA4MMKwMTQnMzkuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: grayscale(1) opacity(0.8);" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>© 2026 Rmax ISP. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
+                    <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
