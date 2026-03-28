@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Rmax | Premium Internet Service Provider</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Outfit', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], }, colors: { brand: { black: '#0a0a0a', dark: '#121212', red: '#E50914', redglow: '#ff333d', white: '#ffffff', } } } } }
+    </script>
+    <style> body { background-color: #0a0a0a; color: #ffffff; } .glass-nav { background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); } </style>
+</head>
+<body class="antialiased selection:bg-brand-red selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-brand-red to-red-900 rounded-xl flex items-center justify-center text-white font-display font-bold text-2xl">R</div>
+                    <span class="font-display font-bold text-3xl tracking-wide">Rmax</span>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center font-medium text-sm tracking-wider text-gray-300">
+                    <a href="index.html" class="hover:text-white transition-colors relative group">Home<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-red transition-all group-hover:w-full"></span></a>
+                    <a href="about.html" class="text-brand-red">About Us</a>
+                    <a href="services.html" class="hover:text-white transition-colors relative group">Services<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-red transition-all group-hover:w-full"></span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-48 pb-24 relative border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Our <span class="text-brand-red">Legacy</span></h1>
+                    <p class="text-xl text-gray-400 font-light leading-relaxed mb-8">
+                        In the heart of Chennai's bustling IT landscape, Rmax embarked on an extraordinary journey in 2005[cite: 9]. We began as pioneers in Thiruvallur, turning 'no signal' into 'full bars'[cite: 10, 20].
+                    </p>
+                    <p class="text-lg text-gray-500 mb-8 leading-relaxed">
+                        Today, as an accredited 'Class-B' ISP licensed by the Dept. of Telecommunications [cite: 12], we stand as a 200+ employee organization[cite: 55]. Our purpose remains transformative: to connect the unconnected across India[cite: 11, 15].
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm text-center">
+                        <div class="text-5xl font-display font-bold text-brand-red mb-2">2000+</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-widest">Clients</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm text-center">
+                        <div class="text-5xl font-display font-bold text-brand-red mb-2">80+</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-widest">Offerings</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm text-center col-span-2">
+                        <div class="text-5xl font-display font-bold text-brand-red mb-2">20+ Years</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-widest">Of Transformative Leadership</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
