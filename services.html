@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Rmax ISP</title>
+    <title>Services | Rmax</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Outfit', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'], }, colors: { brand: { black: '#0a0a0a', red: '#E50914', white: '#ffffff', } } } } }
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], }, colors: { brand: { white: '#FFFFFF', bg: '#F8F9FA', black: '#0A0A0A', red: '#E50914', } } } } }
     </script>
-    <style> body { background-color: #0a0a0a; color: #ffffff; } .glass-nav { background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); } </style>
+    <style> 
+        body { background-color: #F8F9FA; color: #0A0A0A; } 
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .feature-item { transition: transform 0.3s ease; }
+        .feature-item:hover { transform: translateX(10px); color: #E50914; }
+    </style>
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-brand-red selection:text-white">
 
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-brand-red to-red-900 rounded-xl flex items-center justify-center text-white font-display font-bold text-2xl">R</div>
-                    <span class="font-display font-bold text-3xl tracking-wide">Rmax</span>
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-brand-black rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
+                    <span class="font-extrabold text-2xl tracking-tight text-brand-black">Rmax</span>
                 </div>
-                <div class="hidden md:flex space-x-10 items-center font-medium text-sm tracking-wider text-gray-300">
-                    <a href="index.html" class="hover:text-white transition-colors relative group">Home<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-red transition-all group-hover:w-full"></span></a>
-                    <a href="about.html" class="hover:text-white transition-colors relative group">About Us<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-red transition-all group-hover:w-full"></span></a>
-                    <a href="services.html" class="text-brand-red">Services</a>
+                <div class="hidden md:flex space-x-8 items-center font-semibold text-sm text-gray-500">
+                    <a href="index.html" class="hover:text-brand-red transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-brand-red transition-colors">About</a>
+                    <a href="services.html" class="text-brand-black">Services</a>
+                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
                 </div>
             </div>
         </div>
@@ -32,36 +38,42 @@
 
     <section class="pt-48 pb-24">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <h1 class="text-5xl md:text-7xl font-display font-bold mb-16 text-center border-b border-white/10 pb-16">Enterprise <span class="text-brand-red">Solutions</span></h1>
+            <h1 class="text-6xl font-extrabold tracking-tight mb-6 text-brand-black">Enterprise <span class="text-brand-red">Solutions</span></h1>
+            <p class="text-xl text-gray-500 mb-20 max-w-3xl">Tailored internet connectivity and IT infrastructure solutions for small, medium, and large enterprises across India[cite: 114, 275].</p>
 
-            <div class="space-y-24">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 lg:order-1">
-                        <div class="text-brand-red mb-4 text-4xl"><i class="fa-solid fa-earth-americas"></i></div>
-                        <h2 class="text-4xl font-display font-bold mb-4">Internet Leased Line (ILL)</h2>
-                        <p class="text-gray-400 mb-6 text-lg">Designed to meet demanding requirements, ensuring seamless data transfer and efficient communication[cite: 145].</p>
-                        <ul class="space-y-4 text-gray-300">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Dedicated True 1:1 Leased Line[cite: 148].</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Dual-Link Redundancy (RF and Fiber Optic)[cite: 151].</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Unmatched Uptime of 99.97%[cite: 163].</li>
+            <div class="space-y-32">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="w-16 h-16 bg-brand-black text-white rounded-2xl flex items-center justify-center text-2xl mb-8">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h2 class="text-4xl font-bold mb-6">Internet Leased Line (ILL)</h2>
+                        <p class="text-gray-500 text-lg mb-8 leading-relaxed">State-of-the-art leased lines meticulously crafted to deliver high-speed, dedicated internet connectivity with enhanced security[cite: 144].</p>
+                        <ul class="space-y-4 font-semibold text-gray-800">
+                            <li class="feature-item flex items-center gap-4"><i class="fa-solid fa-arrow-right text-brand-red"></i> Dedicated True 1:1 Leased Line [cite: 148]</li>
+                            <li class="feature-item flex items-center gap-4"><i class="fa-solid fa-arrow-right text-brand-red"></i> Dual-Link Redundancy (RF & Fiber Optic) [cite: 151]</li>
+                            <li class="feature-item flex items-center gap-4"><i class="fa-solid fa-arrow-right text-brand-red"></i> Symmetric Upload/Download Speeds [cite: 126]</li>
                         </ul>
                     </div>
-                    <div class="order-1 lg:order-2 h-80 bg-gradient-to-tr from-brand-red/20 to-transparent border border-brand-red/30 rounded-3xl backdrop-blur flex items-center justify-center">
-                        <span class="text-gray-500 italic">[High-End Fiber Optic Graphic]</span>
+                    <div class="bg-white rounded-3xl p-10 border border-gray-100 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] h-96 flex items-center justify-center">
+                        <p class="text-gray-300 font-bold uppercase tracking-widest">[Insert Minimalist Tech Graphic Here]</p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="h-80 bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-3xl backdrop-blur flex items-center justify-center">
-                        <span class="text-gray-500 italic">[Secure Server Network Graphic]</span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1 bg-brand-black rounded-3xl p-10 shadow-premium h-96 flex items-center justify-center">
+                         <p class="text-gray-700 font-bold uppercase tracking-widest">[Insert Server Architecture Graphic Here]</p>
                     </div>
-                    <div>
-                        <div class="text-brand-red mb-4 text-4xl"><i class="fa-solid fa-network-wired"></i></div>
-                        <h2 class="text-4xl font-display font-bold mb-4">MPLS & VPN Services</h2>
-                        <p class="text-gray-400 mb-6 text-lg">Welcome to the future of secure business communications[cite: 248].</p>
-                        <ul class="space-y-4 text-gray-300">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> <strong>MPLS:</strong> Protocol-independent, assures Quality of Service (QoS)[cite: 252].</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> <strong>VPN:</strong> Cost-effective remote access over public networks[cite: 254, 256].</li>
+                    <div class="order-1 lg:order-2">
+                        <div class="w-16 h-16 bg-brand-red text-white rounded-2xl flex items-center justify-center text-2xl mb-8">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h2 class="text-4xl font-bold mb-6">IT Infrastructure</h2>
+                        <p class="text-gray-500 text-lg mb-8 leading-relaxed">Enhance IT infrastructure and core applications, striving for peak performance and efficiency[cite: 276].</p>
+                        <ul class="space-y-4 font-semibold text-gray-800">
+                            <li class="feature-item flex items-center gap-4"><i class="fa-solid fa-arrow-right text-brand-red"></i> Cloud Integration & Management [cite: 289]</li>
+                            <li class="feature-item flex items-center gap-4"><i class="fa-solid fa-arrow-right text-brand-red"></i> Virtualization Solutions [cite: 292]</li>
+                            <li class="feature-item flex items-center gap-4"><i class="fa-solid fa-arrow-right text-brand-red"></i> Backup and Disaster Recovery [cite: 297]</li>
                         </ul>
                     </div>
                 </div>
