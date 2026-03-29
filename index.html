@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
+<html lang="en"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rmax | Premium Internet Service Provider</title>
@@ -8,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.css">
 
     <script>
@@ -65,6 +63,12 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
+        /* Hardware Accelerated Blobs to prevent lag */
+        .animate-blob {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
         /* Preloader */
         #preloader {
             position: fixed; inset: 0; background: #0a0a0a;
@@ -107,12 +111,17 @@
             box-shadow: 0 30px 60px -15px rgba(220, 38, 38, 0.15);
         }
 
+        /* Professional Button Hovers */
+        .pro-btn { transition: all 0.3s ease; }
+        .pro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); }
+        .pro-btn:hover i { transform: translateX(4px); transition: transform 0.3s ease; }
+
         /* Text Utilities */
         .char { transform: translateY(100%); opacity: 0; }
         .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
         ::-webkit-scrollbar { display: none; }
 
-        /* Mobile Menu Setup (Solid Background) */
+        /* Mobile Menu Setup */
         #mobile-menu {
             clip-path: circle(0% at 100% 0);
             transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1);
@@ -177,15 +186,16 @@
     <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-[1400px] mx-auto px-4 lg:px-12">
             <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
+                
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
                     <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
                 </a>
                 
                 <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
-                    <a href="index.html" class="text-brand-red font-bold">Home</a>
-                    <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
+                    <a href="index.html" class="text-brand-red font-bold hover-target">Home</a>
+                    <a href="about.html" class="hover-target hover:text-brand-red transition-colors">About Us</a>
                     
-                    <div class="relative group py-6">
+                    <div class="relative group py-6 hover-target">
                         <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
                         <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                             <div class="group/sub relative px-2 py-1">
@@ -214,18 +224,16 @@
                         </div>
                     </div>
 
-                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
-                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
-                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
-                    <a href="help.html" class="hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
-                    
-                    <a href="contact.html" class="bg-brand-dark text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-brand-red transition-all duration-300 shadow-md hover:shadow-brand-red/30 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
+                    <a href="plans.html" class="hover-target hover:text-brand-red transition-colors">Plans</a>
+                    <a href="partners.html" class="hover-target hover:text-brand-red transition-colors">Partners</a>
+                    <a href="careers.html" class="hover-target hover:text-brand-red transition-colors">Careers</a>
+                    <a href="help.html" class="hover-target hover:text-brand-red transition-colors pr-4 lg:border-r lg:border-gray-300">Get Help</a>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <div class="hidden lg:flex items-center space-x-4">
+                    <div class="hidden lg:flex items-center space-x-4 pl-2">
                         <a href="account.html" class="text-sm font-bold text-brand-dark hover:text-brand-red transition-colors">My Account</a>
-                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5">Enquire Now</a>
+                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
                     </div>
                     
                     <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
@@ -248,7 +256,7 @@
             <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
             <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
             
-            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-100">
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
                 <a href="account.html" class="block text-center border-2 border-brand-dark text-brand-dark text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
                 <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
             </div>
@@ -256,8 +264,8 @@
     </div>
 
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[80px] animate-blob" style="will-change: transform;"></div>
-        <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gray-400/10 rounded-full blur-[80px] animate-blob animation-delay-2000" style="will-change: transform;"></div>
+        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[80px] animate-blob"></div>
+        <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gray-400/10 rounded-full blur-[80px] animate-blob" style="animation-delay: 2s;"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10 w-full">
             <div class="max-w-5xl mt-12 md:mt-0">
@@ -273,7 +281,7 @@
                     Experience the profound difference of connectivity. And enjoy more for less.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 gs-fade">
-                    <a href="services.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/30 transition-all duration-300 transform hover:-translate-y-1">
+                    <a href="services.html" class="pro-btn w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/30 transition-all duration-300 transform hover:-translate-y-1">
                         Discover Solutions <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -369,7 +377,7 @@
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Virtualization Solutions</li>
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Backup & Disaster Recovery</li>
                     </ul>
-                    <a href="services.html#it-infra" class="inline-block px-8 py-3.5 bg-white text-brand-dark border border-gray-200 rounded-full font-semibold hover:border-brand-red hover:text-brand-red shadow-sm transition-all duration-300 hover:-translate-y-1">
+                    <a href="services.html#it-infra" class="pro-btn inline-block px-8 py-3.5 bg-white text-brand-dark border border-gray-200 rounded-full font-semibold hover:border-brand-red hover:text-brand-red shadow-sm transition-all duration-300 hover:-translate-y-1">
                         Explore IT Services <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -505,17 +513,23 @@
               .set("#preloader", { display: "none" });
         });
 
-        // 2. Initialize Lenis Smooth Scroll
+        // 2. Native Standard Lenis Initialization (Fixes Wobble)
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical', gestureDirection: 'vertical',
-            smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2, infinite: false,
+            direction: 'vertical', 
+            gestureDirection: 'vertical',
+            smooth: true, 
+            smoothTouch: false, 
+            touchMultiplier: 2,
         });
 
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
         lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-        gsap.ticker.lagSmoothing(0);
 
         // 3. Job Openings Popup Modal Logic
         window.addEventListener("load", () => {
@@ -528,7 +542,7 @@
                     jobModal.classList.remove("opacity-0", "pointer-events-none");
                     jobModalContent.classList.remove("scale-95");
                     jobModalContent.classList.add("scale-100");
-                    if(typeof lenis !== 'undefined') lenis.stop(); // Pause smooth scrolling
+                    lenis.stop(); // Pause smooth scrolling while modal is open
                 }
             }, 3000);
 
@@ -536,7 +550,7 @@
                 jobModal.classList.add("opacity-0", "pointer-events-none");
                 jobModalContent.classList.remove("scale-100");
                 jobModalContent.classList.add("scale-95");
-                if(typeof lenis !== 'undefined') lenis.start(); // Resume smooth scrolling
+                lenis.start(); // Resume smooth scrolling
                 sessionStorage.setItem('jobModalShown', 'true');
             };
 
@@ -564,7 +578,7 @@
                 
                 // Show Menu & Lock Body
                 mobileMenu.classList.add('menu-open');
-                if(typeof lenis !== 'undefined') lenis.stop();
+                lenis.stop();
                 document.body.style.overflow = 'hidden';
                 
                 // Hide WhatsApp
@@ -586,7 +600,7 @@
                 
                 // Hide Menu & Unlock Body
                 mobileMenu.classList.remove('menu-open');
-                if(typeof lenis !== 'undefined') lenis.start();
+                lenis.start();
                 document.body.style.overflow = '';
                 
                 // Show WhatsApp
