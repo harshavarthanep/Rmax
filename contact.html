@@ -44,13 +44,6 @@
         .sub-dropdown { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateX(10px); left: 100%; top: 0; }
         .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
 
-        /* Form Input Styles */
-        .form-input, .form-select, .form-textarea { width: 100%; padding: 1rem 1.25rem; border-radius: 0.75rem; border: 1px solid #E5E7EB; background-color: #F9FAFB; transition: all 0.3s ease; outline: none; font-family: inherit; }
-        .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: #E50914; box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.1); background-color: #FFFFFF; }
-        
-        /* Custom Select Arrow */
-        .form-select { appearance: none; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 1rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem; }
-
         /* WhatsApp Floating Button */
         .wa-float {
             position: fixed; bottom: 30px; right: 30px; z-index: 100;
@@ -73,10 +66,10 @@
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-2 cursor-pointer">
-                    <div class="w-10 h-10 bg-brand-black rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
-                    <span class="font-extrabold text-2xl tracking-tight text-brand-black">Rmax</span>
-                </div>
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
+                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;" title="Replace src with your actual logo">
+                </a>
+                
                 <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
                     <a href="index.html" class="hover:text-brand-red transition-colors">Home</a>
                     <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
@@ -117,7 +110,7 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
                     <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors">My Account</a>
-                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
+                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors ring-2 ring-offset-2 ring-brand-red">Enquire Now</a>
                 </div>
             </div>
         </div>
@@ -143,28 +136,6 @@
                 
                 <div class="lg:col-span-1 space-y-6">
                     
-                    <div class="bento-card p-8 group hover:border-brand-red transition-all duration-300">
-                        <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-headset"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-black mb-4">Direct Contact</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Business Enquiry</p>
-                                <a href="tel:+919150911101" class="text-brand-black font-semibold hover:text-brand-red transition-colors">+91 915 091 1101</a>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">24/7 Support</p>
-                                <a href="tel:+917200228880" class="text-brand-black font-semibold hover:text-brand-red transition-colors">+91 720 022 8880</a>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Email</p>
-                                <a href="mailto:info@rmax.in" class="text-brand-black font-semibold hover:text-brand-red transition-colors block">info@rmax.in</a>
-                                <a href="mailto:hr@rmax.in" class="text-brand-black font-semibold hover:text-brand-red transition-colors block">hr@rmax.in (Careers)</a>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="bento-card p-8 group hover:border-brand-black transition-all duration-300">
                         <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-black group-hover:text-white transition-colors">
                             <i class="fa-solid fa-map-location-dot"></i>
@@ -182,86 +153,71 @@
                         </div>
                     </div>
 
+                    <div class="bento-card p-8 group hover:border-brand-red transition-all duration-300">
+                        <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-black mb-4">Operating Hours</h3>
+                        <ul class="space-y-3 text-sm text-gray-500">
+                            <li class="flex justify-between"><span>Mon - Sat:</span> <span class="font-bold text-brand-black">9:00 AM - 7:00 PM</span></li>
+                            <li class="flex justify-between border-t border-gray-100 pt-3"><span>Network Support:</span> <span class="font-bold text-brand-red">24/7 Active</span></li>
+                        </ul>
+                    </div>
+
                 </div>
 
                 <div class="lg:col-span-2">
                     
-                    <div class="bento-card p-8 md:p-12 shadow-premium bg-white relative overflow-hidden mb-8">
+                    <div class="bento-card p-8 md:p-12 shadow-premium bg-white relative overflow-hidden h-full">
                         <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-red rounded-full opacity-5 blur-3xl pointer-events-none"></div>
                         
-                        <h3 class="text-2xl font-bold text-brand-black mb-2">Send us a message</h3>
-                        <p class="text-gray-500 mb-8">Fill out the form below and the appropriate team will get back to you within 24 hours.</p>
+                        <h3 class="text-2xl font-bold text-brand-black mb-2">Connect with our Team</h3>
+                        <p class="text-gray-500 mb-10 relative z-10">We have streamlined our communication to serve you faster. Choose your preferred way to connect with us instantly, no forms required.</p>
 
-                        <form action="#" method="POST" class="space-y-6 relative z-10">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
                             
-                            <div>
-                                <label for="department" class="block text-sm font-bold text-gray-700 mb-2">What are you inquiring about?*</label>
-                                <select id="department" name="department" required class="form-select cursor-pointer">
-                                    <option value="" disabled selected>Select a department or interest...</option>
-                                    <option value="enterprise">Enterprise Business Broadband & Leased Lines</option>
-                                    <option value="home">Home Internet & WiFi Solutions</option>
-                                    <option value="it_infra">IT Infrastructure & Security Solutions</option>
-                                    <option value="careers">Careers & HR Inquiry</option>
-                                    <option value="partnership">Channel Partner & Franchise Opportunities</option>
-                                    <option value="general">General Support / Other</option>
-                                </select>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-bold text-gray-700 mb-2">Full Name*</label>
-                                    <input type="text" id="name" name="name" placeholder="John Doe" required class="form-input">
+                            <a href="https://wa.me/919150911101" target="_blank" class="border border-gray-200 rounded-2xl p-6 hover:border-[#25D366] hover:shadow-[0_10px_30px_rgba(37,211,102,0.15)] transition-all duration-300 flex items-start gap-4 group bg-white">
+                                <div class="w-12 h-12 bg-[#25D366]/10 text-[#25D366] rounded-xl flex items-center justify-center text-2xl group-hover:bg-[#25D366] group-hover:text-white transition-colors shrink-0">
+                                    <i class="fa-brands fa-whatsapp"></i>
                                 </div>
                                 <div>
-                                    <label for="phone" class="block text-sm font-bold text-gray-700 mb-2">Phone Number*</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000" required class="form-input">
+                                    <h4 class="font-bold text-brand-dark mb-1">WhatsApp Chat</h4>
+                                    <p class="text-sm text-gray-500">Fastest response for sales & general queries.</p>
                                 </div>
-                            </div>
+                            </a>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <a href="tel:+919150911101" class="border border-gray-200 rounded-2xl p-6 hover:border-brand-red hover:shadow-[0_10px_30px_rgba(229,9,20,0.1)] transition-all duration-300 flex items-start gap-4 group bg-white">
+                                <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-red group-hover:text-white transition-colors shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
                                 <div>
-                                    <label for="email" class="block text-sm font-bold text-gray-700 mb-2">Email Address*</label>
-                                    <input type="email" id="email" name="email" placeholder="john@example.com" required class="form-input">
+                                    <h4 class="font-bold text-brand-dark mb-1">Business Enquiry</h4>
+                                    <p class="text-sm text-brand-red font-semibold mb-1">+91 915 091 1101</p>
+                                    <p class="text-xs text-gray-500">Call for new connections.</p>
+                                </div>
+                            </a>
+
+                            <a href="tel:+917200228880" class="border border-gray-200 rounded-2xl p-6 hover:border-brand-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-start gap-4 group bg-white">
+                                <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-black group-hover:text-white transition-colors shrink-0">
+                                    <i class="fa-solid fa-headset"></i>
                                 </div>
                                 <div>
-                                    <label for="company" class="block text-sm font-bold text-gray-700 mb-2">Company Name (Optional)</label>
-                                    <input type="text" id="company" name="company" placeholder="Your Business Ltd." class="form-input">
+                                    <h4 class="font-bold text-brand-dark mb-1">24/7 NOC Support</h4>
+                                    <p class="text-sm text-brand-dark font-semibold mb-1">+91 720 022 8880</p>
+                                    <p class="text-xs text-gray-500">For existing customer issues.</p>
                                 </div>
-                            </div>
+                            </a>
 
-                            <div>
-                                <label for="message" class="block text-sm font-bold text-gray-700 mb-2">Message*</label>
-                                <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required class="form-textarea resize-none"></textarea>
-                            </div>
-
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-2">
-                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center gap-3 w-full sm:w-auto">
-                                    <input type="checkbox" id="robot" class="w-5 h-5 accent-brand-red cursor-pointer">
-                                    <label for="robot" class="text-sm text-gray-600 font-medium cursor-pointer">I'm not a robot</label>
+                            <a href="mailto:info@rmax.in" class="border border-gray-200 rounded-2xl p-6 hover:border-brand-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-start gap-4 group bg-white">
+                                <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-black group-hover:text-white transition-colors shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
                                 </div>
-                                
-                                <button type="submit" class="w-full sm:w-auto bg-brand-black text-white px-10 py-4 rounded-full font-bold tracking-wide hover:bg-brand-red transition-colors shadow-lg hover:shadow-xl hover:-translate-y-1 transform duration-300">
-                                    Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-                        <div class="text-center">
-                            <div class="w-10 h-10 mx-auto bg-white border border-gray-200 rounded-full flex items-center justify-center text-brand-red font-bold mb-3 shadow-sm">1</div>
-                            <h4 class="font-bold text-sm text-brand-black mb-1">Submit Details</h4>
-                            <p class="text-xs text-gray-500 px-2">Your inquiry gets routed to the correct department immediately.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-10 h-10 mx-auto bg-white border border-gray-200 rounded-full flex items-center justify-center text-brand-red font-bold mb-3 shadow-sm">2</div>
-                            <h4 class="font-bold text-sm text-brand-black mb-1">We Connect</h4>
-                            <p class="text-xs text-gray-500 px-2">An expert or HR representative will call you within 24 hours.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-10 h-10 mx-auto bg-white border border-gray-200 rounded-full flex items-center justify-center text-brand-red font-bold mb-3 shadow-sm">3</div>
-                            <h4 class="font-bold text-sm text-brand-black mb-1">Get Started</h4>
-                            <p class="text-xs text-gray-500 px-2">We finalize your setup, interview, or partnership agreement.</p>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark mb-1">Email Us</h4>
+                                    <p class="text-sm text-gray-500 mb-1">info@rmax.in</p>
+                                    <p class="text-xs text-gray-500">For formal quotations & careers.</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
@@ -274,10 +230,10 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
-                        <span class="font-extrabold text-2xl tracking-tight text-white">Rmax</span>
-                    </div>
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left">
+                        <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
+                    </a>
+                    
                     <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
                         <strong>Corporate Office:</strong><br>
                         6th Floor, Rajiv Gandhi Salai,<br>
@@ -288,6 +244,7 @@
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
