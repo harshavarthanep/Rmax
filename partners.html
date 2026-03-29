@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partners & Franchise | Rmax ISP</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -44,6 +44,10 @@
         .sub-dropdown { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateX(10px); left: 100%; top: 0; }
         .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
 
+        /* Form Input Styles */
+        .form-input { width: 100%; padding: 1rem 1.25rem; border-radius: 0.75rem; border: 1px solid #E5E7EB; background-color: #F9FAFB; transition: all 0.3s ease; outline: none; }
+        .form-input:focus { border-color: #E50914; box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.1); background-color: #FFFFFF; }
+
         /* WhatsApp Floating Button */
         .wa-float {
             position: fixed; bottom: 30px; right: 30px; z-index: 100;
@@ -59,15 +63,29 @@
             border-radius: 50%; z-index: -1; animation: waPulse 2s infinite; opacity: 0.6;
         }
         @keyframes waPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
+
+        /* Mobile Menu Setup */
+        #mobile-menu {
+            clip-path: circle(0% at 100% 0);
+            transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        #mobile-menu.menu-open { clip-path: circle(150% at 100% 0); }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-red selection:text-white">
 
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+    <div id="wa-button" class="fixed bottom-8 right-8 z-40 transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+        <a href="https://wa.me/919150911101" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-lg shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <span class="absolute right-20 bg-brand-black/90 backdrop-blur-md text-white text-sm font-medium px-4 py-2 rounded-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">Start a conversation</span>
+        </a>
+    </div>
+
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group hover-target">
-                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1 transition-transform group-hover:scale-105" style="min-width: 120px;">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
+                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
                 </a>
                 
                 <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
@@ -75,30 +93,30 @@
                     <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
                     
                     <div class="relative group py-6">
-                        <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-xs ml-1"></i></span>
-                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                        <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
+                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                             <div class="group/sub relative px-2 py-1">
                                 <a href="services.html#internet" class="flex justify-between items-center px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
-                                    Internet <i class="fa-solid fa-angle-right text-xs"></i>
+                                    Internet <i class="fa-solid fa-angle-right text-xs opacity-50"></i>
                                 </a>
-                                <div class="sub-dropdown absolute w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
-                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Home</div>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Fibernet Broadband</a>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2">Wireless Broadband</a>
-                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider border-t border-gray-100 pt-3">Business</div>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Enterprise Broadband</a>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Internet Leased Line (ILL)</a>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">IoT Connectivity</a>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Point to Point</a>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Managed WiFi</a>
-                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">MPLS & VPN</a>
+                                <div class="sub-dropdown absolute w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                                    <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Home</div>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Fibernet Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2 transition-colors">Wireless Broadband</a>
+                                    <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest border-t border-gray-100 pt-3">Business</div>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Enterprise Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Internet Leased Line (ILL)</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">IoT Connectivity</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Point to Point</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Managed WiFi</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">MPLS & VPN</a>
                                 </div>
                             </div>
                             <div class="px-2 py-1">
-                                <a href="services.html#it-infra" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
+                                <a href="services.html#it-infra" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
                             </div>
                             <div class="px-2 py-1">
-                                <a href="services.html#security" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
+                                <a href="services.html#security" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
                             </div>
                         </div>
                     </div>
@@ -108,29 +126,50 @@
                     <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
                     <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
                 </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors">My Account</a>
-                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
+
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="account.html" class="text-sm font-bold text-brand-black hover:text-brand-red transition-colors">My Account</a>
+                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
+                    </div>
+                    
+                    <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
+                        <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <a href="https://wa.me/919150911101" target="_blank" class="wa-float group" aria-label="Chat on WhatsApp">
-        <div class="wa-pulse"></div>
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 overflow-y-auto">
+        <div class="flex flex-col items-center justify-center min-h-full pt-28 pb-12 px-6 space-y-6 text-2xl font-bold text-brand-black">
+            <a href="index.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Home</a>
+            <a href="about.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">About Us</a>
+            <a href="services.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Services</a>
+            <a href="plans.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Plans</a>
+            <a href="partners.html" class="mobile-link text-brand-red hover:text-brand-red transition-colors opacity-0 translate-y-4">Partners</a>
+            <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
+            <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
+            
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
+                <a href="account.html" class="block text-center border-2 border-brand-black text-brand-black text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
+                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
+            </div>
+        </div>
+    </div>
 
     <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-24 border-b border-gray-100 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-brand-black reveal-up leading-tight">
                 Connect. Grow. <br><span class="text-brand-red">Succeed!</span>
             </h1>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 reveal-up delay-100">Expand Horizons With Our Partnership Opportunities</h2>
-            <p class="text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8 reveal-up delay-200">
+            <h2 class="text-xl md:text-3xl font-bold text-gray-800 mb-6 reveal-up delay-100 px-2 md:px-0">Expand Horizons With Our Partnership Opportunities</h2>
+            <p class="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8 reveal-up delay-200 px-2 md:px-0">
                 Welcome to Rmax, your gateway to success! We strongly believe partnerships are the cornerstone of our business philosophy, driving mutual growth and fostering meaningful connections.
             </p>
-            <p class="text-lg font-semibold text-brand-red max-w-3xl mx-auto reveal-up delay-200">
+            <p class="text-base md:text-lg font-semibold text-brand-red max-w-3xl mx-auto reveal-up delay-200 px-2 md:px-0">
                 Our current opportunity is open for committed relationships across Tamil Nadu, India.
             </p>
         </div>
@@ -138,32 +177,32 @@
 
     <section class="py-20 bg-brand-bg">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="bg-brand-black text-white rounded-[2rem] p-10 md:p-16 shadow-premium relative overflow-hidden">
+            <div class="bg-brand-black text-white rounded-[2rem] p-8 md:p-16 shadow-premium relative overflow-hidden">
                 <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-red rounded-full opacity-20 blur-3xl"></div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                     <div>
-                        <h2 class="text-4xl font-extrabold mb-6 leading-tight">Explore Lucrative Channel Partner and Franchise Opportunities</h2>
-                        <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">Explore Lucrative Channel Partner and Franchise Opportunities</h2>
+                        <p class="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
                             Are you ready to embark on an exciting journey towards entrepreneurial success? Whether you're an established business or an ambitious entrepreneur, our partnership programs offer a path to unlocking your full potential.
                         </p>
-                        <p class="text-gray-300 text-lg leading-relaxed">
+                        <p class="text-gray-300 text-base md:text-lg leading-relaxed">
                             Stay ahead of the curve with access to the latest industry trends, products, and services. Lead the way and set new standards of excellence with our support.
                         </p>
                     </div>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center flex flex-col items-center justify-center">
                             <i class="fa-solid fa-globe text-3xl text-brand-red mb-3"></i>
                             <h4 class="font-bold text-sm">High Demand Services</h4>
                         </div>
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center flex flex-col items-center justify-center">
                             <i class="fa-regular fa-handshake text-3xl text-white mb-3"></i>
                             <h4 class="font-bold text-sm">Flexible Business Model</h4>
                         </div>
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center flex flex-col items-center justify-center">
                             <i class="fa-solid fa-money-bill-trend-up text-3xl text-brand-red mb-3"></i>
                             <h4 class="font-bold text-sm">Recurring Revenue</h4>
                         </div>
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center flex flex-col items-center justify-center">
                             <i class="fa-solid fa-chalkboard-user text-3xl text-white mb-3"></i>
                             <h4 class="font-bold text-sm">Comprehensive Training</h4>
                         </div>
@@ -177,39 +216,39 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-brand-black mb-4">Why Partner <span class="text-brand-red">With Us?</span></h2>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto">Fostering strong, mutually beneficial partnerships that drive growth and innovation.</p>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto px-2 md:px-0">Fostering strong, mutually beneficial partnerships that drive growth and innovation.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bento-card p-8 group">
+                <div class="bento-card p-6 md:p-8 group">
                     <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-brand-black">Proven Business Model</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">With a decade of industry experience, we provide a solid foundation for your entrepreneurial endeavors, allowing franchisees to benefit from a blueprint for success.</p>
                 </div>
-                <div class="bento-card p-8 group">
+                <div class="bento-card p-6 md:p-8 group">
                     <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-medal"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-brand-black">Strong Brand Recognition</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">We've forged a legacy of trust, reliability, and excellence. Benefit from the prestige of our trusted brand, giving you an instant edge in the market.</p>
                 </div>
-                <div class="bento-card p-8 group">
+                <div class="bento-card p-6 md:p-8 group">
                     <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-headset"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-brand-black">Comprehensive Support & Training</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">From initial setup to ongoing operations. Access cutting-edge training programs and resources designed to equip you with the skills to thrive.</p>
                 </div>
-                <div class="bento-card p-8 group">
+                <div class="bento-card p-6 md:p-8 group">
                     <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-map-location-dot"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-brand-black">Exclusive Territories</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">Enjoy exclusive territories that offer ample growth opportunities without the fear of internal competition.</p>
                 </div>
-                <div class="bento-card p-8 group lg:col-span-2">
+                <div class="bento-card p-6 md:p-8 group lg:col-span-2">
                     <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-bullhorn"></i>
                     </div>
@@ -224,10 +263,10 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold text-brand-black mb-4">Join the <span class="text-brand-red">Legacy Today!</span></h2>
-                <p class="text-xl text-gray-500 max-w-3xl mx-auto">When you partner with Rmax, you're not just aligning with a brand - you're joining a legacy of success, innovation, and trust. Let's build a brighter future together.</p>
+                <p class="text-xl text-gray-500 max-w-3xl mx-auto px-2 md:px-0">When you partner with Rmax, you're not just aligning with a brand - you're joining a legacy of success, innovation, and trust. Let's build a brighter future together.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 bg-white rounded-3xl p-8 lg:p-12 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] border border-gray-100">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 bg-white rounded-3xl p-6 md:p-12 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] border border-gray-100">
                 
                 <div class="lg:col-span-1 space-y-8 pr-0 lg:pr-8 border-b lg:border-b-0 lg:border-r border-gray-100 pb-8 lg:pb-0">
                     <div>
@@ -242,37 +281,37 @@
 
                 <div class="lg:col-span-2">
                     <h3 class="text-2xl font-bold text-brand-black mb-2">Connect with our Partnership Team</h3>
-                    <p class="text-gray-500 mb-8">We have streamlined our communication to serve you faster. Choose your preferred way to connect with us instantly.</p>
+                    <p class="text-gray-500 mb-8 text-sm md:text-base">We have streamlined our communication to serve you faster. Choose your preferred way to connect with us instantly.</p>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                         
-                        <a href="https://wa.me/919150911101" target="_blank" class="border border-gray-200 rounded-2xl p-6 hover:border-[#25D366] hover:shadow-[0_10px_30px_rgba(37,211,102,0.15)] transition-all duration-300 flex items-start gap-4 group">
-                            <div class="w-12 h-12 bg-[#25D366]/10 text-[#25D366] rounded-xl flex items-center justify-center text-2xl group-hover:bg-[#25D366] group-hover:text-white transition-colors">
+                        <a href="https://wa.me/919150911101" target="_blank" class="border border-gray-200 rounded-2xl p-5 md:p-6 hover:border-[#25D366] hover:shadow-[0_10px_30px_rgba(37,211,102,0.15)] transition-all duration-300 flex items-start gap-4 group bg-white">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-[#25D366]/10 text-[#25D366] rounded-xl flex items-center justify-center text-xl md:text-2xl group-hover:bg-[#25D366] group-hover:text-white transition-colors shrink-0">
                                 <i class="fa-brands fa-whatsapp"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-brand-dark mb-1">WhatsApp</h4>
-                                <p class="text-sm text-gray-500">Quickest response</p>
+                                <p class="text-xs md:text-sm text-gray-500">Quickest response</p>
                             </div>
                         </a>
 
-                        <a href="tel:+919150911101" class="border border-gray-200 rounded-2xl p-6 hover:border-brand-red hover:shadow-[0_10px_30px_rgba(229,9,20,0.1)] transition-all duration-300 flex items-start gap-4 group">
-                            <div class="w-12 h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-red group-hover:text-white transition-colors">
+                        <a href="tel:+919150911101" class="border border-gray-200 rounded-2xl p-5 md:p-6 hover:border-brand-red hover:shadow-[0_10px_30px_rgba(229,9,20,0.1)] transition-all duration-300 flex items-start gap-4 group bg-white">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-red-50 text-brand-red rounded-xl flex items-center justify-center text-lg md:text-xl group-hover:bg-brand-red group-hover:text-white transition-colors shrink-0">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-brand-dark mb-1">Call Us Direct</h4>
-                                <p class="text-sm text-gray-500">+91 915 091 1101</p>
+                                <p class="text-xs md:text-sm text-gray-500">+91 915 091 1101</p>
                             </div>
                         </a>
 
-                        <a href="mailto:info@rmax.in" class="border border-gray-200 rounded-2xl p-6 hover:border-brand-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-start gap-4 group sm:col-span-2">
-                            <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-black group-hover:text-white transition-colors">
+                        <a href="mailto:info@rmax.in" class="border border-gray-200 rounded-2xl p-5 md:p-6 hover:border-brand-black hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-start gap-4 group sm:col-span-2 bg-white">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-lg md:text-xl group-hover:bg-brand-black group-hover:text-white transition-colors shrink-0">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-brand-dark mb-1">Send an Email</h4>
-                                <p class="text-sm text-gray-500">info@rmax.in</p>
+                                <p class="text-xs md:text-sm text-gray-500">info@rmax.in</p>
                             </div>
                         </a>
 
@@ -286,7 +325,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left">
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left inline-block">
                         <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
                     </a>
                     
@@ -350,9 +389,10 @@
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>© 2026 Rmax ISP. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p class="text-center md:text-left">© 2026 Rmax ISP. All rights reserved.</p>
+                <!-- <p class="font-medium bg-white/5 px-4 py-2 rounded-full text-center">Made with ❤️ by Harsha Varthan E P</p> -->
+                <div class="flex space-x-6 mt-2 md:mt-0">
                     <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
                     <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
@@ -361,5 +401,49 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const waButton = document.getElementById('wa-button');
+        let menuOpen = false;
+
+        hamburger.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
+                document.getElementById('line1').style.transform = 'translateY(8px) rotate(45deg)';
+                document.getElementById('line2').style.opacity = '0';
+                document.getElementById('line3').style.transform = 'translateY(-8px) rotate(-45deg)';
+                
+                mobileMenu.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+                
+                if(waButton) {
+                    waButton.style.opacity = '0';
+                    waButton.style.pointerEvents = 'none';
+                    waButton.style.transform = 'scale(0.8)';
+                }
+                
+                gsap.to(mobileLinks, { y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2 });
+            } else {
+                document.getElementById('line1').style.transform = 'none';
+                document.getElementById('line2').style.opacity = '1';
+                document.getElementById('line3').style.transform = 'none';
+                
+                mobileMenu.classList.remove('menu-open');
+                document.body.style.overflow = '';
+                
+                if(waButton) {
+                    waButton.style.opacity = '1';
+                    waButton.style.pointerEvents = 'auto';
+                    waButton.style.transform = 'scale(1)';
+                }
+                
+                gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
+            }
+        });
+    </script>
 </body>
 </html>
