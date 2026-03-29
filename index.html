@@ -4,6 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rmax | Premium Internet Service Provider</title>
     
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#dc2626">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Rmax">
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -111,11 +118,6 @@
             box-shadow: 0 30px 60px -15px rgba(220, 38, 38, 0.15);
         }
 
-        /* Professional Button Hovers */
-        .pro-btn { transition: all 0.3s ease; }
-        .pro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); }
-        .pro-btn:hover i { transform: translateX(4px); transition: transform 0.3s ease; }
-
         /* Text Utilities */
         .char { transform: translateY(100%); opacity: 0; }
         .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
@@ -136,6 +138,28 @@
     <div id="preloader">
         <div class="preloader-text">
             <span class="text-brand-red">Rmax</span> ISP
+        </div>
+    </div>
+
+    <div id="installModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div class="bg-white rounded-[2rem] p-6 md:p-8 max-w-lg w-full relative transform scale-95 transition-transform duration-300 shadow-2xl" id="installModalContent">
+            
+            <button id="closeInstallModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center mb-6 md:mb-8 mt-6 md:mt-0">
+                <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/20 rounded-full px-4 py-1.5 text-[10px] md:text-xs font-bold text-brand-red mb-3 md:mb-4 uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Enhance Your Experience
+                </div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-brand-dark">Install <span class="text-brand-red">Rmax App</span></h2>
+                <p class="text-gray-500 mt-2 text-sm md:text-base px-2">Access our premium ISP services quickly and enjoy a smoother, dedicated app experience.</p>
+            </div>
+
+            <div class="space-y-4">
+                <button id="installAppBtn" class="block w-full text-center bg-brand-red text-white py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-all transform hover:-translate-y-0.5">Install Application Now</button>
+                <button id="ignoreInstallBtn" class="block w-full text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-gray-500 hover:bg-gray-50 hover:border-gray-300 transition-colors">Maybe Later</button>
+            </div>
         </div>
     </div>
 
@@ -161,7 +185,7 @@
                         <h3 class="text-xl md:text-2xl font-bold text-brand-dark mb-2 md:mb-3">Network Administrator</h3>
                         <p class="text-gray-500 text-xs md:text-sm mb-6 md:mb-8 flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gray"></i> Chennai, Tamil Nadu</p>
                     </div>
-                    <a href="careers.html" class="block text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full mt-auto">Apply Now</a>
+                    <a href="careers.html" class="job-link block text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full mt-auto">Apply Now</a>
                 </div>
 
                 <div class="border border-gray-200 rounded-2xl p-5 md:p-8 hover:border-brand-red hover:shadow-bento-hover transition-all duration-300 bg-white flex flex-col justify-between">
@@ -170,7 +194,7 @@
                         <h3 class="text-xl md:text-2xl font-bold text-brand-dark mb-2 md:mb-3">Field Engineers</h3>
                         <p class="text-gray-500 text-xs md:text-sm mb-6 md:mb-8 flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gray"></i> Multiple Locations, TN</p>
                     </div>
-                    <a href="careers.html" class="block text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full mt-auto">Apply Now</a>
+                    <a href="careers.html" class="job-link block text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full mt-auto">Apply Now</a>
                 </div>
             </div>
         </div>
@@ -186,16 +210,15 @@
     <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-[1400px] mx-auto px-4 lg:px-12">
             <div class="flex justify-between items-center h-20">
-                
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
                     <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
                 </a>
                 
                 <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
-                    <a href="index.html" class="text-brand-red font-bold hover-target">Home</a>
-                    <a href="about.html" class="hover-target hover:text-brand-red transition-colors">About Us</a>
+                    <a href="index.html" class="text-brand-red font-bold">Home</a>
+                    <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
                     
-                    <div class="relative group py-6 hover-target">
+                    <div class="relative group py-6">
                         <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
                         <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                             <div class="group/sub relative px-2 py-1">
@@ -224,16 +247,18 @@
                         </div>
                     </div>
 
-                    <a href="plans.html" class="hover-target hover:text-brand-red transition-colors">Plans</a>
-                    <a href="partners.html" class="hover-target hover:text-brand-red transition-colors">Partners</a>
-                    <a href="careers.html" class="hover-target hover:text-brand-red transition-colors">Careers</a>
-                    <a href="help.html" class="hover-target hover:text-brand-red transition-colors pr-4 lg:border-r lg:border-gray-300">Get Help</a>
+                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
+                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
+                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
+                    
+                    <a href="contact.html" class="bg-brand-dark text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-brand-red transition-all duration-300 shadow-md hover:shadow-brand-red/30 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <div class="hidden lg:flex items-center space-x-4 pl-2">
+                    <div class="hidden lg:flex items-center space-x-4">
                         <a href="account.html" class="text-sm font-bold text-brand-dark hover:text-brand-red transition-colors">My Account</a>
-                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
+                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5">Enquire Now</a>
                     </div>
                     
                     <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
@@ -264,8 +289,8 @@
     </div>
 
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[80px] animate-blob"></div>
-        <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gray-400/10 rounded-full blur-[80px] animate-blob" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[80px] animate-blob" style="will-change: transform;"></div>
+        <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gray-400/10 rounded-full blur-[80px] animate-blob animation-delay-2000" style="will-change: transform;"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10 w-full">
             <div class="max-w-5xl mt-12 md:mt-0">
@@ -281,7 +306,7 @@
                     Experience the profound difference of connectivity. And enjoy more for less.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 gs-fade">
-                    <a href="services.html" class="pro-btn w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/30 transition-all duration-300 transform hover:-translate-y-1">
+                    <a href="services.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/30 transition-all duration-300 transform hover:-translate-y-1">
                         Discover Solutions <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -505,7 +530,109 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <script>
-        // 1. Preloader Logic
+        // --- 0. Production PWA & Standalone Mode Check ---
+        // Prevents any logic related to modals if running as an installed app
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+        // PWA REQUIRED: Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW: Registered', reg.scope))
+                    .catch(err => console.log('SW: Failed', err));
+            });
+        }
+
+        // --- 1. PWA Installation Event Handler ---
+        // We intercept the browser's default prompt to show our custom UI instead.
+        let deferredPrompt;
+        const installModal = document.getElementById('installModal');
+        const installModalContent = document.getElementById('installModalContent');
+        const installAppBtn = document.getElementById('installAppBtn');
+
+        // Only listen for install prompt if NOT already installed
+        if (!isStandalone) {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                console.log('PWA: beforeinstallprompt event fired');
+                // Prevent the default browser mini-infobar from appearing on mobile
+                e.preventDefault();
+                // Stash the event so it can be triggered later.
+                deferredPrompt = e;
+                // Note: The actual display logic is handled sequentially after preloader/job modal.
+            });
+
+            // Listen for successful installation to clean up UI
+            window.addEventListener('appinstalled', (cloneEvent) => {
+                console.log('PWA: Application installed successfully');
+                deferredPrompt = null;
+                // Ensure UI is hidden immediately
+                installModal.classList.add('opacity-0', 'pointer-events-none');
+            });
+        }
+
+        // Function to show our custom install modal with a delay
+        function showInstallModal() {
+            // Exit early if already installed or the prompt event didn't fire
+            if (isStandalone || !deferredPrompt) {
+                console.log('PWA: Skipping install modal (standalone or no prompt event)');
+                return;
+            }
+
+            // Small delay to ensure any previous modal close animation is finished
+            setTimeout(() => {
+                console.log('PWA: Showing custom install modal');
+                installModal.classList.remove('opacity-0', 'pointer-events-none');
+                installModalContent.classList.remove('scale-95');
+                installModalContent.classList.add('scale-100');
+                if(typeof lenis !== 'undefined') lenis.stop(); // Lock scrolling
+            }, 1000); 
+        }
+
+        // Wire up the custom install button
+        installAppBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            // Hide our custom UI
+            installModal.classList.add('opacity-0', 'pointer-events-none');
+            // Show the native browser install prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`PWA: User response to install prompt: ${outcome}`);
+            // We've used the prompt, so can't use it again; discard it.
+            deferredPrompt = null;
+            if(typeof lenis !== 'undefined') lenis.start(); // Unlock scrolling
+        });
+
+        // Wire up the ignore/close buttons (allows modal to appear again next visit until installed)
+        function closeInstallPromptUI() {
+            installModal.classList.add('opacity-0', 'pointer-events-none');
+            installModalContent.classList.remove('scale-100');
+            installModalContent.classList.add('scale-95');
+            if(typeof lenis !== 'undefined') lenis.start(); // Unlock scrolling
+        }
+        document.getElementById('closeInstallModal').addEventListener('click', closeInstallPromptUI);
+        document.getElementById('ignoreInstallBtn').addEventListener('click', closeInstallPromptUI);
+
+
+        // --- 2. Sequential Display Logic (Preloader -> Job -> Install) ---
+        
+        // PWA Logic: We need a central place to know when the Job Modal sequence is "done"
+        let jobModalSequenceComplete = false;
+        function onJobModalSequenceDone() {
+            if (jobModalSequenceComplete) return; // Prevent duplicate triggers
+            jobModalSequenceComplete = true;
+            console.log('Sequence: Job modal sequence complete');
+            
+            // Critical timing: Only try to show install if NOT standalone and prompt exists
+            if (!isStandalone && deferredPrompt) {
+                showInstallModal();
+            } else if (typeof lenis !== 'undefined') {
+                 // Safety net: ensure scrolling resumes if install modal is skipped
+                 lenis.start();
+            }
+        }
+
+        // Preloader Logic
         window.addEventListener("load", () => {
             const tl = gsap.timeline();
             tl.to("#preloader .preloader-text", { opacity: 0, y: -20, duration: 0.8, ease: "power3.inOut" })
@@ -513,117 +640,106 @@
               .set("#preloader", { display: "none" });
         });
 
-        // 2. Native Standard Lenis Initialization (Fixes Wobble)
+        // Initialize Lenis Smooth Scroll (Wobble fix)
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical', 
-            gestureDirection: 'vertical',
-            smooth: true, 
-            smoothTouch: false, 
-            touchMultiplier: 2,
+            direction: 'vertical', gestureDirection: 'vertical',
+            smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2, infinite: false,
         });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
         lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
 
-        // 3. Job Openings Popup Modal Logic
+        // Job Openings Popup Modal Logic (Modified for PWA flow)
         window.addEventListener("load", () => {
             const jobModal = document.getElementById("jobModal");
             const jobModalContent = document.getElementById("jobModalContent");
             const closeJobModal = document.getElementById("closeJobModal");
 
+            // Exit early if already standalone (app installed and opened as app)
+            if (isStandalone) {
+                console.log('JobModal: Skipping due to standalone mode');
+                onJobModalSequenceDone();
+                return;
+            }
+
+            // Check if shown in session already
+            if (sessionStorage.getItem('jobModalShown')) {
+                console.log('JobModal: Already shown this session');
+                onJobModalSequenceDone();
+                return;
+            }
+
+            // Show modal after 3 seconds 
             setTimeout(() => {
-                if(!sessionStorage.getItem('jobModalShown')) {
-                    jobModal.classList.remove("opacity-0", "pointer-events-none");
-                    jobModalContent.classList.remove("scale-95");
-                    jobModalContent.classList.add("scale-100");
-                    lenis.stop(); // Pause smooth scrolling while modal is open
-                }
+                console.log('JobModal: Showing modal');
+                jobModal.classList.remove("opacity-0", "pointer-events-none");
+                jobModalContent.classList.remove("scale-95");
+                jobModalContent.classList.add("scale-100");
+                if(typeof lenis !== 'undefined') lenis.stop(); // Lock smooth scrolling
             }, 3000);
 
-            const closeModal = () => {
+            const closeThisModal = () => {
+                console.log('JobModal: Closing');
                 jobModal.classList.add("opacity-0", "pointer-events-none");
                 jobModalContent.classList.remove("scale-100");
                 jobModalContent.classList.add("scale-95");
-                lenis.start(); // Resume smooth scrolling
                 sessionStorage.setItem('jobModalShown', 'true');
+                
+                // Job modal is closed, now allow next step in sequence
+                onJobModalSequenceDone(); 
             };
 
-            closeJobModal.addEventListener("click", closeModal);
+            closeJobModal.addEventListener("click", closeThisModal);
             jobModal.addEventListener("click", (e) => {
-                if (e.target === jobModal) closeModal();
+                if (e.target === jobModal) closeThisModal();
+            });
+
+            // Modify apply buttons to also trigger completion before navigating away
+            document.querySelectorAll('.job-link').forEach(link => {
+                link.addEventListener('click', () => {
+                     // We don't call closeThisModal here directly because navigation 
+                     // happens. We just set the sessionStorage and sequence flag.
+                     sessionStorage.setItem('jobModalShown', 'true');
+                     jobModalSequenceComplete = true; // Mark done so it doesn't fire later
+                });
             });
         });
 
-        // 4. Mobile Menu & WhatsApp Toggle Logic with GSAP
+        // 5. Mobile Menu & Hamburger Toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-        const waButton = document.getElementById('wa-button');
-        let menuOpen = false;
-
         hamburger.addEventListener('click', () => {
-            menuOpen = !menuOpen;
-            
-            if (menuOpen) {
-                // Hamburger to perfect X (fixed translate math)
+            const isOpen = mobileMenu.classList.contains('menu-open');
+            if (!isOpen) {
+                // Hamburger to X
                 document.getElementById('line1').style.transform = 'translateY(8px) rotate(45deg)';
                 document.getElementById('line2').style.opacity = '0';
                 document.getElementById('line3').style.transform = 'translateY(-8px) rotate(-45deg)';
-                
-                // Show Menu & Lock Body
                 mobileMenu.classList.add('menu-open');
-                lenis.stop();
+                if(typeof lenis !== 'undefined') lenis.stop();
                 document.body.style.overflow = 'hidden';
-                
-                // Hide WhatsApp
-                if(waButton) {
-                    waButton.style.opacity = '0';
-                    waButton.style.pointerEvents = 'none';
-                    waButton.style.transform = 'scale(0.8)';
-                }
-                
-                // Stagger animate links in
-                gsap.to(mobileLinks, {
-                    y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2
-                });
+                gsap.to(mobileLinks, { y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2 });
             } else {
-                // X back to Hamburger
+                // X to Hamburger
                 document.getElementById('line1').style.transform = 'none';
                 document.getElementById('line2').style.opacity = '1';
                 document.getElementById('line3').style.transform = 'none';
-                
-                // Hide Menu & Unlock Body
                 mobileMenu.classList.remove('menu-open');
-                lenis.start();
+                if(typeof lenis !== 'undefined') lenis.start();
                 document.body.style.overflow = '';
-                
-                // Show WhatsApp
-                if(waButton) {
-                    waButton.style.opacity = '1';
-                    waButton.style.pointerEvents = 'auto';
-                    waButton.style.transform = 'scale(1)';
-                }
-                
-                // Reset links
                 gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
             }
         });
 
-        // 5. GSAP Typography Split Reveal
+        // 6. GSAP Typography Split Reveal
         gsap.registerPlugin(ScrollTrigger);
         const splitTexts = new SplitType('.split-text', { types: 'chars' });
-        
-        gsap.to('.char', {
-            y: 0, opacity: 1, stagger: 0.03, duration: 1, ease: 'power4.out', delay: 1.2 
-        });
+        gsap.to('.char', { y: 0, opacity: 1, stagger: 0.03, duration: 1, ease: 'power4.out', delay: 1.2 });
 
-        // 6. Standard Element Reveal
+        // 7. Standard Element Reveal
         const revealElements = document.querySelectorAll(".gs-reveal");
         revealElements.forEach((elem) => {
             gsap.fromTo(elem, 
@@ -632,13 +748,13 @@
             );
         });
 
-        // 7. Subtle Image Parallax
+        // 8. Subtle Image Parallax
         gsap.to(".parallax-img", {
             yPercent: 15, ease: "none",
             scrollTrigger: { trigger: ".parallax-img", start: "top bottom", end: "bottom top", scrub: 1 }
         });
 
-        // 8. Dynamic Navbar Glass Effect
+        // 9. Dynamic Navbar Glass Effect
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
