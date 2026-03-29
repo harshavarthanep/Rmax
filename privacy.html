@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Rmax ISP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], },
+                    colors: {
+                        brand: {
+                            white: '#FFFFFF', bg: '#F8F9FA', black: '#0A0A0A', red: '#E50914', redhover: '#CC0812',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'red-glow': '0 10px 30px -10px rgba(229,9,20,0.3)',
+                        'dropdown': '0 10px 40px -10px rgba(0,0,0,0.1)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F8F9FA; color: #0A0A0A; overflow-x: hidden; }
+        .reveal-up { animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        .delay-100 { animation-delay: 100ms; }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .bento-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.04); border-radius: 24px; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+        /* Dropdown specific styles */
+        .dropdown-menu { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateY(10px); }
+        .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+        .sub-dropdown { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateX(10px); left: 100%; top: 0; }
+        .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
+
+        /* WhatsApp Floating Button */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background-color: #25d366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); }
+        .wa-pulse {
+            position: absolute; width: 100%; height: 100%; background: #25d366;
+            border-radius: 50%; z-index: -1; animation: waPulse 2s infinite; opacity: 0.6;
+        }
+        @keyframes waPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
+        
+        /* Typography specifics for legal doc */
+        .legal-content h2 { font-size: 1.875rem; font-weight: 800; color: #0A0A0A; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #F3F4F6; scroll-margin-top: 100px; }
+        .legal-content p, .legal-content li { color: #4B5563; line-height: 1.75; margin-bottom: 1rem; }
+        .legal-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-red selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-brand-black rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
+                    <span class="font-extrabold text-2xl tracking-tight text-brand-black">Rmax</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
+                    <a href="index.html" class="hover:text-brand-red transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
+                    
+                    <div class="relative group py-6">
+                        <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-xs ml-1"></i></span>
+                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                            <div class="group/sub relative px-2 py-1">
+                                <a href="services.html#internet" class="flex justify-between items-center px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
+                                    Internet <i class="fa-solid fa-angle-right text-xs"></i>
+                                </a>
+                                <div class="sub-dropdown absolute w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Home</div>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Fibernet Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2">Wireless Broadband</a>
+                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider border-t border-gray-100 pt-3">Business</div>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Enterprise Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Internet Leased Line (ILL)</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">IoT Connectivity</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Point to Point</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Managed WiFi</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">MPLS & VPN</a>
+                                </div>
+                            </div>
+                            <div class="px-2 py-1">
+                                <a href="services.html#it-infra" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
+                            </div>
+                            <div class="px-2 py-1">
+                                <a href="services.html#security" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
+                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
+                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors">My Account</a>
+                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <a href="https://wa.me/919150911101" target="_blank" class="wa-float group" aria-label="Chat on WhatsApp">
+        <div class="wa-pulse"></div>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <section class="relative pt-40 pb-16 lg:pt-48 lg:pb-20 border-b border-gray-100 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-brand-black reveal-up">
+                Privacy <span class="text-brand-red">Policy</span>
+            </h1>
+            <p class="text-lg text-gray-500 reveal-up delay-100">Learn how we protect your personal information and privacy at Rmax.</p>
+        </div>
+    </section>
+
+    <section class="py-16 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                
+                <div class="lg:w-1/4">
+                    <div class="sticky top-28 bento-card p-6 border border-gray-100 shadow-sm hidden lg:block">
+                        <h4 class="font-bold text-lg mb-4 text-brand-black">Policy Index</h4>
+                        <ul class="space-y-3 text-sm font-medium text-gray-500">
+                            <li><a href="#introduction" class="hover:text-brand-red transition-colors block py-1">Introduction</a></li>
+                            <li><a href="#collection" class="hover:text-brand-red transition-colors block py-1">Collection of Information</a></li>
+                            <li><a href="#usage" class="hover:text-brand-red transition-colors block py-1">Use of Information</a></li>
+                            <li><a href="#security" class="hover:text-brand-red transition-colors block py-1">Security of Information</a></li>
+                            <li><a href="#cookies" class="hover:text-brand-red transition-colors block py-1">Use of Cookies</a></li>
+                            <li><a href="#changes" class="hover:text-brand-red transition-colors block py-1">Changes to Policy</a></li>
+                            <li><a href="#contact" class="hover:text-brand-red transition-colors block py-1">Contact Information</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:w-3/4">
+                    <div class="bento-card p-8 md:p-12 border border-gray-100 shadow-sm legal-content bg-white">
+                        
+                        <h2 id="introduction" class="!mt-0">Introduction</h2>
+                        <p>This policy covers how Rmax Broadband Pvt Ltd ("Company") treats any information we may collect from you across our website, https://rmaxisp.com/, and other sites we own and operate. The Company is committed to protecting your privacy and developing technology that gives you the most powerful and safe online experience.</p>
+                        <p>We collect personal information by fair and lawful means, with your knowledge and consent. This Privacy Policy applies to the Company site and governs data collection and usage. By using the Company site, you consent to the data practices described in this Privacy Policy.</p>
+
+                        <h2 id="collection">Collection of your Personal Information</h2>
+                        <p>The Company collects personal information when you register with the Company, when you use the Company products or services, when you visit the Company pages or the pages of certain partners of the Company. The Company may combine information about you that we have with information we obtain from business partners or other companies. The Company shall have the right to pass on the same to its business associates, franchisees without referring the same to you.</p>
+                        <p>We collect personally identifiable information, such as your name, email address, birth date, gender, ZIP code, home or work address, telephone number, occupation, industry, personal interests preferences and favourites.</p>
+                        <p>There is also information about your computer hardware and software that is automatically collected by the Company. This information can include: your IP address, browser type, domain names, access times and referring website addresses. This information is used by us for the operation of the service, to maintain quality of the service, and to provide general statistics regarding use of the Company site.</p>
+                        <p>The Company collects information about your transactions with us and with some of our business partners, including information about your use of products and services that we offer. Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.</p>
+                        <p>The Company can use information for the following general purposes: to customize the advertising and content you see, fulfil your requests for products and services, improve our services, contact you, conduct research, and provide anonymous reporting for internal and external clients. Please keep in mind that if you directly disclose personally identifiable information or personally sensitive data through Company’s public message boards, this information may be collected and used by others. You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.</p>
+
+                        <h2 id="usage">Use of your Personal Information</h2>
+                        <p>The Company collects and uses your personal information to operate the Company Web site and deliver the services you have requested. We also use your personally identifiable information to inform you of other products or services available from the Company and its affiliates. The Company may also contact you via surveys to conduct research about your opinion of current services or of potential new services that may be offered.</p>
+                        <p>The Company may share personal information about you with other people under the following circumstances:</p>
+                        <ul>
+                            <li>We provide the information to trusted partners who work on behalf of or with the Company under confidentiality agreements. These companies may use your personal information to help the Company communicate with you about offers from the Company and our marketing partners.</li>
+                            <li>We do not sell, rent or lease its customer lists to third parties.</li>
+                            <li>We believe it is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, protect and defend the rights or property of Company, violations of the Company's terms of use, or as otherwise required by law.</li>
+                            <li>We transfer information about you if the Company is acquired by or merged with another company under a different management. In this event, the Company will notify you before information about you is transferred and becomes subject to a different privacy policy.</li>
+                        </ul>
+                        <p>The Company plans to display targeted advertisements based on personal information. Advertisers (including ad serving companies) may assume that people who interact with, view, or click on targeted ads meet the targeting criteria. The Company will not provide any personal information to the advertiser when you interact with or view a targeted ad. However, by interacting with or viewing an ad you are consenting to the possibility that the advertiser will make the assumption that you meet the targeting criteria used to display the ad.</p>
+                        <p>The Company works with vendors, partners, advertisers, and service providers in many different industries and categories of business. We reserve the right to send you certain communications relating to the Company's service, such as service announcements, administrative messages and the Company's Newsletter, that are considered part of your account, without offering you the opportunity to opt-out of receiving them.</p>
+
+                        <h2 id="security">Security of your Personal Information</h2>
+                        <p>We will protect any data we collect and store by using commercially acceptable means to prevent loss and theft. We will also take necessary measures to prevent unauthorized access, disclosure, copying, use or modification of your data.</p>
+
+                        <h2 id="cookies">Use of Cookies</h2>
+                        <p>The Company Web site use "cookies" to help you personalize your online experience. Cookies cannot be used to run programs or deliver viruses to your computer. One of the primary purposes of cookies is to provide a convenience feature to save you time. You have the ability to accept or decline cookies. If you choose to decline cookies, you may not be able to fully experience the interactive features of the Company services or Web sites you visit.</p>
+
+                        <h2 id="changes">Changes to this Privacy Policy</h2>
+                        <p>The Company may update this policy and display the same in their website without notice to you and such posting will be deemed to have been read by you.</p>
+
+                        <h2 id="contact">Contact Information</h2>
+                        <p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us at <a href="mailto:support@rmax.in" class="text-brand-red font-semibold hover:underline">support@rmax.in</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-black text-white pt-20 pb-8 border-t-[8px] border-brand-red">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
+                        <span class="font-extrabold text-2xl tracking-tight text-white">Rmax</span>
+                    </div>
+                    <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
+                        <strong>Corporate Office:</strong><br>
+                        6th Floor, Rajiv Gandhi Salai,<br>
+                        Srinivasa Nagar, Kandanchavadi,<br>
+                        Perungudi, Chennai,<br>
+                        Tamil Nadu - 600096
+                    </address>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Get in Touch</h4>
+                    <ul class="space-y-6 text-sm">
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Business Enquiry</p>
+                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors">+91 915 091 1101</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">24/7 Customer Support</p>
+                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors">+91 720 022 8880</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
+                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">info@rmax.in</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="plans.html" class="hover:text-white transition-colors">Plans</a></li>
+                        <li><a href="partners.html" class="hover:text-white transition-colors">Franchise & Partners</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="help.html" class="hover:text-white transition-colors">Get Help / Speed Test</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Location</h4>
+                    <div class="w-full h-48 bg-gray-800 rounded-xl overflow-hidden border border-white/10 relative">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.828692737526!2d80.2442!3d12.9699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzExLjYiTiA4MMKwMTQnMzkuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: grayscale(1) opacity(0.8);" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>© 2026 Rmax ISP. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="privacy.html" class="text-brand-red font-semibold">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
+                    <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
