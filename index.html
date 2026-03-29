@@ -86,6 +86,8 @@
         .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0) scale(1); }
         .sub-dropdown { visibility: hidden; opacity: 0; transform: translateX(-15px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); left: 100%; top: 0; }
         .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
 
         /* Bento Box Styles */
         .glass-panel { 
@@ -249,7 +251,7 @@
         </div>
     </nav> -->
 
-    <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex items-center gap-2 cursor-pointer">
