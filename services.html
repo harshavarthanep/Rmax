@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Rmax ISP</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -59,19 +59,29 @@
             border-radius: 50%; z-index: -1; animation: waPulse 2s infinite; opacity: 0.6;
         }
         @keyframes waPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
+
+        /* Mobile Menu Setup */
+        #mobile-menu {
+            clip-path: circle(0% at 100% 0);
+            transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        #mobile-menu.menu-open { clip-path: circle(150% at 100% 0); }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-red selection:text-white">
 
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+    <div id="wa-button" class="fixed bottom-8 right-8 z-40 transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+        <a href="https://wa.me/919150911101" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-lg shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <span class="absolute right-20 bg-brand-black/90 backdrop-blur-md text-white text-sm font-medium px-4 py-2 rounded-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">Start a conversation</span>
+        </a>
+    </div>
+
+    <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- <a href="index.html" class="flex items-center gap-2 cursor-pointer">
-                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;" title="Replace src with your actual logo">
-                </a> -->
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group hover-target">
-                    <h1 class="text-3xl font-extrabold text-brand-red tracking-tighter group-hover:text-red-500 transition-colors">Rmax</h1>
-                    <span class="text-[10px] font-bold text-brand-gray uppercase tracking-[0.2em] mt-1.5">ISP</span>
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
+                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
                 </a>
                 
                 <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
@@ -79,14 +89,14 @@
                     <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
                     
                     <div class="relative group py-6">
-                        <span class="text-brand-red font-bold flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-xs ml-1"></i></span>
-                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                        <span class="text-brand-red font-bold flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
+                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                             
                             <div class="group/sub relative px-2 py-1">
                                 <a href="#internet" class="flex justify-between items-center px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
                                     Internet <i class="fa-solid fa-angle-right text-xs"></i>
                                 </a>
-                                <div class="sub-dropdown absolute w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                                <div class="sub-dropdown absolute w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                                     <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Home</div>
                                     <a href="#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Fibernet Broadband</a>
                                     <a href="#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2">Wireless Broadband</a>
@@ -115,25 +125,46 @@
                     <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
                     <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
                 </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="account.html" class="text-sm font-bold hover:text-brand-red transition-colors">My Account</a>
-                    <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
+
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="account.html" class="text-sm font-bold text-brand-black hover:text-brand-red transition-colors">My Account</a>
+                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
+                    </div>
+                    
+                    <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
+                        <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <a href="https://wa.me/919150911101" target="_blank" class="wa-float group" aria-label="Chat on WhatsApp">
-        <div class="wa-pulse"></div>
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 overflow-y-auto">
+        <div class="flex flex-col items-center justify-center min-h-full pt-28 pb-12 px-6 space-y-6 text-2xl font-bold text-brand-black">
+            <a href="index.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Home</a>
+            <a href="about.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">About Us</a>
+            <a href="services.html" class="mobile-link text-brand-red hover:text-brand-red transition-colors opacity-0 translate-y-4">Services</a>
+            <a href="plans.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Plans</a>
+            <a href="partners.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Partners</a>
+            <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
+            <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
+            
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
+                <a href="account.html" class="block text-center border-2 border-brand-black text-brand-black text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
+                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
+            </div>
+        </div>
+    </div>
 
     <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-24 border-b border-gray-100 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-brand-black reveal-up leading-tight">
                 Transformative <span class="text-brand-red">Solutions</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8 reveal-up delay-100">
+            <p class="text-lg md:text-2xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8 reveal-up delay-100 px-2">
                 Unlock the full potential of your enterprise. From high-speed dedicated internet connectivity to comprehensive IT infrastructure and advanced safety solutions.
             </p>
         </div>
@@ -141,58 +172,58 @@
 
     <section id="internet" class="py-24 bg-brand-bg scroll-mt-20">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="mb-16">
-                <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-2 block">Connectivity</span>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-black">Enterprise Business <span class="text-brand-red">Internet</span></h2>
-                <p class="text-gray-500 mt-4 text-lg max-w-3xl">Tailored for SOHO, SMEs, and large corporations. Guaranteeing seamless data transfer, smooth video conferencing, and efficient communication.</p>
+            <div class="mb-16 text-center md:text-left">
+                <span class="text-brand-red font-bold tracking-widest uppercase text-xs md:text-sm mb-2 block">Connectivity</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-black">Enterprise Business <span class="text-brand-red">Internet</span></h2>
+                <p class="text-gray-500 mt-4 text-base md:text-lg max-w-3xl mx-auto md:mx-0">Tailored for SOHO, SMEs, and large corporations. Guaranteeing seamless data transfer, smooth video conferencing, and efficient communication.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bento-card p-10 group bg-brand-black text-white border-none lg:col-span-2">
-                    <div class="w-14 h-14 bg-brand-red text-white rounded-2xl flex items-center justify-center text-2xl mb-6">
+                <div class="bento-card p-6 md:p-10 group bg-brand-black text-white border-none lg:col-span-2">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-brand-red text-white rounded-2xl flex items-center justify-center text-xl md:text-2xl mb-6">
                         <i class="fa-solid fa-earth-americas"></i>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4">Internet Leased Line (ILL)</h3>
-                    <p class="text-gray-400 mb-6">Experience true 1:1 dedicated internet connectivity crafted to deliver high-speed, secure internet for demanding business requirements.</p>
-                    <ul class="space-y-3 font-semibold text-sm">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Internet Leased Line (ILL)</h3>
+                    <p class="text-gray-400 mb-6 text-sm md:text-base leading-relaxed">Experience true 1:1 dedicated internet connectivity crafted to deliver high-speed, secure internet for demanding business requirements.</p>
+                    <ul class="space-y-3 font-semibold text-xs md:text-sm">
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Dual-Link Redundancy (RF & Fiber Optic)</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Outstanding Uptime of 99.97%</li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-red"></i> Strict Service Level Agreements (SLA)</li>
                     </ul>
                 </div>
 
-                <div class="bento-card p-10 group">
-                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                <div class="bento-card p-6 md:p-10 group">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-xl md:text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-building"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Enterprise Broadband</h3>
-                    <p class="text-gray-500 text-sm mb-6">Cost-effective internet with symmetric upload/download speeds. Perfect for SOHO and SME setups looking to streamline operations.</p>
-                    <div class="font-bold text-sm text-brand-black flex items-center gap-2"><i class="fa-solid fa-user-tie text-brand-red"></i> Dedicated Account Manager</div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3">Enterprise Broadband</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Cost-effective internet with symmetric upload/download speeds. Perfect for SOHO and SME setups looking to streamline operations.</p>
+                    <div class="font-bold text-xs md:text-sm text-brand-black flex items-center gap-2"><i class="fa-solid fa-user-tie text-brand-red"></i> Dedicated Account Manager</div>
                 </div>
 
-                <div class="bento-card p-10 group">
-                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                <div class="bento-card p-6 md:p-10 group">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-xl md:text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">MPLS & VPN</h3>
-                    <p class="text-gray-500 text-sm mb-4"><strong>MPLS:</strong> Protocol-independent system assuring Quality of Service (QoS).<br><strong>VPN:</strong> Cost-effective, high-performance remote access over public networks.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3">MPLS & VPN</h3>
+                    <p class="text-gray-500 text-sm mb-4 leading-relaxed"><strong>MPLS:</strong> Protocol-independent system assuring Quality of Service (QoS).<br><strong>VPN:</strong> Cost-effective, high-performance remote access over public networks.</p>
                 </div>
 
-                <div class="bento-card p-10 group">
-                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                <div class="bento-card p-6 md:p-10 group">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-xl md:text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
                         <i class="fa-solid fa-satellite-dish"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Point-to-Point</h3>
-                    <p class="text-gray-500 text-sm mb-4">Link business locations with dedicated Fiber & RF tech. Offers rapid data transfer and enhanced security via dedicated static IPs.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3">Point-to-Point</h3>
+                    <p class="text-gray-500 text-sm mb-4 leading-relaxed">Link business locations with dedicated Fiber & RF tech. Offers rapid data transfer and enhanced security via dedicated static IPs.</p>
                 </div>
 
-                <div class="bento-card p-10 group">
+                <div class="bento-card p-6 md:p-10 group">
                     <div class="flex gap-4 mb-6">
-                        <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-microchip"></i></div>
-                        <div class="w-12 h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-wifi"></i></div>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-lg md:text-xl"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-gray-100 text-brand-black rounded-xl flex items-center justify-center text-lg md:text-xl"><i class="fa-solid fa-wifi"></i></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">IoT & Managed WiFi</h3>
-                    <p class="text-gray-500 text-sm"><strong>IoT:</strong> Scalable network with effortless data integration.<br><strong>WiFi:</strong> Layered security, centralized auth, and scalable design for modern offices.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3">IoT & Managed WiFi</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed"><strong>IoT:</strong> Scalable network with effortless data integration.<br><strong>WiFi:</strong> Layered security, centralized auth, and scalable design for modern offices.</p>
                 </div>
             </div>
         </div>
@@ -200,50 +231,50 @@
 
     <section id="it-infra" class="py-24 bg-white border-t border-gray-100 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
-                <div class="max-w-2xl">
-                    <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-2 block">Architecture</span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-brand-black">IT <span class="text-brand-red">Infrastructure</span></h2>
-                    <p class="text-gray-500 mt-4 text-lg">Guiding enterprises towards optimal IT investment utilization. We unlock the potential of technology through comprehensive audits and tailored implementations.</p>
+            <div class="flex flex-col lg:flex-row justify-between items-start md:items-end mb-16 gap-8 text-center md:text-left">
+                <div class="max-w-2xl mx-auto md:mx-0">
+                    <span class="text-brand-red font-bold tracking-widest uppercase text-xs md:text-sm mb-2 block">Architecture</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-brand-black">IT <span class="text-brand-red">Infrastructure</span></h2>
+                    <p class="text-gray-500 mt-4 text-base md:text-lg">Guiding enterprises towards optimal IT investment utilization. We unlock the potential of technology through comprehensive audits and tailored implementations.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                <div class="bento-card p-6 border border-gray-100 hover:border-brand-red group lg:col-span-2">
-                    <i class="fa-solid fa-diagram-project text-3xl text-brand-red mb-4"></i>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="bento-card p-6 md:p-8 border border-gray-100 hover:border-brand-red group lg:col-span-2">
+                    <i class="fa-solid fa-diagram-project text-2xl md:text-3xl text-brand-red mb-4"></i>
                     <h4 class="font-bold text-lg mb-2">Network Design & Optimization</h4>
-                    <p class="text-sm text-gray-500">Efficient network design and implementation tailored to ensure seamless connectivity and performance.</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Efficient network design and implementation tailored to ensure seamless connectivity and performance.</p>
                 </div>
-                <div class="bento-card p-6 border border-gray-100 hover:border-brand-red group lg:col-span-3">
-                    <i class="fa-solid fa-cloud-arrow-up text-3xl text-brand-red mb-4"></i>
+                <div class="bento-card p-6 md:p-8 border border-gray-100 hover:border-brand-red group lg:col-span-3">
+                    <i class="fa-solid fa-cloud-arrow-up text-2xl md:text-3xl text-brand-red mb-4"></i>
                     <h4 class="font-bold text-lg mb-2">Cloud Integration & Virtualization</h4>
-                    <p class="text-sm text-gray-500">Seamless integration of cloud solutions and implementation of virtualized environments to optimize resource utilization and enhance scalability.</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Seamless integration of cloud solutions and implementation of virtualized environments to optimize resource utilization and enhance scalability.</p>
                 </div>
 
-                <div class="bento-card p-6 border border-gray-100 hover:border-brand-red group">
-                    <i class="fa-solid fa-server text-3xl text-brand-black mb-4"></i>
+                <div class="bento-card p-6 md:p-8 border border-gray-100 hover:border-brand-red group">
+                    <i class="fa-solid fa-server text-2xl md:text-3xl text-brand-black mb-4"></i>
                     <h4 class="font-bold text-lg mb-2">Datacenter Mgmt</h4>
-                    <p class="text-sm text-gray-500">Peak performance for data centers and customizable colocation options.</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Peak performance for data centers and customizable colocation options.</p>
                 </div>
-                <div class="bento-card p-6 border border-gray-100 hover:border-brand-red group">
-                    <i class="fa-solid fa-hard-drive text-3xl text-brand-black mb-4"></i>
+                <div class="bento-card p-6 md:p-8 border border-gray-100 hover:border-brand-red group">
+                    <i class="fa-solid fa-hard-drive text-2xl md:text-3xl text-brand-black mb-4"></i>
                     <h4 class="font-bold text-lg mb-2">Hardware Procurement</h4>
-                    <p class="text-sm text-gray-500">High-quality hardware coupled with expert support and maintenance.</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">High-quality hardware coupled with expert support and maintenance.</p>
                 </div>
-                <div class="bento-card p-6 border border-gray-100 hover:border-brand-red group">
-                    <i class="fa-solid fa-network-wired text-3xl text-brand-black mb-4"></i>
+                <div class="bento-card p-6 md:p-8 border border-gray-100 hover:border-brand-red group">
+                    <i class="fa-solid fa-network-wired text-2xl md:text-3xl text-brand-black mb-4"></i>
                     <h4 class="font-bold text-lg mb-2">Structured Cabling</h4>
-                    <p class="text-sm text-gray-500">Professional cabling to organize and optimize network infrastructure.</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Professional cabling to organize and optimize network infrastructure.</p>
                 </div>
-                <div class="bento-card p-6 border border-gray-100 hover:border-brand-red group">
-                    <i class="fa-solid fa-rotate text-3xl text-brand-black mb-4"></i>
+                <div class="bento-card p-6 md:p-8 border border-gray-100 hover:border-brand-red group">
+                    <i class="fa-solid fa-rotate text-2xl md:text-3xl text-brand-black mb-4"></i>
                     <h4 class="font-bold text-lg mb-2">Backup & DR</h4>
-                    <p class="text-sm text-gray-500">Robust disaster recovery, data replication, and off-site storage.</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Robust disaster recovery, data replication, and off-site storage.</p>
                 </div>
-                <div class="bento-card p-6 border border-gray-100 hover:border-brand-red group">
-                    <i class="fa-solid fa-headset text-3xl text-brand-black mb-4"></i>
+                <div class="bento-card p-6 md:p-8 border border-gray-100 hover:border-brand-red group sm:col-span-2 lg:col-span-1">
+                    <i class="fa-solid fa-headset text-2xl md:text-3xl text-brand-black mb-4"></i>
                     <h4 class="font-bold text-lg mb-2">24x7 Maintenance</h4>
-                    <p class="text-sm text-gray-500">Round-the-clock site support ensuring continuous functionality.</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Round-the-clock site support ensuring continuous functionality.</p>
                 </div>
             </div>
         </div>
@@ -252,52 +283,52 @@
     <section id="security" class="py-24 bg-brand-bg scroll-mt-20">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16">
-                <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-2 block">Protection</span>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-black">Safety & <span class="text-brand-red">Security</span></h2>
-                <p class="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">Embracing the essence of modern security. We deliver integrated physical safety solutions and comprehensive cybersecurity defenses.</p>
+                <span class="text-brand-red font-bold tracking-widest uppercase text-xs md:text-sm mb-2 block">Protection</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-black">Safety & <span class="text-brand-red">Security</span></h2>
+                <p class="text-gray-500 mt-4 text-base md:text-lg max-w-2xl mx-auto">Embracing the essence of modern security. We deliver integrated physical safety solutions and comprehensive cybersecurity defenses.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
-                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-building-shield text-brand-red"></i> Integrated Safety Solutions</h3>
+                    <h3 class="text-xl md:text-2xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-building-shield text-brand-red"></i> Integrated Safety Solutions</h3>
                     <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
                             <h4 class="font-bold text-lg mb-2">CCTV & Wireless Cameras</h4>
-                            <p class="text-gray-500 text-sm">High-definition technology delivering real-time monitoring, motion detection, and remote access.</p>
+                            <p class="text-gray-500 text-sm leading-relaxed">High-definition technology delivering real-time monitoring, motion detection, and remote access.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
                             <h4 class="font-bold text-lg mb-2">Access Control</h4>
-                            <p class="text-gray-500 text-sm">Manage who enters your premises with precision, utilizing advanced encryption for secure access.</p>
+                            <p class="text-gray-500 text-sm leading-relaxed">Manage who enters your premises with precision, utilizing advanced encryption for secure access.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
                             <h4 class="font-bold text-lg mb-2">Biometric Attendance System</h4>
-                            <p class="text-gray-500 text-sm">Cutting-edge technology ensuring accurate, foolproof, and tamper-free attendance tracking.</p>
+                            <p class="text-gray-500 text-sm leading-relaxed">Cutting-edge technology ensuring accurate, foolproof, and tamper-free attendance tracking.</p>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-shield-virus text-brand-black"></i> Comprehensive Cyber Security</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="bg-brand-black text-white p-6 rounded-2xl shadow-premium">
-                            <i class="fa-solid fa-fire-extinguisher text-2xl text-brand-red mb-4"></i>
+                    <h3 class="text-xl md:text-2xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-shield-virus text-brand-black"></i> Comprehensive Cyber Security</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                        <div class="bg-brand-black text-white p-6 md:p-8 rounded-2xl shadow-premium">
+                            <i class="fa-solid fa-fire-extinguisher text-2xl md:text-3xl text-brand-red mb-4"></i>
                             <h4 class="font-bold text-lg mb-2">Firewall Protection</h4>
-                            <p class="text-gray-400 text-sm">Multi-layered defense system preventing unauthorized access and data breaches.</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Multi-layered defense system preventing unauthorized access and data breaches.</p>
                         </div>
-                        <div class="bg-brand-black text-white p-6 rounded-2xl shadow-premium">
-                            <i class="fa-solid fa-envelope-open-text text-2xl text-brand-red mb-4"></i>
+                        <div class="bg-brand-black text-white p-6 md:p-8 rounded-2xl shadow-premium">
+                            <i class="fa-solid fa-envelope-open-text text-2xl md:text-3xl text-brand-red mb-4"></i>
                             <h4 class="font-bold text-lg mb-2">Email/App Security</h4>
-                            <p class="text-gray-400 text-sm">Protocols to combat phishing, malware, and shield critical communication channels.</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Protocols to combat phishing, malware, and shield critical communication channels.</p>
                         </div>
-                        <div class="bg-brand-black text-white p-6 rounded-2xl shadow-premium">
-                            <i class="fa-solid fa-tower-broadcast text-2xl text-brand-red mb-4"></i>
+                        <div class="bg-brand-black text-white p-6 md:p-8 rounded-2xl shadow-premium">
+                            <i class="fa-solid fa-tower-broadcast text-2xl md:text-3xl text-brand-red mb-4"></i>
                             <h4 class="font-bold text-lg mb-2">Critical Infrastructure</h4>
-                            <p class="text-gray-400 text-sm">Robust technology safeguarding vital systems from threats to guarantee uninterrupted operations.</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Robust technology safeguarding vital systems from threats to guarantee uninterrupted operations.</p>
                         </div>
-                        <div class="bg-brand-black text-white p-6 rounded-2xl shadow-premium">
-                            <i class="fa-solid fa-radar text-2xl text-brand-red mb-4"></i>
+                        <div class="bg-brand-black text-white p-6 md:p-8 rounded-2xl shadow-premium">
+                            <i class="fa-solid fa-radar text-2xl md:text-3xl text-brand-red mb-4"></i>
                             <h4 class="font-bold text-lg mb-2">Threat Intel & Response</h4>
-                            <p class="text-gray-400 text-sm">Constant monitoring to preemptively detect threats, backed by a swift incident response team.</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Constant monitoring to preemptively detect threats, backed by a swift incident response team.</p>
                         </div>
                     </div>
                 </div>
@@ -309,11 +340,9 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <!-- <a href="index.html" class="flex items-center gap-2 mb-6">
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left inline-block">
                         <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
-                    </a> -->
-                    <a href="index.html" class="text-3xl font-extrabold text-brand-red tracking-tighter mb-4 hover-target inline-block">Rmax</a>
-
+                    </a>
                     
                     <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
                         <strong>Corporate Office:</strong><br>
@@ -326,6 +355,7 @@
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -374,9 +404,10 @@
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>© 2026 Rmax ISP. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p class="text-center md:text-left">© 2026 Rmax ISP. All rights reserved.</p>
+                <p class="font-medium bg-white/5 px-4 py-2 rounded-full text-center">Made with ❤️ by Harsha Varthan E P</p>
+                <div class="flex space-x-6">
                     <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
                     <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
@@ -385,5 +416,49 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const waButton = document.getElementById('wa-button');
+        let menuOpen = false;
+
+        hamburger.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
+                document.getElementById('line1').style.transform = 'translateY(8px) rotate(45deg)';
+                document.getElementById('line2').style.opacity = '0';
+                document.getElementById('line3').style.transform = 'translateY(-8px) rotate(-45deg)';
+                
+                mobileMenu.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+                
+                if(waButton) {
+                    waButton.style.opacity = '0';
+                    waButton.style.pointerEvents = 'none';
+                    waButton.style.transform = 'scale(0.8)';
+                }
+                
+                gsap.to(mobileLinks, { y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2 });
+            } else {
+                document.getElementById('line1').style.transform = 'none';
+                document.getElementById('line2').style.opacity = '1';
+                document.getElementById('line3').style.transform = 'none';
+                
+                mobileMenu.classList.remove('menu-open');
+                document.body.style.overflow = '';
+                
+                if(waButton) {
+                    waButton.style.opacity = '1';
+                    waButton.style.pointerEvents = 'auto';
+                    waButton.style.transform = 'scale(1)';
+                }
+                
+                gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
+            }
+        });
+    </script>
 </body>
 </html>
