@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rmax | Premium Internet Service Provider</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
                     colors: {
                         brand: {
                             red: '#dc2626',
@@ -58,117 +53,52 @@
             cursor: none; 
             overflow-x: hidden;
         }
+        @media (max-width: 768px) { body { cursor: auto; } } /* Disable custom cursor on mobile */
 
         /* Handcrafted Film Grain Overlay */
         .noise-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.03;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 9999; opacity: 0.03;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* Preloader */
         #preloader {
-            position: fixed;
-            inset: 0;
-            background: #0a0a0a;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; inset: 0; background: #0a0a0a;
+            z-index: 10000; display: flex; align-items: center; justify-content: center;
         }
-        .preloader-text {
-            color: #fff;
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 0.2em;
-            overflow: hidden;
-        }
+        .preloader-text { color: #fff; font-size: 2rem; font-weight: 800; letter-spacing: 0.2em; overflow: hidden; }
 
         /* Custom Cursor */
-        .cursor-dot {
-            width: 8px; height: 8px;
-            background-color: #dc2626;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
-            will-change: transform;
-        }
-        .cursor-outline {
-            width: 40px; height: 40px;
-            border: 1px solid rgba(220, 38, 38, 0.5);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9997;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.15s ease-out;
-            will-change: transform, width, height;
-        }
-        .cursor-hover .cursor-outline {
-            width: 70px; height: 70px;
-            background-color: rgba(220, 38, 38, 0.1);
-            border-color: transparent;
-        }
+        .cursor-dot { width: 8px; height: 8px; background-color: #dc2626; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.1s ease-out; will-change: transform; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(220, 38, 38, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.15s ease-out; will-change: transform, width, height; }
+        .cursor-hover .cursor-outline { width: 70px; height: 70px; background-color: rgba(220, 38, 38, 0.1); border-color: transparent; }
 
         /* Dropdown CSS Logic */
-        .dropdown-menu { 
-            visibility: hidden; opacity: 0; 
-            transform: translateY(15px) scale(0.98); 
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-            will-change: transform, opacity;
-        }
-        .group:hover .dropdown-menu { 
-            visibility: visible; opacity: 1; 
-            transform: translateY(0) scale(1); 
-        }
-        .sub-dropdown { 
-            visibility: hidden; opacity: 0; 
-            transform: translateX(-15px); 
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-            left: 100%; top: 0; 
-        }
-        .group\/sub:hover .sub-dropdown { 
-            visibility: visible; opacity: 1; 
-            transform: translateX(0); 
-        }
+        .dropdown-menu { visibility: hidden; opacity: 0; transform: translateY(15px) scale(0.98); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+        .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0) scale(1); }
+        .sub-dropdown { visibility: hidden; opacity: 0; transform: translateX(-15px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); left: 100%; top: 0; }
+        .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
 
-        /* Glassmorphism Optimized (removed heavy drop-shadows causing lag) */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02);
-            will-change: transform;
-        }
-        .dark-glass-panel {
-            background: rgba(20, 20, 20, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3);
-        }
+        /* Glassmorphism Optimized */
+        .glass-panel { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02); will-change: transform; }
+        .dark-glass-panel { background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3); }
 
         /* Magnetic Button Wrapper */
-        .magnetic-wrap {
-            display: inline-block;
-        }
-        .magnetic-btn {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
-        }
+        .magnetic-wrap { display: inline-block; }
+        .magnetic-btn { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
 
         /* Text Utilities */
         .char { transform: translateY(100%); opacity: 0; }
         .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+        ::-webkit-scrollbar { display: none; }
 
-        ::-webkit-scrollbar { display: none; } /* Hide for custom smooth scroll */
+        /* Mobile Menu Setup */
+        #mobile-menu {
+            clip-path: circle(0% at 100% 0);
+            transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        #mobile-menu.menu-open { clip-path: circle(150% at 100% 0); }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-red selection:text-white">
@@ -181,8 +111,8 @@
         </div>
     </div>
 
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
 
     <div class="magnetic-wrap fixed bottom-8 right-8 z-50">
         <a href="https://wa.me/919150911101" target="_blank" class="magnetic-btn hover-target bg-[#25D366] text-white w-16 h-16 rounded-full shadow-2xl hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] flex items-center justify-center group border border-white/20">
@@ -194,29 +124,25 @@
     <nav class="glass-panel fixed w-full z-40 top-0 transition-all duration-500 border-b-0" id="navbar">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group hover-target">
-                    <h1 class="text-3xl font-extrabold text-brand-red tracking-tighter group-hover:text-red-500 transition-colors">Rmax</h1>
-                    <span class="text-[10px] font-bold text-brand-gray uppercase tracking-[0.2em] mt-1.5">ISP</span>
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer group hover-target">
+                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1 transition-transform group-hover:scale-105" style="min-width: 120px;">
                 </a>
                 
                 <div class="hidden lg:flex space-x-8 items-center font-semibold text-sm text-gray-700">
-                    <a href="index.html" class="hover-target hover:text-brand-red transition-colors">Home</a>
+                    <a href="index.html" class="text-brand-red font-bold hover-target">Home</a>
                     <a href="about.html" class="hover-target hover:text-brand-red transition-colors">About Us</a>
                     
                     <div class="relative group py-6 hover-target">
                         <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
-                        
                         <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                             <div class="group/sub relative px-2 py-1">
                                 <a href="services.html#internet" class="flex justify-between items-center px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
                                     Internet <i class="fa-solid fa-angle-right text-xs opacity-50"></i>
                                 </a>
-                                
                                 <div class="sub-dropdown absolute w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                                     <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Home</div>
                                     <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Fibernet Broadband</a>
                                     <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2 transition-colors">Wireless Broadband</a>
-                                    
                                     <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest border-t border-gray-100 pt-3">Business</div>
                                     <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Enterprise Broadband</a>
                                     <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Internet Leased Line (ILL)</a>
@@ -226,11 +152,9 @@
                                     <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">MPLS & VPN</a>
                                 </div>
                             </div>
-                            
                             <div class="px-2 py-1">
                                 <a href="services.html#it-infra" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
                             </div>
-                            
                             <div class="px-2 py-1">
                                 <a href="services.html#security" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
                             </div>
@@ -246,16 +170,38 @@
                         <a href="contact.html" class="magnetic-btn hover-target bg-brand-dark text-white px-7 py-3 rounded-full text-sm font-medium hover:bg-brand-red transition-colors duration-300 shadow-xl inline-block">Enquire Now</a>
                     </div>
                 </div>
+
+                <button id="hamburger" class="lg:hidden hover-target relative z-50 p-2 text-brand-dark focus:outline-none">
+                    <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
+                    <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
+                    <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
+                </button>
             </div>
         </div>
     </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-30 flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center space-y-6 text-2xl font-bold text-brand-dark w-full px-6">
+            <a href="index.html" class="mobile-link text-brand-red hover:text-brand-red transition-colors opacity-0 translate-y-4">Home</a>
+            <a href="about.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">About Us</a>
+            <a href="services.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Services</a>
+            <a href="plans.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Plans</a>
+            <a href="partners.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Partners</a>
+            <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
+            <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
+            <div class="pt-8 w-full max-w-sm mobile-link opacity-0 translate-y-4">
+                <a href="account.html" class="block text-center border border-gray-200 text-lg py-3 rounded-full mb-4">My Account</a>
+                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-red-glow">Enquire Now</a>
+            </div>
+        </div>
+    </div>
 
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[80px] animate-blob" style="will-change: transform;"></div>
         <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gray-400/10 rounded-full blur-[80px] animate-blob animation-delay-2000" style="will-change: transform;"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10 w-full">
-            <div class="max-w-5xl">
+            <div class="max-w-5xl mt-12 md:mt-0">
                 <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm gs-fade">
                     <span class="text-xs font-bold tracking-widest uppercase text-brand-red">Over 2 Decades of Excellence</span>
                 </div>
@@ -267,10 +213,10 @@
                 <p class="mt-8 text-xl md:text-3xl text-brand-gray font-light max-w-2xl gs-fade leading-snug">
                     Experience the profound difference of connectivity. And enjoy more for less.
                 </p>
-                <div class="mt-12 flex items-center gap-6 gs-fade">
-                    <div class="magnetic-wrap">
-                        <a href="#services" class="magnetic-btn hover-target group relative inline-flex items-center justify-center px-9 py-4 bg-brand-dark text-white rounded-full text-lg font-medium overflow-hidden">
-                            <span class="relative z-10 flex items-center gap-3">Discover Solutions <i class="fas fa-arrow-down transition-transform group-hover:translate-y-1"></i></span>
+                <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 gs-fade">
+                    <div class="magnetic-wrap w-full sm:w-auto">
+                        <a href="services.html" class="magnetic-btn hover-target group relative flex items-center justify-center px-9 py-4 bg-brand-dark text-white rounded-full text-lg font-medium overflow-hidden w-full">
+                            <span class="relative z-10 flex items-center gap-3">Discover Solutions <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
                             <div class="absolute inset-0 bg-brand-red translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1)"></div>
                         </a>
                     </div>
@@ -305,49 +251,48 @@
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="mb-20 max-w-3xl gs-reveal">
                 <span class="text-brand-red font-bold tracking-wider uppercase text-sm">All Services</span>
-                <h2 class="text-5xl md:text-6xl font-bold tracking-tighter mt-2 mb-6">One-Stop Solution.</h2>
+                <h2 class="text-5xl md:text-6xl font-bold tracking-tighter mt-2 mb-6 text-brand-dark">One-Stop Solution.</h2>
                 <p class="text-2xl text-brand-gray font-light leading-relaxed">
                     Empowering companies to thrive in the digital era with simplified & transformative IT infrastructure.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
-                
-                <div class="glass-panel rounded-3xl p-10 md:col-span-2 md:row-span-2 flex flex-col justify-between gs-reveal bg-white hover-target group cursor-pointer hover:-translate-y-2 transition-transform duration-500">
+                <a href="services.html#internet" class="glass-panel rounded-3xl p-10 md:col-span-2 md:row-span-2 flex flex-col justify-between gs-reveal bg-white hover-target group cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
                     <div>
                         <i class="fas fa-network-wired text-4xl text-brand-red mb-6"></i>
-                        <h3 class="text-3xl font-bold mb-4">Enterprise Leased Line</h3>
+                        <h3 class="text-3xl font-bold mb-4 text-brand-dark">Enterprise Leased Line</h3>
                         <p class="text-brand-gray text-lg leading-relaxed max-w-md">Experience true 1:1 Leased Line with Dual-link technology (RF & Fiber Optic). Unmatched 99.97% uptime guaranteed.</p>
                     </div>
                     <div class="mt-8">
                         <span class="inline-flex items-center gap-2 text-brand-red font-semibold group-hover:gap-4 transition-all">Explore Leased Lines <i class="fas fa-arrow-right"></i></span>
                     </div>
-                </div>
+                </a>
 
-                <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500">
+                <a href="services.html#it-infra" class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
                     <i class="fas fa-server text-3xl text-brand-dark"></i>
                     <div>
-                        <h3 class="text-xl font-bold mb-2">IT Infrastructure</h3>
+                        <h3 class="text-xl font-bold mb-2 text-brand-dark">IT Infrastructure</h3>
                         <p class="text-brand-gray text-sm">Hardware procurement, network design, and integration.</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500">
+                <a href="services.html#security" class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
                     <i class="fas fa-shield-alt text-3xl text-brand-dark"></i>
                     <div>
-                        <h3 class="text-xl font-bold mb-2">Security Solutions</h3>
+                        <h3 class="text-xl font-bold mb-2 text-brand-dark">Security Solutions</h3>
                         <p class="text-brand-gray text-sm">CCTV, Access Control, and robust Firewall protection.</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="glass-panel rounded-3xl p-8 md:col-span-2 flex items-center justify-between gs-reveal bg-brand-dark text-white overflow-hidden relative hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500">
+                <a href="services.html#internet" class="glass-panel rounded-3xl p-8 md:col-span-2 flex items-center justify-between gs-reveal bg-brand-dark text-white overflow-hidden relative hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
                     <div class="absolute right-0 top-0 w-64 h-64 bg-brand-red blur-[80px] opacity-20 rounded-full" style="will-change: transform;"></div>
                     <div class="relative z-10 max-w-sm">
                         <h3 class="text-2xl font-bold mb-3">Managed WiFi</h3>
                         <p class="text-gray-400 text-sm leading-relaxed">Ubiquitous, highly secure, and cost-effective wireless network solutions for organizations.</p>
                     </div>
                     <i class="fas fa-wifi text-6xl text-white/10 relative z-10"></i>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -355,11 +300,11 @@
     <section class="py-32 bg-white">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="flex flex-col lg:flex-row items-center gap-16 gs-reveal">
-                <div class="lg:w-1/2 w-full h-[600px] rounded-[3rem] overflow-hidden relative">
+                <div class="lg:w-1/2 w-full h-[500px] md:h-[600px] rounded-[3rem] overflow-hidden relative">
                     <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" alt="Server Infrastructure" class="w-full h-[120%] object-cover parallax-img" data-speed="auto" style="will-change: transform;">
                 </div>
                 <div class="lg:w-1/2 lg:pl-10">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Transformative Tech,<br />Tailored for you.</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-brand-dark">Transformative Tech,<br />Tailored for you.</h2>
                     <p class="text-xl text-brand-gray mb-8 font-light leading-relaxed">
                         Harness the power of advanced technology with our expertise in hardware and networking, backed by over 60 years of combined technical experience.
                     </p>
@@ -368,13 +313,13 @@
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Virtualization Solutions</li>
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Backup & Disaster Recovery</li>
                     </ul>
-                    <a href="services.html#it-infra" class="hover-target px-8 py-3 bg-white border border-gray-200 rounded-full font-semibold hover:bg-gray-50 hover:shadow-lg transition-all inline-block">Explore IT Services</a>
+                    <a href="services.html#it-infra" class="hover-target px-8 py-3 bg-white text-brand-dark border border-gray-200 rounded-full font-semibold hover:bg-gray-50 hover:shadow-lg transition-all inline-block">Explore IT Services</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-brand-dark text-white relative overflow-hidden rounded-[3rem] mx-4 lg:mx-8 my-16">
+    <section class="py-32 bg-brand-dark text-white relative overflow-hidden md:rounded-[3rem] mx-0 md:mx-4 lg:mx-8 my-0 md:my-16">
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-red/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none" style="will-change: transform;"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
@@ -411,56 +356,79 @@
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-100 pt-24 pb-12">
+    <footer class="bg-brand-dark text-white pt-24 pb-8 border-t-[8px] border-brand-red">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-                <div class="lg:col-span-2">
-                    <a href="index.html" class="text-3xl font-extrabold text-brand-red tracking-tighter mb-4 hover-target inline-block">Rmax</a>
-                    <p class="text-brand-gray text-sm leading-relaxed mb-8 max-w-sm">
-                        Bridging the digital divide since 2005. Empowering society with affordable, dependable, and advanced Internet and IT infrastructure solutions.
-                    </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover-target">
+                        <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
+                    </a>
+                    <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
+                        <strong>Corporate Office:</strong><br>
+                        6th Floor, Rajiv Gandhi Salai,<br>
+                        Srinivasa Nagar, Kandanchavadi,<br>
+                        Perungudi, Chennai,<br>
+                        Tamil Nadu - 600096
+                    </address>
                     <div class="flex space-x-4">
-                        <a href="#" class="hover-target w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover-target w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="hover-target w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-all"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="hover-target w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors hover-target"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors hover-target"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors hover-target"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors hover-target"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-gray-900 mb-6 uppercase tracking-wider text-xs">Services</h4>
-                    <ul class="space-y-3">
-                        <li><a href="services.html#internet" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Internet</a></li>
-                        <li><a href="services.html#it-infra" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">IT Infrastructure</a></li>
-                        <li><a href="services.html#security" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Safety & Security</a></li>
-                        <li><a href="services.html#wifi" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Managed WiFi</a></li>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Get in Touch</h4>
+                    <ul class="space-y-6 text-sm">
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Business Enquiry</p>
+                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors hover-target">+91 915 091 1101</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">24/7 Customer Support</p>
+                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors hover-target">+91 720 022 8880</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
+                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors hover-target">info@rmax.in</a>
+                        </li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-gray-900 mb-6 uppercase tracking-wider text-xs">Company</h4>
-                    <ul class="space-y-3">
-                        <li><a href="about.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">About Us</a></li>
-                        <li><a href="careers.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Careers</a></li>
-                        <li><a href="partners.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Franchisee</a></li>
-                        <li><a href="contact.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Contact Us</a></li>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover-target hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover-target hover:text-white transition-colors">Services</a></li>
+                        <li><a href="plans.html" class="hover-target hover:text-white transition-colors">Plans</a></li>
+                        <li><a href="partners.html" class="hover-target hover:text-white transition-colors">Franchise & Partners</a></li>
+                        <li><a href="careers.html" class="hover-target hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="help.html" class="hover-target hover:text-white transition-colors">Get Help / Speed Test</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-gray-900 mb-6 uppercase tracking-wider text-xs">Legal</h4>
-                    <ul class="space-y-3">
-                        <li><a href="help.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Get Help / FAQ</a></li>
-                        <li><a href="speedtest.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Speed Test</a></li>
-                        <li><a href="privacy.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Privacy Policy</a></li>
-                        <li><a href="terms.html" class="hover-target text-brand-gray hover:text-brand-red text-sm transition-colors">Terms & Conditions</a></li>
-                    </ul>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Location</h4>
+                    <div class="w-full h-48 bg-gray-800 rounded-xl overflow-hidden border border-white/10 relative">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.828692737526!2d80.2442!3d12.9699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzExLjYiTiA4MMKwMTQnMzkuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            width="100%" height="100%" 
+                            style="border:0; filter: grayscale(1) opacity(0.8);" 
+                            allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-400 text-sm">&copy; 2026 Rmax Broadband Pvt Ltd. All rights reserved.</p>
-                <p class="text-gray-500 text-sm font-medium bg-gray-50 px-4 py-2 rounded-full shadow-inner">Made with ❤️ by Harsha Varthan E P</p>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-sm text-center md:text-left">&copy; 2026 Rmax Broadband Pvt Ltd. All rights reserved.</p>
+                <p class="text-gray-400 text-sm font-medium bg-white/5 px-4 py-2 rounded-full mt-2 md:mt-0 shadow-inner text-center">Made with ❤️ by Harsha Varthan E P</p>
+                <div class="flex space-x-6 mt-2 md:mt-0 text-xs text-gray-500">
+                    <a href="privacy.html" class="hover-target hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover-target hover:text-white transition-colors">Terms & Conditions</a>
+                    <a href="disclaimer.html" class="hover-target hover:text-white transition-colors">Disclaimer</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -474,127 +442,115 @@
         // 1. Preloader Logic
         window.addEventListener("load", () => {
             const tl = gsap.timeline();
-            tl.to("#preloader .preloader-text", {
-                opacity: 0,
-                y: -20,
-                duration: 0.8,
-                ease: "power3.inOut"
-            })
-            .to("#preloader", {
-                height: 0,
-                duration: 1,
-                ease: "power4.inOut"
-            }, "-=0.3")
-            .set("#preloader", { display: "none" });
+            tl.to("#preloader .preloader-text", { opacity: 0, y: -20, duration: 0.8, ease: "power3.inOut" })
+              .to("#preloader", { height: 0, duration: 1, ease: "power4.inOut" }, "-=0.3")
+              .set("#preloader", { display: "none" });
         });
 
-        // 2. Custom Cursor Logic
+        // 2. Custom Cursor Logic (Disabled on Mobile via CSS)
         const cursorDot = document.getElementById("cursor-dot");
         const cursorOutline = document.getElementById("cursor-outline");
         const hoverTargets = document.querySelectorAll(".hover-target, a, button");
 
-        window.addEventListener("mousemove", (e) => {
-            // Using GSAP for ultra-smooth cursor follow
-            gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power2.out" });
-            gsap.to(cursorOutline, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power3.out" });
+        if (window.innerWidth > 768) {
+            window.addEventListener("mousemove", (e) => {
+                gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power2.out" });
+                gsap.to(cursorOutline, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power3.out" });
+            });
+
+            hoverTargets.forEach(target => {
+                target.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"));
+                target.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"));
+            });
+        }
+
+        // 3. Mobile Menu Toggle Logic with GSAP Animation
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let menuOpen = false;
+
+        hamburger.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            
+            // Hamburger icon animation
+            if (menuOpen) {
+                document.getElementById('line1').style.transform = 'rotate(45deg) translate(5px, 5px)';
+                document.getElementById('line2').style.opacity = '0';
+                document.getElementById('line3').style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                
+                mobileMenu.classList.add('menu-open');
+                
+                // Stagger animate links in
+                gsap.to(mobileLinks, {
+                    y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2
+                });
+            } else {
+                document.getElementById('line1').style.transform = 'none';
+                document.getElementById('line2').style.opacity = '1';
+                document.getElementById('line3').style.transform = 'none';
+                
+                mobileMenu.classList.remove('menu-open');
+                
+                // Reset links
+                gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
+            }
         });
 
-        hoverTargets.forEach(target => {
-            target.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"));
-            target.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"));
-        });
-
-        // 3. Magnetic Button Interaction
+        // 4. Magnetic Button Interaction
         const magnets = document.querySelectorAll('.magnetic-wrap');
         magnets.forEach((magnet) => {
             const btn = magnet.querySelector('.magnetic-btn');
-            
-            magnet.addEventListener('mousemove', (e) => {
-                const position = magnet.getBoundingClientRect();
-                const x = e.clientX - position.left - position.width / 2;
-                const y = e.clientY - position.top - position.height / 2;
-                
-                gsap.to(btn, {
-                    x: x * 0.4,
-                    y: y * 0.4,
-                    duration: 0.3,
-                    ease: "power2.out"
+            if(window.innerWidth > 768) {
+                magnet.addEventListener('mousemove', (e) => {
+                    const position = magnet.getBoundingClientRect();
+                    const x = e.clientX - position.left - position.width / 2;
+                    const y = e.clientY - position.top - position.height / 2;
+                    gsap.to(btn, { x: x * 0.4, y: y * 0.4, duration: 0.3, ease: "power2.out" });
                 });
-            });
 
-            magnet.addEventListener('mouseleave', () => {
-                gsap.to(btn, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.5,
-                    ease: "elastic.out(1, 0.3)"
+                magnet.addEventListener('mouseleave', () => {
+                    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
                 });
-            });
+            }
         });
 
-        // 4. Initialize Lenis Smooth Scroll (Optimized)
+        // 5. Initialize Lenis Smooth Scroll
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            infinite: false,
+            direction: 'vertical', gestureDirection: 'vertical',
+            smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2, infinite: false,
         });
 
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add((time) => { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
 
-        // 5. GSAP Typography Split Reveal
+        // 6. GSAP Typography Split Reveal
         gsap.registerPlugin(ScrollTrigger);
-        
         const splitTexts = new SplitType('.split-text', { types: 'chars' });
         
         gsap.to('.char', {
-            y: 0,
-            opacity: 1,
-            stagger: 0.03,
-            duration: 1,
-            ease: 'power4.out',
-            delay: 1.2 // Waits for preloader
+            y: 0, opacity: 1, stagger: 0.03, duration: 1, ease: 'power4.out', delay: 1.2 
         });
 
-        // 6. Standard Element Reveal
+        // 7. Standard Element Reveal
         const revealElements = document.querySelectorAll(".gs-reveal");
         revealElements.forEach((elem) => {
             gsap.fromTo(elem, 
                 { autoAlpha: 0, y: 30 }, 
-                {
-                    duration: 1, 
-                    autoAlpha: 1, 
-                    y: 0, 
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: "top 85%", 
-                        toggleActions: "play none none reverse"
-                    }
-                }
+                { duration: 1, autoAlpha: 1, y: 0, ease: "power3.out", scrollTrigger: { trigger: elem, start: "top 85%", toggleActions: "play none none reverse" } }
             );
         });
 
-        // 7. Subtle Image Parallax (Optimized)
+        // 8. Subtle Image Parallax
         gsap.to(".parallax-img", {
-            yPercent: 15, // Reduced from 20 to prevent excessive layout recalculation
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".parallax-img",
-                start: "top bottom", 
-                end: "bottom top",
-                scrub: 1
-            }
+            yPercent: 15, ease: "none",
+            scrollTrigger: { trigger: ".parallax-img", start: "top bottom", end: "bottom top", scrub: 1 }
         });
 
-        // 8. Dynamic Navbar Glass Effect
+        // 9. Dynamic Navbar Glass Effect
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
