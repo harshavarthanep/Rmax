@@ -21,6 +21,7 @@
                     boxShadow: {
                         'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
                         'red-glow': '0 10px 30px -10px rgba(229,9,20,0.3)',
+                        'dropdown': '0 10px 40px -10px rgba(0,0,0,0.1)',
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -39,6 +40,12 @@
         .bento-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.04); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border-color: rgba(229,9,20,0.2); }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+        /* Dropdown specific styles */
+        .dropdown-menu { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateY(10px); }
+        .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+        .sub-dropdown { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateX(10px); left: 100%; top: 0; }
+        .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
 
         /* Timeline Styles */
         .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; border-radius: 50%; background-color: #E50914; border: 4px solid #F8F9FA; z-index: 10; transition: transform 0.3s ease; }
@@ -70,16 +77,46 @@
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-2 cursor-pointer">
-                    <div class="w-10 h-10 bg-brand-black rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
-                    <span class="font-extrabold text-2xl tracking-tight text-brand-black">Rmax</span>
-                </div>
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;" title="Replace src with your actual logo">
+                </a>
+                
                 <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
                     <a href="index.html" class="hover:text-brand-red transition-colors">Home</a>
-                    <a href="about.html" class="text-brand-black">About Us</a>
-                    <div class="relative group cursor-pointer">
-                        <span class="hover:text-brand-red transition-colors flex items-center gap-1">Services <i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    <a href="about.html" class="text-brand-red font-bold">About Us</a>
+                    
+                    <div class="relative group py-6">
+                        <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-xs ml-1"></i></span>
+                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                            
+                            <div class="group/sub relative px-2 py-1">
+                                <a href="services.html#internet" class="flex justify-between items-center px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
+                                    Internet <i class="fa-solid fa-angle-right text-xs"></i>
+                                </a>
+                                <div class="sub-dropdown absolute w-72 bg-white border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Home</div>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Fibernet Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2">Wireless Broadband</a>
+                                    
+                                    <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider border-t border-gray-100 pt-3">Business</div>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Enterprise Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Internet Leased Line (ILL)</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">IoT Connectivity</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Point to Point</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">Managed WiFi</a>
+                                    <a href="services.html#internet" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg">MPLS & VPN</a>
+                                </div>
+                            </div>
+                            
+                            <div class="px-2 py-1">
+                                <a href="services.html#it-infra" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
+                            </div>
+                            <div class="px-2 py-1">
+                                <a href="services.html#security" class="block px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
+                            </div>
+                        </div>
                     </div>
+
                     <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
                     <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
                     <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
@@ -286,10 +323,10 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white font-bold text-xl">R</div>
-                        <span class="font-extrabold text-2xl tracking-tight text-white">Rmax</span>
-                    </div>
+                    <a href="index.html" class="flex items-center gap-2 mb-6">
+                        <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
+                    </a>
+                    
                     <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
                         <strong>Corporate Office:</strong><br>
                         6th Floor, Rajiv Gandhi Salai,<br>
@@ -300,6 +337,7 @@
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
@@ -325,7 +363,7 @@
                 <div>
                     <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="about.html" class="text-brand-red font-semibold">About Us</a></li>
                         <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
                         <li><a href="plans.html" class="hover:text-white transition-colors">Plans</a></li>
                         <li><a href="partners.html" class="hover:text-white transition-colors">Franchise & Partners</a></li>
