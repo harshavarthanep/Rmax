@@ -22,13 +22,15 @@
                             dark: '#0a0a0a',
                             light: '#fbfbfd',
                             gray: '#86868b',
-                            bg: '#f3f4f6'
+                            bg: '#f3f4f6',
+                            redhover: '#CC0812'
                         }
                     },
                     boxShadow: {
                         'dropdown': '0 20px 40px -15px rgba(0,0,0,0.05)',
                         'bento-hover': '0 30px 60px -15px rgba(0,0,0,0.08)',
                         'bento-dark-hover': '0 30px 60px -15px rgba(220, 38, 38, 0.15)',
+                        'red-glow': '0 10px 30px -10px rgba(229,9,20,0.3)',
                     },
                     animation: {
                         'blob': 'blob 15s infinite alternate',
@@ -133,6 +135,39 @@
         </div>
     </div>
 
+    <div id="jobModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-[2rem] p-8 max-w-4xl w-full mx-4 relative transform scale-95 transition-transform duration-300 shadow-2xl" id="jobModalContent">
+            
+            <button id="closeJobModal" class="absolute top-6 right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/20 rounded-full px-4 py-1.5 text-xs font-bold text-brand-red mb-4 uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Hiring Now
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark">Current <span class="text-brand-red">Openings</span></h2>
+                <p class="text-gray-500 mt-2">Join our dynamic team and build the future of connectivity.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border border-gray-200 rounded-2xl p-8 hover:border-brand-red hover:shadow-bento-hover transition-all duration-300 bg-white">
+                    <div class="text-brand-red text-xs font-bold tracking-widest uppercase mb-4">Engineering</div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-3">Network Administrator</h3>
+                    <p class="text-gray-500 text-sm mb-8 flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gray"></i> Chennai, Tamil Nadu</p>
+                    <a href="careers.html" class="block text-center border-2 border-gray-200 py-3 rounded-xl font-bold text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full">Apply Now</a>
+                </div>
+
+                <div class="border border-gray-200 rounded-2xl p-8 hover:border-brand-red hover:shadow-bento-hover transition-all duration-300 bg-white">
+                    <div class="text-brand-red text-xs font-bold tracking-widest uppercase mb-4">Field Operations</div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-3">Field Engineers</h3>
+                    <p class="text-gray-500 text-sm mb-8 flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gray"></i> Multiple Locations, TN</p>
+                    <a href="careers.html" class="block text-center border-2 border-gray-200 py-3 rounded-xl font-bold text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="wa-button" class="fixed bottom-8 right-8 z-40 transition-all duration-300 hover:scale-110">
         <a href="https://wa.me/919150911101" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-2xl shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
             <i class="fab fa-whatsapp text-3xl"></i>
@@ -140,14 +175,14 @@
         </a>
     </div>
 
-    <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <nav class="glass-panel fixed w-full z-40 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
+        <div class="max-w-[1400px] mx-auto px-4 lg:px-12">
             <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
                     <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
                 </a>
                 
-                <div class="hidden lg:flex space-x-8 items-center font-semibold text-sm text-gray-700">
+                <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
                     <a href="index.html" class="text-brand-red font-bold">Home</a>
                     <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
                     
@@ -183,16 +218,21 @@
                     <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
                     <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
                     <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
-                    <a href="help.html" class="hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
-                    
-                    <a href="contact.html" class="bg-brand-dark text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-brand-red transition-colors duration-300 shadow-md inline-block">Enquire Now</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
                 </div>
 
-                <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
-                    <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
-                    <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
-                    <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
-                </button>
+                <div class="flex items-center gap-4">
+                    <div class="hidden lg:flex items-center space-x-4">
+                        <a href="account.html" class="text-sm font-bold text-brand-dark hover:text-brand-red transition-colors">My Account</a>
+                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
+                    </div>
+                    
+                    <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
+                        <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -207,9 +247,9 @@
             <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
             <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
             
-            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-100">
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
                 <a href="account.html" class="block text-center border-2 border-brand-dark text-brand-dark text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
-                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-red-600/20 hover:bg-red-700 transition-colors">Enquire Now</a>
+                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-red-600/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
             </div>
         </div>
     </div>
@@ -464,7 +504,49 @@
               .set("#preloader", { display: "none" });
         });
 
-        // 2. Mobile Menu & WhatsApp Toggle Logic with GSAP
+        // 2. Initialize Lenis Smooth Scroll (Wobble fixed by removing CSS smooth scroll)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical', gestureDirection: 'vertical',
+            smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2, infinite: false,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // 3. Job Openings Popup Modal Logic
+        window.addEventListener("load", () => {
+            const jobModal = document.getElementById("jobModal");
+            const jobModalContent = document.getElementById("jobModalContent");
+            const closeJobModal = document.getElementById("closeJobModal");
+
+            // Show modal after 3 seconds if not shown in this session
+            setTimeout(() => {
+                if(!sessionStorage.getItem('jobModalShown')) {
+                    jobModal.classList.remove("opacity-0", "pointer-events-none");
+                    jobModalContent.classList.remove("scale-95");
+                    jobModalContent.classList.add("scale-100");
+                    if(typeof lenis !== 'undefined') lenis.stop(); // Pause smooth scrolling
+                }
+            }, 3000);
+
+            const closeModal = () => {
+                jobModal.classList.add("opacity-0", "pointer-events-none");
+                jobModalContent.classList.remove("scale-100");
+                jobModalContent.classList.add("scale-95");
+                if(typeof lenis !== 'undefined') lenis.start(); // Resume smooth scrolling
+                sessionStorage.setItem('jobModalShown', 'true');
+            };
+
+            closeJobModal.addEventListener("click", closeModal);
+            jobModal.addEventListener("click", (e) => {
+                if (e.target === jobModal) closeModal();
+            });
+        });
+
+        // 4. Mobile Menu & WhatsApp Toggle Logic with GSAP
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -482,6 +564,7 @@
                 
                 // Show Menu & Lock Body
                 mobileMenu.classList.add('menu-open');
+                if(typeof lenis !== 'undefined') lenis.stop();
                 document.body.style.overflow = 'hidden';
                 
                 // Hide WhatsApp
@@ -503,6 +586,7 @@
                 
                 // Hide Menu & Unlock Body
                 mobileMenu.classList.remove('menu-open');
+                if(typeof lenis !== 'undefined') lenis.start();
                 document.body.style.overflow = '';
                 
                 // Show WhatsApp
@@ -517,19 +601,7 @@
             }
         });
 
-        // 3. Initialize Lenis Smooth Scroll
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical', gestureDirection: 'vertical',
-            smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2, infinite: false,
-        });
-
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-        gsap.ticker.lagSmoothing(0);
-
-        // 4. GSAP Typography Split Reveal
+        // 5. GSAP Typography Split Reveal
         gsap.registerPlugin(ScrollTrigger);
         const splitTexts = new SplitType('.split-text', { types: 'chars' });
         
@@ -537,7 +609,7 @@
             y: 0, opacity: 1, stagger: 0.03, duration: 1, ease: 'power4.out', delay: 1.2 
         });
 
-        // 5. Standard Element Reveal
+        // 6. Standard Element Reveal
         const revealElements = document.querySelectorAll(".gs-reveal");
         revealElements.forEach((elem) => {
             gsap.fromTo(elem, 
@@ -546,13 +618,13 @@
             );
         });
 
-        // 6. Subtle Image Parallax
+        // 7. Subtle Image Parallax
         gsap.to(".parallax-img", {
             yPercent: 15, ease: "none",
             scrollTrigger: { trigger: ".parallax-img", start: "top bottom", end: "bottom top", scrub: 1 }
         });
 
-        // 7. Dynamic Navbar Glass Effect
+        // 8. Dynamic Navbar Glass Effect
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
