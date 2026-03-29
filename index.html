@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.css">
 
     <script>
@@ -27,6 +27,8 @@
                     },
                     boxShadow: {
                         'dropdown': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'bento-hover': '0 30px 60px -15px rgba(0,0,0,0.08)',
+                        'bento-dark-hover': '0 30px 60px -15px rgba(220, 38, 38, 0.15)',
                     },
                     animation: {
                         'blob': 'blob 15s infinite alternate',
@@ -48,13 +50,12 @@
     </script>
 
     <style>
+        /* Removed CSS scroll-behavior: smooth to fix Lenis wobble conflict */
         body {
             background-color: #fbfbfd;
             color: #1d1d1f;
-            cursor: none; 
             overflow-x: hidden;
         }
-        @media (max-width: 768px) { body { cursor: auto; } } /* Disable custom cursor on mobile */
 
         /* Handcrafted Film Grain Overlay */
         .noise-overlay {
@@ -70,31 +71,52 @@
         }
         .preloader-text { color: #fff; font-size: 2rem; font-weight: 800; letter-spacing: 0.2em; overflow: hidden; }
 
-        /* Custom Cursor */
-        .cursor-dot { width: 8px; height: 8px; background-color: #dc2626; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.1s ease-out; will-change: transform; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(220, 38, 38, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.15s ease-out; will-change: transform, width, height; }
-        .cursor-hover .cursor-outline { width: 70px; height: 70px; background-color: rgba(220, 38, 38, 0.1); border-color: transparent; }
-
         /* Dropdown CSS Logic */
         .dropdown-menu { visibility: hidden; opacity: 0; transform: translateY(15px) scale(0.98); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
         .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0) scale(1); }
         .sub-dropdown { visibility: hidden; opacity: 0; transform: translateX(-15px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); left: 100%; top: 0; }
         .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
 
-        /* Glassmorphism Optimized */
-        .glass-panel { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02); will-change: transform; }
-        .dark-glass-panel { background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3); }
+        /* Professional Bento Box Styles */
+        .glass-panel { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            border: 1px solid rgba(0, 0, 0, 0.03); 
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02); 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-panel:hover {
+            transform: translateY(-6px);
+            border-color: rgba(220, 38, 38, 0.2);
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08);
+        }
 
-        /* Magnetic Button Wrapper */
-        .magnetic-wrap { display: inline-block; }
-        .magnetic-btn { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+        .dark-glass-panel { 
+            background: rgba(20, 20, 20, 0.9); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3); 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark-glass-panel:hover {
+            transform: translateY(-6px);
+            border-color: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 30px 60px -15px rgba(220, 38, 38, 0.15);
+        }
+
+        /* Professional Button Hovers */
+        .pro-btn { transition: all 0.3s ease; }
+        .pro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); }
+        .pro-btn:hover i { transform: translateX(4px); transition: transform 0.3s ease; }
 
         /* Text Utilities */
         .char { transform: translateY(100%); opacity: 0; }
         .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
         ::-webkit-scrollbar { display: none; }
 
-        /* Mobile Menu Setup */
+        /* Mobile Menu Setup (Scrollable) */
         #mobile-menu {
             clip-path: circle(0% at 100% 0);
             transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1);
@@ -112,32 +134,25 @@
         </div>
     </div>
 
-    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
-    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
-
-    <div class="magnetic-wrap fixed bottom-8 right-8 z-50">
-        <a href="https://wa.me/919150911101" target="_blank" class="magnetic-btn hover-target bg-[#25D366] text-white w-16 h-16 rounded-full shadow-2xl hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] flex items-center justify-center group border border-white/20">
+    <div class="fixed bottom-8 right-8 z-50 transition-transform duration-300 hover:scale-110">
+        <a href="https://wa.me/919150911101" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-2xl shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
             <i class="fab fa-whatsapp text-3xl"></i>
             <span class="absolute right-20 bg-brand-dark/90 backdrop-blur-md text-white text-sm font-medium px-4 py-2 rounded-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">Start a conversation</span>
         </a>
     </div>
 
-    <nav class="glass-panel fixed w-full z-40 top-0 transition-all duration-500 border-b-0" id="navbar">
+    <nav class="glass-panel fixed w-full z-40 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-center h-20">
-                <!-- <a href="index.html" class="flex items-center gap-2 cursor-pointer group hover-target">
-                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1 transition-transform group-hover:scale-105" style="min-width: 120px;">
-                </a> -->
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group hover-target">
-                    <h1 class="text-3xl font-extrabold text-brand-red tracking-tighter group-hover:text-red-500 transition-colors">Rmax</h1>
-                    <span class="text-[10px] font-bold text-brand-gray uppercase tracking-[0.2em] mt-1.5">ISP</span>
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
+                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
                 </a>
                 
                 <div class="hidden lg:flex space-x-8 items-center font-semibold text-sm text-gray-700">
-                    <a href="index.html" class="text-brand-red font-bold hover-target">Home</a>
-                    <a href="about.html" class="hover-target hover:text-brand-red transition-colors">About Us</a>
+                    <a href="index.html" class="text-brand-red font-bold">Home</a>
+                    <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
                     
-                    <div class="relative group py-6 hover-target">
+                    <div class="relative group py-6">
                         <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
                         <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                             <div class="group/sub relative px-2 py-1">
@@ -146,15 +161,15 @@
                                 </a>
                                 <div class="sub-dropdown absolute w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
                                     <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Home</div>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Fibernet Broadband</a>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2 transition-colors">Wireless Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Fibernet Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2 transition-colors">Wireless Broadband</a>
                                     <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest border-t border-gray-100 pt-3">Business</div>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Enterprise Broadband</a>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Internet Leased Line (ILL)</a>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">IoT Connectivity</a>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Point to Point</a>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Managed WiFi</a>
-                                    <a href="#" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">MPLS & VPN</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Enterprise Broadband</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Internet Leased Line (ILL)</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">IoT Connectivity</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Point to Point</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Managed WiFi</a>
+                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">MPLS & VPN</a>
                                 </div>
                             </div>
                             <div class="px-2 py-1">
@@ -166,17 +181,15 @@
                         </div>
                     </div>
 
-                    <a href="plans.html" class="hover-target hover:text-brand-red transition-colors">Plans</a>
-                    <a href="partners.html" class="hover-target hover:text-brand-red transition-colors">Partners</a>
-                    <a href="careers.html" class="hover-target hover:text-brand-red transition-colors">Careers</a>
-                    <a href="help.html" class="hover-target hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
+                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
+                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
+                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
                     
-                    <div class="magnetic-wrap">
-                        <a href="contact.html" class="magnetic-btn hover-target bg-brand-dark text-white px-7 py-3 rounded-full text-sm font-medium hover:bg-brand-red transition-colors duration-300 shadow-xl inline-block">Enquire Now</a>
-                    </div>
+                    <a href="contact.html" class="bg-brand-dark text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-brand-red transition-colors duration-300 shadow-md inline-block">Enquire Now</a>
                 </div>
 
-                <button id="hamburger" class="lg:hidden hover-target relative z-50 p-2 text-brand-dark focus:outline-none">
+                <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
                     <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
                     <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
                     <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
@@ -185,7 +198,7 @@
         </div>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-30 flex flex-col justify-center items-center">
+    <div id="mobile-menu" class="fixed inset-0 bg-white/98 backdrop-blur-2xl z-30 flex flex-col justify-start items-center pt-32 pb-12 overflow-y-auto">
         <div class="flex flex-col items-center space-y-6 text-2xl font-bold text-brand-dark w-full px-6">
             <a href="index.html" class="mobile-link text-brand-red hover:text-brand-red transition-colors opacity-0 translate-y-4">Home</a>
             <a href="about.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">About Us</a>
@@ -194,9 +207,10 @@
             <a href="partners.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Partners</a>
             <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
             <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
-            <div class="pt-8 w-full max-w-sm mobile-link opacity-0 translate-y-4">
-                <a href="account.html" class="block text-center border border-gray-200 text-lg py-3 rounded-full mb-4">My Account</a>
-                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-red-glow">Enquire Now</a>
+            
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
+                <a href="account.html" class="block text-center border-2 border-brand-dark text-brand-dark text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
+                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-red-600/20 hover:bg-red-700 transition-colors">Enquire Now</a>
             </div>
         </div>
     </div>
@@ -219,12 +233,9 @@
                     Experience the profound difference of connectivity. And enjoy more for less.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 gs-fade">
-                    <div class="magnetic-wrap w-full sm:w-auto">
-                        <a href="services.html" class="magnetic-btn hover-target group relative flex items-center justify-center px-9 py-4 bg-brand-dark text-white rounded-full text-lg font-medium overflow-hidden w-full">
-                            <span class="relative z-10 flex items-center gap-3">Discover Solutions <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i></span>
-                            <div class="absolute inset-0 bg-brand-red translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1)"></div>
-                        </a>
-                    </div>
+                    <a href="services.html" class="pro-btn w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red transition-all duration-300 shadow-xl shadow-black/10">
+                        Discover Solutions <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -263,7 +274,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
-                <a href="services.html#internet" class="glass-panel rounded-3xl p-10 md:col-span-2 md:row-span-2 flex flex-col justify-between gs-reveal bg-white hover-target group cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
+                <a href="services.html#internet" class="glass-panel rounded-3xl p-10 md:col-span-2 md:row-span-2 flex flex-col justify-between gs-reveal bg-white group block">
                     <div>
                         <i class="fas fa-network-wired text-4xl text-brand-red mb-6"></i>
                         <h3 class="text-3xl font-bold mb-4 text-brand-dark">Enterprise Leased Line</h3>
@@ -274,29 +285,29 @@
                     </div>
                 </a>
 
-                <a href="services.html#it-infra" class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
-                    <i class="fas fa-server text-3xl text-brand-dark"></i>
+                <a href="services.html#it-infra" class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white group block">
+                    <i class="fas fa-server text-3xl text-brand-dark group-hover:text-brand-red transition-colors"></i>
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-brand-dark">IT Infrastructure</h3>
                         <p class="text-brand-gray text-sm">Hardware procurement, network design, and integration.</p>
                     </div>
                 </a>
 
-                <a href="services.html#security" class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
-                    <i class="fas fa-shield-alt text-3xl text-brand-dark"></i>
+                <a href="services.html#security" class="glass-panel rounded-3xl p-8 flex flex-col justify-between gs-reveal bg-white group block">
+                    <i class="fas fa-shield-alt text-3xl text-brand-dark group-hover:text-brand-red transition-colors"></i>
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-brand-dark">Security Solutions</h3>
                         <p class="text-brand-gray text-sm">CCTV, Access Control, and robust Firewall protection.</p>
                     </div>
                 </a>
 
-                <a href="services.html#internet" class="glass-panel rounded-3xl p-8 md:col-span-2 flex items-center justify-between gs-reveal bg-brand-dark text-white overflow-hidden relative hover-target cursor-pointer hover:-translate-y-2 transition-transform duration-500 block">
-                    <div class="absolute right-0 top-0 w-64 h-64 bg-brand-red blur-[80px] opacity-20 rounded-full" style="will-change: transform;"></div>
+                <a href="services.html#internet" class="dark-glass-panel rounded-3xl p-8 md:col-span-2 flex items-center justify-between gs-reveal text-white overflow-hidden relative group block">
+                    <div class="absolute right-0 top-0 w-64 h-64 bg-brand-red blur-[80px] opacity-20 rounded-full transition-transform group-hover:scale-150 duration-700"></div>
                     <div class="relative z-10 max-w-sm">
                         <h3 class="text-2xl font-bold mb-3">Managed WiFi</h3>
                         <p class="text-gray-400 text-sm leading-relaxed">Ubiquitous, highly secure, and cost-effective wireless network solutions for organizations.</p>
                     </div>
-                    <i class="fas fa-wifi text-6xl text-white/10 relative z-10"></i>
+                    <i class="fas fa-wifi text-6xl text-white/10 relative z-10 group-hover:text-brand-red/40 transition-colors duration-500"></i>
                 </a>
             </div>
         </div>
@@ -318,14 +329,16 @@
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Virtualization Solutions</li>
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Backup & Disaster Recovery</li>
                     </ul>
-                    <a href="services.html#it-infra" class="hover-target px-8 py-3 bg-white text-brand-dark border border-gray-200 rounded-full font-semibold hover:bg-gray-50 hover:shadow-lg transition-all inline-block">Explore IT Services</a>
+                    <a href="services.html#it-infra" class="pro-btn inline-block px-8 py-3.5 bg-white text-brand-dark border border-gray-200 rounded-full font-semibold hover:border-brand-red hover:text-brand-red shadow-sm">
+                        Explore IT Services <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="py-32 bg-brand-dark text-white relative overflow-hidden md:rounded-[3rem] mx-0 md:mx-4 lg:mx-8 my-0 md:my-16">
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-red/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none" style="will-change: transform;"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-red/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
             <div class="text-center mb-24 gs-reveal">
@@ -334,25 +347,25 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="dark-glass-panel p-10 rounded-3xl gs-reveal hover-target hover:-translate-y-2 transition-transform duration-500">
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                <div class="dark-glass-panel p-10 rounded-3xl gs-reveal group">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-red transition-colors duration-300">
                         <i class="fas fa-user-tie text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Dedicated Manager</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Personalized support ensuring your specific business requirements are met with precision and care.</p>
                 </div>
 
-                <div class="dark-glass-panel p-10 rounded-3xl gs-reveal hover-target hover:-translate-y-2 transition-transform duration-500 delay-100">
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                <div class="dark-glass-panel p-10 rounded-3xl gs-reveal group delay-100">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-red transition-colors duration-300">
                         <i class="fas fa-headset text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">24/7 NOC Support</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Round-the-clock proactive monitoring and swift issue resolution for uninterrupted connectivity.</p>
                 </div>
 
-                <div class="dark-glass-panel border-brand-red/30 p-10 rounded-3xl gs-reveal hover-target hover:-translate-y-2 transition-transform duration-500 delay-200">
-                    <div class="w-14 h-14 bg-brand-red/20 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-tachometer-alt text-2xl text-brand-red"></i>
+                <div class="dark-glass-panel border-brand-red/30 p-10 rounded-3xl gs-reveal group delay-200">
+                    <div class="w-14 h-14 bg-brand-red/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-red transition-colors duration-300">
+                        <i class="fas fa-tachometer-alt text-2xl text-brand-red group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-brand-red">99.97% Uptime</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Experience unparallelled technical and operational reliability, ensuring minimal downtime.</p>
@@ -365,10 +378,9 @@
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <!-- <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover-target">
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left">
                         <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
-                    </a> -->
-                    <a href="index.html" class="text-3xl font-extrabold text-brand-red tracking-tighter mb-4 hover-target inline-block">Rmax</a>
+                    </a>
                     <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
                         <strong>Corporate Office:</strong><br>
                         6th Floor, Rajiv Gandhi Salai,<br>
@@ -377,9 +389,10 @@
                         Tamil Nadu - 600096
                     </address>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors hover-target"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors hover-target"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors hover-target"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -388,15 +401,15 @@
                     <ul class="space-y-6 text-sm">
                         <li>
                             <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Business Enquiry</p>
-                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors hover-target">+91 915 091 1101</a>
+                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors">+91 915 091 1101</a>
                         </li>
                         <li>
                             <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">24/7 Customer Support</p>
-                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors hover-target">+91 720 022 8880</a>
+                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors">+91 720 022 8880</a>
                         </li>
                         <li>
                             <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
-                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors hover-target">info@rmax.in</a>
+                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">info@rmax.in</a>
                         </li>
                     </ul>
                 </div>
@@ -404,12 +417,12 @@
                 <div>
                     <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="about.html" class="hover-target hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="services.html" class="hover-target hover:text-white transition-colors">Services</a></li>
-                        <li><a href="plans.html" class="hover-target hover:text-white transition-colors">Plans</a></li>
-                        <li><a href="partners.html" class="hover-target hover:text-white transition-colors">Franchise & Partners</a></li>
-                        <li><a href="careers.html" class="hover-target hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="help.html" class="hover-target hover:text-white transition-colors">Get Help / Speed Test</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="plans.html" class="hover:text-white transition-colors">Plans</a></li>
+                        <li><a href="partners.html" class="hover:text-white transition-colors">Franchise & Partners</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="help.html" class="hover:text-white transition-colors">Get Help / Speed Test</a></li>
                     </ul>
                 </div>
 
@@ -427,12 +440,12 @@
             </div>
 
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-400 text-sm text-center md:text-left">&copy; 2026 Rmax Broadband Pvt Ltd. All rights reserved.</p>
+                <p class="text-gray-400 text-sm text-center md:text-left">© 2026 Rmax Broadband Pvt Ltd. All rights reserved.</p>
                 <p class="text-gray-400 text-sm font-medium bg-white/5 px-4 py-2 rounded-full mt-2 md:mt-0 shadow-inner text-center">Made with ❤️ by Harsha Varthan E P</p>
                 <div class="flex space-x-6 mt-2 md:mt-0 text-xs text-gray-500">
-                    <a href="privacy.html" class="hover-target hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="terms.html" class="hover-target hover:text-white transition-colors">Terms & Conditions</a>
-                    <a href="disclaimer.html" class="hover-target hover:text-white transition-colors">Disclaimer</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
+                    <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
                 </div>
             </div>
         </div>
@@ -452,24 +465,7 @@
               .set("#preloader", { display: "none" });
         });
 
-        // 2. Custom Cursor Logic (Disabled on Mobile via CSS)
-        const cursorDot = document.getElementById("cursor-dot");
-        const cursorOutline = document.getElementById("cursor-outline");
-        const hoverTargets = document.querySelectorAll(".hover-target, a, button");
-
-        if (window.innerWidth > 768) {
-            window.addEventListener("mousemove", (e) => {
-                gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power2.out" });
-                gsap.to(cursorOutline, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power3.out" });
-            });
-
-            hoverTargets.forEach(target => {
-                target.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"));
-                target.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"));
-            });
-        }
-
-        // 3. Mobile Menu Toggle Logic with GSAP Animation
+        // 2. Mobile Menu Toggle Logic with GSAP Animation
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -486,6 +482,9 @@
                 
                 mobileMenu.classList.add('menu-open');
                 
+                // Set body to hidden to prevent scrolling underneath
+                document.body.style.overflow = 'hidden';
+                
                 // Stagger animate links in
                 gsap.to(mobileLinks, {
                     y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2
@@ -496,31 +495,14 @@
                 document.getElementById('line3').style.transform = 'none';
                 
                 mobileMenu.classList.remove('menu-open');
+                document.body.style.overflow = '';
                 
                 // Reset links
                 gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
             }
         });
 
-        // 4. Magnetic Button Interaction
-        const magnets = document.querySelectorAll('.magnetic-wrap');
-        magnets.forEach((magnet) => {
-            const btn = magnet.querySelector('.magnetic-btn');
-            if(window.innerWidth > 768) {
-                magnet.addEventListener('mousemove', (e) => {
-                    const position = magnet.getBoundingClientRect();
-                    const x = e.clientX - position.left - position.width / 2;
-                    const y = e.clientY - position.top - position.height / 2;
-                    gsap.to(btn, { x: x * 0.4, y: y * 0.4, duration: 0.3, ease: "power2.out" });
-                });
-
-                magnet.addEventListener('mouseleave', () => {
-                    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-                });
-            }
-        });
-
-        // 5. Initialize Lenis Smooth Scroll
+        // 3. Initialize Lenis Smooth Scroll (Wobble fixed by removing CSS smooth scroll)
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -532,7 +514,7 @@
         gsap.ticker.add((time) => { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
 
-        // 6. GSAP Typography Split Reveal
+        // 4. GSAP Typography Split Reveal
         gsap.registerPlugin(ScrollTrigger);
         const splitTexts = new SplitType('.split-text', { types: 'chars' });
         
@@ -540,7 +522,7 @@
             y: 0, opacity: 1, stagger: 0.03, duration: 1, ease: 'power4.out', delay: 1.2 
         });
 
-        // 7. Standard Element Reveal
+        // 5. Standard Element Reveal
         const revealElements = document.querySelectorAll(".gs-reveal");
         revealElements.forEach((elem) => {
             gsap.fromTo(elem, 
@@ -549,13 +531,13 @@
             );
         });
 
-        // 8. Subtle Image Parallax
+        // 6. Subtle Image Parallax
         gsap.to(".parallax-img", {
             yPercent: 15, ease: "none",
             scrollTrigger: { trigger: ".parallax-img", start: "top bottom", end: "bottom top", scrub: 1 }
         });
 
-        // 9. Dynamic Navbar Glass Effect
+        // 7. Dynamic Navbar Glass Effect
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
