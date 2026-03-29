@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rmax | Premium Internet Service Provider</title>
@@ -70,11 +71,8 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Hardware Accelerated Blobs to prevent lag */
-        .animate-blob {
-            transform: translateZ(0);
-            will-change: transform;
-        }
+        /* Hardware Accelerated Blobs */
+        .animate-blob { transform: translateZ(0); will-change: transform; }
 
         /* Preloader */
         #preloader {
@@ -83,51 +81,33 @@
         }
         .preloader-text { color: #fff; font-size: 2rem; font-weight: 800; letter-spacing: 0.2em; overflow: hidden; }
 
-        /* Dropdown CSS Logic */
+        /* Dropdown CSS */
         .dropdown-menu { visibility: hidden; opacity: 0; transform: translateY(15px) scale(0.98); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
         .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0) scale(1); }
         .sub-dropdown { visibility: hidden; opacity: 0; transform: translateX(-15px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); left: 100%; top: 0; }
         .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
 
-        /* Professional Bento Box Styles */
+        /* Bento Box Styles */
         .glass-panel { 
-            background: rgba(255, 255, 255, 0.8); 
-            backdrop-filter: blur(16px); 
-            -webkit-backdrop-filter: blur(16px); 
-            border: 1px solid rgba(0, 0, 0, 0.03); 
-            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02); 
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(0, 0, 0, 0.03); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .glass-panel:hover {
-            transform: translateY(-6px);
-            border-color: rgba(220, 38, 38, 0.2);
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08);
-        }
+        .glass-panel:hover { transform: translateY(-6px); border-color: rgba(220, 38, 38, 0.2); box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08); }
 
         .dark-glass-panel { 
-            background: rgba(20, 20, 20, 0.9); 
-            backdrop-filter: blur(16px); 
-            -webkit-backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3); 
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(20, 20, 20, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .dark-glass-panel:hover {
-            transform: translateY(-6px);
-            border-color: rgba(220, 38, 38, 0.3);
-            box-shadow: 0 30px 60px -15px rgba(220, 38, 38, 0.15);
-        }
+        .dark-glass-panel:hover { transform: translateY(-6px); border-color: rgba(220, 38, 38, 0.3); box-shadow: 0 30px 60px -15px rgba(220, 38, 38, 0.15); }
 
-        /* Text Utilities */
+        /* Professional Button Hovers */
+        .pro-btn { transition: all 0.3s ease; }
+        .pro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); }
+        .pro-btn:hover i { transform: translateX(4px); transition: transform 0.3s ease; }
+
         .char { transform: translateY(100%); opacity: 0; }
         .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
         ::-webkit-scrollbar { display: none; }
 
-        /* Mobile Menu Setup */
-        #mobile-menu {
-            clip-path: circle(0% at 100% 0);
-            transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-        }
+        #mobile-menu { clip-path: circle(0% at 100% 0); transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1); }
         #mobile-menu.menu-open { clip-path: circle(150% at 100% 0); }
     </style>
 </head>
@@ -141,9 +121,8 @@
         </div>
     </div>
 
-    <div id="installModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+    <div id="installModal" class="fixed inset-0 z-[110] flex items-center justify-center bg-brand-dark/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
         <div class="bg-white rounded-[2rem] p-6 md:p-8 max-w-lg w-full relative transform scale-95 transition-transform duration-300 shadow-2xl" id="installModalContent">
-            
             <button id="closeInstallModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
@@ -165,7 +144,6 @@
 
     <div id="jobModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
         <div class="bg-white rounded-[2rem] p-6 md:p-8 max-w-4xl w-full relative transform scale-95 transition-transform duration-300 shadow-2xl max-h-[95vh] overflow-y-auto" id="jobModalContent">
-            
             <button id="closeJobModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
@@ -250,15 +228,13 @@
                     <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
                     <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
                     <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
-                    <a href="help.html" class="hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
-                    
-                    <a href="contact.html" class="bg-brand-dark text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-brand-red transition-all duration-300 shadow-md hover:shadow-brand-red/30 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <div class="hidden lg:flex items-center space-x-4">
+                    <div class="hidden lg:flex items-center space-x-4 pl-2">
                         <a href="account.html" class="text-sm font-bold text-brand-dark hover:text-brand-red transition-colors">My Account</a>
-                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5">Enquire Now</a>
+                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
                     </div>
                     
                     <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
@@ -283,14 +259,14 @@
             
             <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
                 <a href="account.html" class="block text-center border-2 border-brand-dark text-brand-dark text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
-                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
+                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-red-600/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
             </div>
         </div>
     </div>
 
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[80px] animate-blob" style="will-change: transform;"></div>
-        <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gray-400/10 rounded-full blur-[80px] animate-blob animation-delay-2000" style="will-change: transform;"></div>
+        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-[80px] animate-blob"></div>
+        <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gray-400/10 rounded-full blur-[80px] animate-blob" style="animation-delay: 2s;"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10 w-full">
             <div class="max-w-5xl mt-12 md:mt-0">
@@ -306,7 +282,7 @@
                     Experience the profound difference of connectivity. And enjoy more for less.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 gs-fade">
-                    <a href="services.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/30 transition-all duration-300 transform hover:-translate-y-1">
+                    <a href="services.html" class="pro-btn w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/30 transition-all duration-300 transform hover:-translate-y-1">
                         Discover Solutions <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -531,10 +507,8 @@
     
     <script>
         // --- 0. Production PWA & Standalone Mode Check ---
-        // Prevents any logic related to modals if running as an installed app
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
-        // PWA REQUIRED: Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
@@ -544,95 +518,78 @@
         }
 
         // --- 1. PWA Installation Event Handler ---
-        // We intercept the browser's default prompt to show our custom UI instead.
         let deferredPrompt;
         const installModal = document.getElementById('installModal');
         const installModalContent = document.getElementById('installModalContent');
         const installAppBtn = document.getElementById('installAppBtn');
+        let jobModalSequenceComplete = false;
 
-        // Only listen for install prompt if NOT already installed
         if (!isStandalone) {
             window.addEventListener('beforeinstallprompt', (e) => {
                 console.log('PWA: beforeinstallprompt event fired');
-                // Prevent the default browser mini-infobar from appearing on mobile
                 e.preventDefault();
-                // Stash the event so it can be triggered later.
                 deferredPrompt = e;
-                // Note: The actual display logic is handled sequentially after preloader/job modal.
+                // If the job modal is already done, show install modal immediately
+                if (jobModalSequenceComplete) {
+                    showInstallModal();
+                }
             });
 
-            // Listen for successful installation to clean up UI
             window.addEventListener('appinstalled', (cloneEvent) => {
                 console.log('PWA: Application installed successfully');
                 deferredPrompt = null;
-                // Ensure UI is hidden immediately
                 installModal.classList.add('opacity-0', 'pointer-events-none');
             });
         }
 
-        // Function to show our custom install modal with a delay
         function showInstallModal() {
-            // Exit early if already installed or the prompt event didn't fire
             if (isStandalone || !deferredPrompt) {
-                console.log('PWA: Skipping install modal (standalone or no prompt event)');
+                console.log('PWA: Skipping install modal');
                 return;
             }
-
-            // Small delay to ensure any previous modal close animation is finished
             setTimeout(() => {
                 console.log('PWA: Showing custom install modal');
                 installModal.classList.remove('opacity-0', 'pointer-events-none');
                 installModalContent.classList.remove('scale-95');
                 installModalContent.classList.add('scale-100');
-                if(typeof lenis !== 'undefined') lenis.stop(); // Lock scrolling
+                if(typeof lenis !== 'undefined') lenis.stop(); 
             }, 1000); 
         }
 
-        // Wire up the custom install button
         installAppBtn.addEventListener('click', async () => {
             if (!deferredPrompt) return;
-            // Hide our custom UI
             installModal.classList.add('opacity-0', 'pointer-events-none');
-            // Show the native browser install prompt
             deferredPrompt.prompt();
-            // Wait for the user to respond to the prompt
             const { outcome } = await deferredPrompt.userChoice;
             console.log(`PWA: User response to install prompt: ${outcome}`);
-            // We've used the prompt, so can't use it again; discard it.
             deferredPrompt = null;
-            if(typeof lenis !== 'undefined') lenis.start(); // Unlock scrolling
+            if(typeof lenis !== 'undefined') lenis.start(); 
         });
 
-        // Wire up the ignore/close buttons (allows modal to appear again next visit until installed)
         function closeInstallPromptUI() {
             installModal.classList.add('opacity-0', 'pointer-events-none');
             installModalContent.classList.remove('scale-100');
             installModalContent.classList.add('scale-95');
-            if(typeof lenis !== 'undefined') lenis.start(); // Unlock scrolling
+            if(typeof lenis !== 'undefined') lenis.start(); 
         }
+        
         document.getElementById('closeInstallModal').addEventListener('click', closeInstallPromptUI);
         document.getElementById('ignoreInstallBtn').addEventListener('click', closeInstallPromptUI);
 
-
-        // --- 2. Sequential Display Logic (Preloader -> Job -> Install) ---
-        
-        // PWA Logic: We need a central place to know when the Job Modal sequence is "done"
-        let jobModalSequenceComplete = false;
+        // --- 2. Sequential Display Logic ---
         function onJobModalSequenceDone() {
-            if (jobModalSequenceComplete) return; // Prevent duplicate triggers
+            if (jobModalSequenceComplete) return; 
             jobModalSequenceComplete = true;
             console.log('Sequence: Job modal sequence complete');
             
-            // Critical timing: Only try to show install if NOT standalone and prompt exists
             if (!isStandalone && deferredPrompt) {
                 showInstallModal();
             } else if (typeof lenis !== 'undefined') {
-                 // Safety net: ensure scrolling resumes if install modal is skipped
                  lenis.start();
             }
         }
 
-        // Preloader Logic
+        // --- 3. Preloader Logic ---
         window.addEventListener("load", () => {
             const tl = gsap.timeline();
             tl.to("#preloader .preloader-text", { opacity: 0, y: -20, duration: 0.8, ease: "power3.inOut" })
@@ -640,54 +597,52 @@
               .set("#preloader", { display: "none" });
         });
 
-        // Initialize Lenis Smooth Scroll (Wobble fix)
+        // --- 4. Initialize Standard Lenis Smooth Scroll (Wobble fixed) ---
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical', gestureDirection: 'vertical',
-            smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2, infinite: false,
+            direction: 'vertical', 
+            gestureDirection: 'vertical',
+            smooth: true, 
+            smoothTouch: false, 
+            touchMultiplier: 2,
         });
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-        gsap.ticker.lagSmoothing(0);
 
-        // Job Openings Popup Modal Logic (Modified for PWA flow)
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        lenis.on('scroll', ScrollTrigger.update);
+
+        // --- 5. Job Openings Popup Modal Logic ---
         window.addEventListener("load", () => {
             const jobModal = document.getElementById("jobModal");
             const jobModalContent = document.getElementById("jobModalContent");
             const closeJobModal = document.getElementById("closeJobModal");
 
-            // Exit early if already standalone (app installed and opened as app)
             if (isStandalone) {
-                console.log('JobModal: Skipping due to standalone mode');
                 onJobModalSequenceDone();
                 return;
             }
 
-            // Check if shown in session already
             if (sessionStorage.getItem('jobModalShown')) {
-                console.log('JobModal: Already shown this session');
                 onJobModalSequenceDone();
                 return;
             }
 
-            // Show modal after 3 seconds 
             setTimeout(() => {
-                console.log('JobModal: Showing modal');
                 jobModal.classList.remove("opacity-0", "pointer-events-none");
                 jobModalContent.classList.remove("scale-95");
                 jobModalContent.classList.add("scale-100");
-                if(typeof lenis !== 'undefined') lenis.stop(); // Lock smooth scrolling
+                if(typeof lenis !== 'undefined') lenis.stop(); 
             }, 3000);
 
             const closeThisModal = () => {
-                console.log('JobModal: Closing');
                 jobModal.classList.add("opacity-0", "pointer-events-none");
                 jobModalContent.classList.remove("scale-100");
                 jobModalContent.classList.add("scale-95");
                 sessionStorage.setItem('jobModalShown', 'true');
-                
-                // Job modal is closed, now allow next step in sequence
                 onJobModalSequenceDone(); 
             };
 
@@ -696,50 +651,65 @@
                 if (e.target === jobModal) closeThisModal();
             });
 
-            // Modify apply buttons to also trigger completion before navigating away
             document.querySelectorAll('.job-link').forEach(link => {
                 link.addEventListener('click', () => {
-                     // We don't call closeThisModal here directly because navigation 
-                     // happens. We just set the sessionStorage and sequence flag.
                      sessionStorage.setItem('jobModalShown', 'true');
-                     jobModalSequenceComplete = true; // Mark done so it doesn't fire later
+                     jobModalSequenceComplete = true; 
                 });
             });
         });
 
-        // 5. Mobile Menu & Hamburger Toggle
+        // --- 6. Mobile Menu & WhatsApp Toggle Logic ---
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        const waButton = document.getElementById('wa-button');
+        let menuOpen = false;
+
         hamburger.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('menu-open');
-            if (!isOpen) {
-                // Hamburger to X
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
                 document.getElementById('line1').style.transform = 'translateY(8px) rotate(45deg)';
                 document.getElementById('line2').style.opacity = '0';
                 document.getElementById('line3').style.transform = 'translateY(-8px) rotate(-45deg)';
+                
                 mobileMenu.classList.add('menu-open');
                 if(typeof lenis !== 'undefined') lenis.stop();
                 document.body.style.overflow = 'hidden';
+                
+                if(waButton) {
+                    waButton.style.opacity = '0';
+                    waButton.style.pointerEvents = 'none';
+                    waButton.style.transform = 'scale(0.8)';
+                }
+                
                 gsap.to(mobileLinks, { y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2 });
             } else {
-                // X to Hamburger
                 document.getElementById('line1').style.transform = 'none';
                 document.getElementById('line2').style.opacity = '1';
                 document.getElementById('line3').style.transform = 'none';
+                
                 mobileMenu.classList.remove('menu-open');
                 if(typeof lenis !== 'undefined') lenis.start();
                 document.body.style.overflow = '';
+                
+                if(waButton) {
+                    waButton.style.opacity = '1';
+                    waButton.style.pointerEvents = 'auto';
+                    waButton.style.transform = 'scale(1)';
+                }
+                
                 gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
             }
         });
 
-        // 6. GSAP Typography Split Reveal
+        // --- 7. GSAP Typography Split Reveal ---
         gsap.registerPlugin(ScrollTrigger);
         const splitTexts = new SplitType('.split-text', { types: 'chars' });
         gsap.to('.char', { y: 0, opacity: 1, stagger: 0.03, duration: 1, ease: 'power4.out', delay: 1.2 });
 
-        // 7. Standard Element Reveal
+        // --- 8. Standard Element Reveal ---
         const revealElements = document.querySelectorAll(".gs-reveal");
         revealElements.forEach((elem) => {
             gsap.fromTo(elem, 
@@ -748,13 +718,13 @@
             );
         });
 
-        // 8. Subtle Image Parallax
+        // --- 9. Subtle Image Parallax ---
         gsap.to(".parallax-img", {
             yPercent: 15, ease: "none",
             scrollTrigger: { trigger: ".parallax-img", start: "top bottom", end: "bottom top", scrub: 1 }
         });
 
-        // 9. Dynamic Navbar Glass Effect
+        // --- 10. Dynamic Navbar Glass Effect ---
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
