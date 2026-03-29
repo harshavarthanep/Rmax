@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,11 +107,6 @@
             box-shadow: 0 30px 60px -15px rgba(220, 38, 38, 0.15);
         }
 
-        /* Professional Button Hovers */
-        .pro-btn { transition: all 0.3s ease; }
-        .pro-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); }
-        .pro-btn:hover i { transform: translateX(4px); transition: transform 0.3s ease; }
-
         /* Text Utilities */
         .char { transform: translateY(100%); opacity: 0; }
         .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
@@ -172,14 +167,14 @@
         </div>
     </div>
 
-    <div id="wa-button" class="fixed bottom-8 right-8 z-40 transition-all duration-300 hover:scale-110">
-        <a href="https://wa.me/919150911101" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-2xl shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
+    <div id="wa-button" class="fixed bottom-8 right-8 z-40 transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+        <a href="https://wa.me/919150911101" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-lg shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
             <i class="fab fa-whatsapp text-3xl"></i>
             <span class="absolute right-20 bg-brand-dark/90 backdrop-blur-md text-white text-sm font-medium px-4 py-2 rounded-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">Start a conversation</span>
         </a>
     </div>
 
-    <nav class="glass-panel fixed w-full z-40 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
+    <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-[1400px] mx-auto px-4 lg:px-12">
             <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
@@ -222,13 +217,15 @@
                     <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
                     <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
                     <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
-                    <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
+                    
+                    <a href="contact.html" class="bg-brand-dark text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-brand-red transition-all duration-300 shadow-md hover:shadow-brand-red/30 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
                 </div>
 
                 <div class="flex items-center gap-4">
                     <div class="hidden lg:flex items-center space-x-4">
                         <a href="account.html" class="text-sm font-bold text-brand-dark hover:text-brand-red transition-colors">My Account</a>
-                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">Enquire Now</a>
+                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5">Enquire Now</a>
                     </div>
                     
                     <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
@@ -251,9 +248,9 @@
             <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
             <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
             
-            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-100">
                 <a href="account.html" class="block text-center border-2 border-brand-dark text-brand-dark text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
-                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-red-600/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
+                <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-colors">Enquire Now</a>
             </div>
         </div>
     </div>
@@ -276,7 +273,7 @@
                     Experience the profound difference of connectivity. And enjoy more for less.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 gs-fade">
-                    <a href="services.html" class="pro-btn w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red transition-all duration-300 shadow-xl shadow-black/10">
+                    <a href="services.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-brand-dark text-white rounded-full text-lg font-semibold hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/30 transition-all duration-300 transform hover:-translate-y-1">
                         Discover Solutions <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -316,7 +313,7 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-auto md:auto-rows-[280px]">
                 <a href="services.html#internet" class="glass-panel rounded-3xl p-10 md:col-span-2 md:row-span-2 flex flex-col justify-between gs-reveal bg-white group block">
                     <div>
                         <i class="fas fa-network-wired text-4xl text-brand-red mb-6"></i>
@@ -372,7 +369,7 @@
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Virtualization Solutions</li>
                         <li class="flex items-center gap-4 text-gray-800 font-medium"><i class="fas fa-check-circle text-brand-red"></i> Backup & Disaster Recovery</li>
                     </ul>
-                    <a href="services.html#it-infra" class="pro-btn inline-block px-8 py-3.5 bg-white text-brand-dark border border-gray-200 rounded-full font-semibold hover:border-brand-red hover:text-brand-red shadow-sm">
+                    <a href="services.html#it-infra" class="inline-block px-8 py-3.5 bg-white text-brand-dark border border-gray-200 rounded-full font-semibold hover:border-brand-red hover:text-brand-red shadow-sm transition-all duration-300 hover:-translate-y-1">
                         Explore IT Services <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -508,7 +505,7 @@
               .set("#preloader", { display: "none" });
         });
 
-        // 2. Initialize Lenis Smooth Scroll (Wobble fixed by removing CSS smooth scroll)
+        // 2. Initialize Lenis Smooth Scroll
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -526,7 +523,6 @@
             const jobModalContent = document.getElementById("jobModalContent");
             const closeJobModal = document.getElementById("closeJobModal");
 
-            // Show modal after 3 seconds if not shown in this session
             setTimeout(() => {
                 if(!sessionStorage.getItem('jobModalShown')) {
                     jobModal.classList.remove("opacity-0", "pointer-events-none");
@@ -561,7 +557,7 @@
             menuOpen = !menuOpen;
             
             if (menuOpen) {
-                // Hamburger to X
+                // Hamburger to perfect X (fixed translate math)
                 document.getElementById('line1').style.transform = 'translateY(8px) rotate(45deg)';
                 document.getElementById('line2').style.opacity = '0';
                 document.getElementById('line3').style.transform = 'translateY(-8px) rotate(-45deg)';
@@ -583,7 +579,7 @@
                     y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2
                 });
             } else {
-                // X to Hamburger
+                // X back to Hamburger
                 document.getElementById('line1').style.transform = 'none';
                 document.getElementById('line2').style.opacity = '1';
                 document.getElementById('line3').style.transform = 'none';
