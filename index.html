@@ -50,7 +50,6 @@
     </script>
 
     <style>
-        /* Removed CSS scroll-behavior: smooth to fix Lenis wobble conflict */
         body {
             background-color: #fbfbfd;
             color: #1d1d1f;
@@ -116,7 +115,7 @@
         .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
         ::-webkit-scrollbar { display: none; }
 
-        /* Mobile Menu Setup (Scrollable) */
+        /* Mobile Menu Setup (Solid Background) */
         #mobile-menu {
             clip-path: circle(0% at 100% 0);
             transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1);
@@ -134,22 +133,18 @@
         </div>
     </div>
 
-    <div class="fixed bottom-8 right-8 z-50 transition-transform duration-300 hover:scale-110">
+    <div id="wa-button" class="fixed bottom-8 right-8 z-40 transition-all duration-300 hover:scale-110">
         <a href="https://wa.me/919150911101" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-2xl shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
             <i class="fab fa-whatsapp text-3xl"></i>
             <span class="absolute right-20 bg-brand-dark/90 backdrop-blur-md text-white text-sm font-medium px-4 py-2 rounded-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">Start a conversation</span>
         </a>
     </div>
 
-    <nav class="glass-panel fixed w-full z-40 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
+    <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-center h-20">
-                <!-- <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
+                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
                     <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
-                </a> -->
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group hover-target">
-                    <h1 class="text-3xl font-extrabold text-brand-red tracking-tighter group-hover:text-red-500 transition-colors">Rmax</h1>
-                    <span class="text-[10px] font-bold text-brand-gray uppercase tracking-[0.2em] mt-1.5">ISP</span>
                 </a>
                 
                 <div class="hidden lg:flex space-x-8 items-center font-semibold text-sm text-gray-700">
@@ -202,8 +197,8 @@
         </div>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-white/98 backdrop-blur-2xl z-30 flex flex-col justify-start items-center pt-32 pb-12 overflow-y-auto">
-        <div class="flex flex-col items-center space-y-6 text-2xl font-bold text-brand-dark w-full px-6">
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 overflow-y-auto">
+        <div class="flex flex-col items-center justify-center min-h-full pt-28 pb-12 px-6 space-y-6 text-2xl font-bold text-brand-dark">
             <a href="index.html" class="mobile-link text-brand-red hover:text-brand-red transition-colors opacity-0 translate-y-4">Home</a>
             <a href="about.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">About Us</a>
             <a href="services.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Services</a>
@@ -212,7 +207,7 @@
             <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
             <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
             
-            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-100">
                 <a href="account.html" class="block text-center border-2 border-brand-dark text-brand-dark text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">My Account</a>
                 <a href="contact.html" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-red-600/20 hover:bg-red-700 transition-colors">Enquire Now</a>
             </div>
@@ -382,10 +377,9 @@
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <!-- <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left">
+                    <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left">
                         <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
-                    </a> -->
-                    <a href="index.html" class="text-3xl font-extrabold text-brand-red tracking-tighter mb-4 hover-target inline-block">Rmax</a>
+                    </a>
                     <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
                         <strong>Corporate Office:</strong><br>
                         6th Floor, Rajiv Gandhi Salai,<br>
@@ -397,6 +391,7 @@
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -444,8 +439,8 @@
             </div>
 
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-400 text-sm text-center md:text-left">© 2026 Rmax ISP. All rights reserved.</p>
-                <p class="text-gray-400 text-sm font-light bg-white/5 px-4 py-2 rounded-full mt-2 md:mt-0 shadow-inner text-center">Made with ❤️ by Harsha Varthan E P</p>
+                <p class="text-gray-400 text-sm text-center md:text-left">© 2026 Rmax Broadband Pvt Ltd. All rights reserved.</p>
+                <p class="text-gray-400 text-sm font-medium bg-white/5 px-4 py-2 rounded-full mt-2 md:mt-0 shadow-inner text-center">Made with ❤️ by Harsha Varthan E P</p>
                 <div class="flex space-x-6 mt-2 md:mt-0 text-xs text-gray-500">
                     <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
@@ -469,44 +464,60 @@
               .set("#preloader", { display: "none" });
         });
 
-        // 2. Mobile Menu Toggle Logic with GSAP Animation
+        // 2. Mobile Menu & WhatsApp Toggle Logic with GSAP
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        const waButton = document.getElementById('wa-button');
         let menuOpen = false;
 
         hamburger.addEventListener('click', () => {
             menuOpen = !menuOpen;
             
-            // Hamburger icon animation
             if (menuOpen) {
+                // Hamburger to X
                 document.getElementById('line1').style.transform = 'rotate(45deg) translate(5px, 5px)';
                 document.getElementById('line2').style.opacity = '0';
                 document.getElementById('line3').style.transform = 'rotate(-45deg) translate(5px, -5px)';
                 
+                // Show Menu & Lock Body
                 mobileMenu.classList.add('menu-open');
-                
-                // Set body to hidden to prevent scrolling underneath
                 document.body.style.overflow = 'hidden';
+                
+                // Hide WhatsApp
+                if(waButton) {
+                    waButton.style.opacity = '0';
+                    waButton.style.pointerEvents = 'none';
+                    waButton.style.transform = 'scale(0.8)';
+                }
                 
                 // Stagger animate links in
                 gsap.to(mobileLinks, {
                     y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2
                 });
             } else {
+                // X to Hamburger
                 document.getElementById('line1').style.transform = 'none';
                 document.getElementById('line2').style.opacity = '1';
                 document.getElementById('line3').style.transform = 'none';
                 
+                // Hide Menu & Unlock Body
                 mobileMenu.classList.remove('menu-open');
                 document.body.style.overflow = '';
+                
+                // Show WhatsApp
+                if(waButton) {
+                    waButton.style.opacity = '1';
+                    waButton.style.pointerEvents = 'auto';
+                    waButton.style.transform = 'scale(1)';
+                }
                 
                 // Reset links
                 gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
             }
         });
 
-        // 3. Initialize Lenis Smooth Scroll (Wobble fixed by removing CSS smooth scroll)
+        // 3. Initialize Lenis Smooth Scroll
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
