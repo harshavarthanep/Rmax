@@ -43,6 +43,8 @@
                     animation: {
                         'blob': 'blob 15s infinite alternate',
                         'marquee': 'marquee 25s linear infinite',
+                        'marquee-left': 'marqueeLeft 40s linear infinite',
+                        'marquee-right': 'marqueeRight 50s linear infinite',
                     },
                     keyframes: {
                         blob: {
@@ -52,6 +54,14 @@
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-50%)' }
+                        },
+                        marqueeLeft: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        marqueeRight: {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0%)' }
                         }
                     }
                 }
@@ -113,6 +123,18 @@
 
         #mobile-menu { clip-path: circle(0% at 100% 0); transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1); }
         #mobile-menu.menu-open { clip-path: circle(150% at 100% 0); }
+
+        /* Masks for Marquee Edges */
+        .mask-edges {
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        /* Testimonial Card Hover Animations */
+        .testimonial-card:hover .quote-icon {
+            transform: scale(1.1) rotate(-10deg);
+            color: #dc2626;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-red selection:text-white">
@@ -130,7 +152,6 @@
             <button id="closeInstallModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            
             <div class="text-center mb-6 md:mb-8 mt-6 md:mt-0">
                 <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/20 rounded-full px-4 py-1.5 text-[10px] md:text-xs font-bold text-brand-red mb-3 md:mb-4 uppercase tracking-widest">
                     <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Enhance Your Experience
@@ -138,7 +159,6 @@
                 <h2 class="text-2xl md:text-3xl font-extrabold text-brand-dark">Install <span class="text-brand-red">Rmax App</span></h2>
                 <p class="text-gray-500 mt-2 text-sm md:text-base px-2">Access our premium ISP services quickly and enjoy a smoother, dedicated app experience.</p>
             </div>
-
             <div class="space-y-4">
                 <button id="installAppBtn" class="block w-full text-center bg-brand-red text-white py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-all transform hover:-translate-y-0.5">Install Application Now</button>
                 <button id="ignoreInstallBtn" class="block w-full text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-gray-500 hover:bg-gray-50 hover:border-gray-300 transition-colors">Maybe Later</button>
@@ -151,7 +171,6 @@
             <button id="closeJobModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            
             <div class="text-center mb-6 md:mb-8 mt-6 md:mt-0">
                 <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/20 rounded-full px-4 py-1.5 text-[10px] md:text-xs font-bold text-brand-red mb-3 md:mb-4 uppercase tracking-widest">
                     <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Hiring Now
@@ -159,7 +178,6 @@
                 <h2 class="text-2xl md:text-4xl font-extrabold text-brand-dark">Current <span class="text-brand-red">Openings</span></h2>
                 <p class="text-gray-500 mt-2 text-sm md:text-base px-2">Join our dynamic team and build the future of connectivity.</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div class="border border-gray-200 rounded-2xl p-5 md:p-8 hover:border-brand-red hover:shadow-bento-hover transition-all duration-300 bg-white flex flex-col justify-between">
                     <div>
@@ -169,7 +187,6 @@
                     </div>
                     <a href="careers.html" class="job-link block text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full mt-auto">Apply Now</a>
                 </div>
-
                 <div class="border border-gray-200 rounded-2xl p-5 md:p-8 hover:border-brand-red hover:shadow-bento-hover transition-all duration-300 bg-white flex flex-col justify-between">
                     <div>
                         <div class="text-brand-red text-[10px] md:text-xs font-bold tracking-widest uppercase mb-3 md:mb-4">Field Operations</div>
@@ -189,79 +206,11 @@
         </a>
     </div>
 
-    <!-- <nav class="glass-panel fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
-        <div class="max-w-[1400px] mx-auto px-4 lg:px-12">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-2 cursor-pointer group transition-transform duration-300 hover:scale-105">
-                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
-                </a>
-                
-                <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
-                    <a href="index.html" class="text-brand-red font-bold">Home</a>
-                    <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
-                    
-                    <div class="relative group py-6">
-                        <span class="hover:text-brand-red transition-colors flex items-center gap-1 cursor-pointer">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
-                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
-                            <div class="group/sub relative px-2 py-1">
-                                <a href="services.html#internet" class="flex justify-between items-center px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
-                                    Internet <i class="fa-solid fa-angle-right text-xs opacity-50"></i>
-                                </a>
-                                <div class="sub-dropdown absolute w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
-                                    <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Home</div>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Fibernet Broadband</a>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2 transition-colors">Wireless Broadband</a>
-                                    <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest border-t border-gray-100 pt-3">Business</div>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Enterprise Broadband</a>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Internet Leased Line (ILL)</a>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">IoT Connectivity</a>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Point to Point</a>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Managed WiFi</a>
-                                    <a href="services.html#internet" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">MPLS & VPN</a>
-                                </div>
-                            </div>
-                            <div class="px-2 py-1">
-                                <a href="services.html#it-infra" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
-                            </div>
-                            <div class="px-2 py-1">
-                                <a href="services.html#security" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
-                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
-                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
-                    <a href="help.html" class="hover:text-brand-red transition-colors pr-4 border-r border-gray-300">Get Help</a>
-                    
-                    <a href="contact.html" class="bg-brand-dark text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-brand-red transition-colors duration-300 shadow-md inline-block">Enquire Now</a>
-                </div>
-
-                <div class="flex items-center gap-4">
-                    <div class="hidden lg:flex items-center space-x-4 pl-2">
-                        <a href="account.html" class="text-sm font-bold text-brand-dark hover:text-brand-red transition-colors">My Account</a>
-                        <a href="contact.html" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-all duration-300 transform hover:-translate-y-0.5 inline-block">Enquire Now</a>
-                    </div>
-                    
-                    <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
-                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
-                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
-                        <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav> -->
-
     <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- <a href="index.html" class="flex items-center gap-2 cursor-pointer">
-                    <img src="logo.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-gray-200 rounded p-1" style="min-width: 120px;">
-                </a> -->
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group hover-target">
                     <h1 class="text-3xl font-extrabold text-brand-red tracking-tighter group-hover:text-red-500 transition-colors">Rmax</h1>
-                    <!-- <span class="text-[10px] font-bold text-brand-gray uppercase tracking-[0.2em] mt-1.5">ISP</span> -->
                 </a>
                 
                 <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
@@ -458,7 +407,102 @@
         </div>
     </section>
 
-    <section class="py-32 bg-brand-dark text-white relative overflow-hidden md:rounded-[3rem] mx-0 md:mx-4 lg:mx-8 my-0 md:my-16">
+    <section class="py-24 bg-brand-light overflow-hidden border-y border-gray-200 relative">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 mb-16 text-center gs-reveal">
+            <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Trusted by the Best</span>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2 text-brand-dark">Our Partners & Clients</h2>
+        </div>
+
+        <div class="mask-edges w-full relative">
+            <div class="mb-12 relative flex w-max animate-marquee-right hover:[animation-play-state:paused]">
+                <div id="tech-track-1" class="flex gap-12 items-center px-6"></div>
+                <div id="tech-track-2" class="flex gap-12 items-center px-6"></div>
+            </div>
+
+            <div class="relative flex w-max animate-marquee-left hover:[animation-play-state:paused]">
+                <div id="client-track-1" class="flex gap-12 items-center px-6"></div>
+                <div id="client-track-2" class="flex gap-12 items-center px-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white relative">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/3 gs-reveal">
+                    <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Testimonials</span>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2 mb-6 text-brand-dark">Hear it from our clients.</h2>
+                    <p class="text-lg text-brand-gray font-light leading-relaxed mb-8">
+                        Don't just take our word for it. See how our commitment to uptime, speed, and dedicated service has transformed businesses across diverse sectors.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-brand-dark"><i class="fas fa-star text-brand-red"></i></div>
+                        <div class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-brand-dark"><i class="fas fa-thumbs-up text-brand-red"></i></div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light">
+                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-brand-dark rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">AC</div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">Apollo Clinics</h4>
+                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">Healthcare</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
+                            "Since switching to Rmax, our clinic's network uptime has been flawless. Their 24/7 NOC support and dedicated manager mean we never have to worry about connectivity disrupting patient care."
+                        </p>
+                    </div>
+
+                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light md:translate-y-8">
+                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-brand-red rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-red/30">TI</div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">TechInnovate IT</h4>
+                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">IT & Software</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
+                            "The 1:1 Enterprise Leased Line exceeded our expectations. Our team requires massive bandwidth for cloud operations, and Rmax delivered true, symmetrical speeds without a single drop."
+                        </p>
+                    </div>
+
+                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light">
+                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-brand-dark rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">GM</div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">Global Manufacturing</h4>
+                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">Industrial</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
+                            "Rmax completely overhauled our IT infrastructure and security solutions. The implementation was smooth, professional, and has drastically improved our factory's operational efficiency."
+                        </p>
+                    </div>
+
+                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light md:translate-y-8">
+                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-brand-red rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-red/30">EH</div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">EduHub Academy</h4>
+                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">Education</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
+                            "Their Managed WiFi solution transformed our campus. Thousands of students and faculty connect simultaneously with ironclad security and zero latency. A truly exceptional ISP."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-brand-dark text-white relative overflow-hidden md:rounded-[3rem] mx-0 md:mx-4 lg:mx-8 my-0 md:my-16 mt-16">
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-red/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
@@ -499,9 +543,6 @@
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 lg:col-span-1">
-                    <!-- <a href="index.html" class="flex items-center gap-2 mb-6 cursor-pointer hover:scale-105 transition-transform origin-left">
-                        <img src="logo-white.png" alt="Rmax Logo" class="h-10 w-auto object-contain bg-white/10 rounded p-1" style="min-width: 120px;" title="Replace src with your actual light logo">
-                    </a> -->
                     <a href="index.html" class="text-3xl font-extrabold text-brand-red tracking-tighter mb-4 hover-target inline-block">Rmax</a>
                     <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
                         <strong>Corporate Office:</strong><br>
@@ -532,7 +573,6 @@
                             <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
                             <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">info@rmax.in</a></br>
                             <a href="mailto:support@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">support@rmax.in</a>
-
                         </li>
                     </ul>
                 </div>
@@ -580,6 +620,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <script>
+        // --- Dynamic Logo Generation Script ---
+        // Generates logos for the carousel so you don't have to manually code 87 image tags.
+        // Just ensure your images are in a folder named 'logos' and follow the 'tlogo1.png' and 'clogo1.png' format.
+        document.addEventListener("DOMContentLoaded", () => {
+            const generateLogos = (count, prefix, ext) => {
+                let html = '';
+                for(let i = 1; i <= count; i++) {
+                    // Defaulting to a placeholder if the image fails to load, so the design doesn't break
+                    html += `
+                        <div class="w-40 h-20 flex-shrink-0 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                            <img src="logos/${prefix}${i}.${ext}" alt="${prefix} ${i}" class="max-w-full max-h-full object-contain" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'100\\\' height=\\\'40\\\'><rect width=\\\'100\\\' height=\\\'40\\\' fill=\\\'#e5e7eb\\\'/><text x=\\\'50%\\\' y=\\\'50%\\\' dominant-baseline=\\\'middle\\\' text-anchor=\\\'middle\\\' font-family=\\\'sans-serif\\\' font-size=\\\'12\\\' fill=\\\'#9ca3af\\\'>${prefix}${i}</text></svg>'">
+                        </div>
+                    `;
+                }
+                return html;
+            };
+
+            const techLogosHTML = generateLogos(31, 'tlogo', 'png');
+            const clientLogosHTML = generateLogos(56, 'clogo', 'png');
+
+            // Inject into DOM tracks for infinite seamless scroll
+            document.getElementById('tech-track-1').innerHTML = techLogosHTML;
+            document.getElementById('tech-track-2').innerHTML = techLogosHTML;
+            
+            document.getElementById('client-track-1').innerHTML = clientLogosHTML;
+            document.getElementById('client-track-2').innerHTML = clientLogosHTML;
+        });
+
         // --- 0. Production PWA & Standalone Mode Check ---
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
@@ -620,7 +688,6 @@
                 console.log('PWA: Skipping install modal');
                 return;
             }
-            // Trigger 300ms delay so it perfectly aligns with the fade out of the Job Modal
             setTimeout(() => {
                 console.log('PWA: Showing custom install modal immediately');
                 installModal.classList.remove('opacity-0', 'pointer-events-none');
