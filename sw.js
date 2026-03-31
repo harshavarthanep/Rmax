@@ -14,6 +14,7 @@ const ASSETS_TO_CACHE = [
   'help.html',
   'manifest.json',
   'icon-192.png',
+  .favicon.svg,
   'icon-512.png'
   // Add other critical static assets like CSS/JS if you move away from CDN
 ];
