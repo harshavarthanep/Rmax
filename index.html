@@ -117,10 +117,10 @@
         .marquee-track {
             display: flex;
             width: fit-content;
-            animation: scroll-left 50s linear infinite;
+            animation: scroll-left 100s linear infinite; /* Slowed down */
         }
         .marquee-track.reverse {
-            animation: scroll-right 50s linear infinite;
+            animation: scroll-right 100s linear infinite; /* Slowed down */
         }
         .marquee-track:hover {
             animation-play-state: paused;
@@ -168,13 +168,16 @@
         .testimonial-track {
             display: flex;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            align-items: stretch; /* Ensure all cards stretch to same height */
         }
         .testimonial-card {
-            min-width: 100%;
-            flex-shrink: 0;
+            width: 100%;
+            flex: 0 0 100%;
+            padding: 0 12px;
         }
-        @media (min-width: 768px) { .testimonial-card { min-width: 50%; } }
-        @media (min-width: 1024px) { .testimonial-card { min-width: 33.3333%; } }
+        /* Enforce strict grid-like widths so they don't get cut in half */
+        @media (min-width: 768px) { .testimonial-card { flex: 0 0 50%; max-width: 50%; } }
+        @media (min-width: 1024px) { .testimonial-card { flex: 0 0 33.3333%; max-width: 33.3333%; } }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-red selection:text-white">
@@ -496,7 +499,10 @@
             <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Collaborating with top technology providers and empowering businesses across the nation.</p>
         </div>
 
-        <div class="mb-10 relative">
+        <div class="mb-16 relative">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 text-center gs-reveal">
+                <h3 class="text-xl font-bold text-gray-400 tracking-widest uppercase">Corporate Clients</h3>
+            </div>
             <div class="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-brand-light to-transparent z-10 pointer-events-none"></div>
             <div class="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-brand-light to-transparent z-10 pointer-events-none"></div>
             <div class="overflow-hidden whitespace-nowrap flex group">
@@ -505,7 +511,10 @@
             </div>
         </div>
 
-        <div class="relative">
+        <div class="relative mt-12">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 text-center gs-reveal">
+                <h3 class="text-xl font-bold text-gray-400 tracking-widest uppercase">Technology Partners</h3>
+            </div>
             <div class="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-brand-light to-transparent z-10 pointer-events-none"></div>
             <div class="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-brand-light to-transparent z-10 pointer-events-none"></div>
             <div class="overflow-hidden whitespace-nowrap flex group">
@@ -533,73 +542,77 @@
             <div class="overflow-hidden relative gs-reveal px-2 py-4" id="testimonial-viewport">
                 <div class="testimonial-track gap-0" id="testimonial-track">
                     
-                    <div class="testimonial-card px-3">
-                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                    <div class="testimonial-card">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between relative overflow-hidden">
+                            <i class="fa-solid fa-quote-left absolute -top-4 -right-2 text-[8rem] text-brand-red opacity-5 pointer-events-none"></i>
                             <div>
                                 <div class="flex text-brand-red mb-6 text-sm gap-1">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"Rmax has completely transformed our operational efficiency. Their dedicated Enterprise Leased Line gives us the flawless connectivity we need to scale confidently without any downtime."</p>
+                                <p class="text-brand-dark text-base font-medium leading-relaxed mb-8 relative z-10">"For the past 5 years, I have had the pleasure of working with them and I can confidently say that their service and support are second to none. They consistently exceed my expectations and have proven themselves to be a reliable partner time and time again. If you want to experience the same level of excellence that I have, I highly recommend working with the Rmax team. Trust me, you won't regret it!"</p>
                             </div>
                             <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
-                                <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center text-white font-bold text-lg">A</div>
+                                <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center text-white font-bold text-lg flex-shrink-0">B</div>
                                 <div>
-                                    <h4 class="font-bold text-brand-dark">Arun Kumar</h4>
-                                    <p class="text-sm text-brand-gray">CTO, TechCorp India</p>
+                                    <h4 class="font-bold text-brand-dark">Jayaprakash D</h4>
+                                    <p class="text-xs text-brand-gray">IT Specialist, BYD Auto</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="testimonial-card px-3">
-                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                    <div class="testimonial-card">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between relative overflow-hidden">
+                            <i class="fa-solid fa-quote-left absolute -top-4 -right-2 text-[8rem] text-brand-red opacity-5 pointer-events-none"></i>
                             <div>
                                 <div class="flex text-brand-red mb-6 text-sm gap-1">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"The 24/7 NOC support is simply unmatched. Whenever we have a query regarding our IT infrastructure, their dedicated managers resolve it instantly. A highly reliable partner."</p>
+                                <p class="text-brand-dark text-base font-medium leading-relaxed mb-8 relative z-10">"We've been with them for the past four years and have never looked back. Despite changing secondary vendors four times during this period, we've always relied on Rmax as our primary provider because of their exceptional service and support. Their support team is truly amazing - they're always there to attend to any issues that arise, even in the middle of the night. But, thanks to their excellent network, we rarely encounter any problems at all. We're incredibly satisfied with our decision to partner with Rmax and would like to extend our thanks to the support team."</p>
                             </div>
                             <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
-                                <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white font-bold text-lg">P</div>
+                                <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white font-bold text-lg flex-shrink-0">D</div>
                                 <div>
-                                    <h4 class="font-bold text-brand-dark">Priya Sharma</h4>
-                                    <p class="text-sm text-brand-gray">Operations Head, Global Logistics</p>
+                                    <h4 class="font-bold text-brand-dark">Sivakumar</h4>
+                                    <p class="text-xs text-brand-gray">Sr. Engineer, DAEBU AUTOMOTIVE SEAT INDIA PVT LTD</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="testimonial-card px-3">
-                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                    <div class="testimonial-card">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between relative overflow-hidden">
+                            <i class="fa-solid fa-quote-left absolute -top-4 -right-2 text-[8rem] text-brand-red opacity-5 pointer-events-none"></i>
                             <div>
                                 <div class="flex text-brand-red mb-6 text-sm gap-1">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"Since upgrading to Rmax's Managed WiFi and Security solutions, our campus network has never been safer or faster. Their hardware integration team is incredibly professional."</p>
+                                <p class="text-brand-dark text-base font-medium leading-relaxed mb-8 relative z-10">"I am a very satisfied customer and would give them a 5-star rating without hesitation. Their internet connection is fast and reliable, and their support team is always available to assist with any questions or concerns. Give them a try for all your internet needs!"</p>
                             </div>
                             <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
-                                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">R</div>
+                                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">S</div>
                                 <div>
-                                    <h4 class="font-bold text-brand-dark">Rahul Verma</h4>
-                                    <p class="text-sm text-brand-gray">IT Director, EduSmart Institutions</p>
+                                    <h4 class="font-bold text-brand-dark">ILAIYARAJA V</h4>
+                                    <p class="text-xs text-brand-gray">Sr.Engineer, Sangsin Brake</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="testimonial-card px-3">
-                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                    <div class="testimonial-card">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between relative overflow-hidden">
+                            <i class="fa-solid fa-quote-left absolute -top-4 -right-2 text-[8rem] text-brand-red opacity-5 pointer-events-none"></i>
                             <div>
                                 <div class="flex text-brand-red mb-6 text-sm gap-1">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"Finding a service provider that actually delivers 99.97% uptime felt impossible until we partnered with Rmax. It's been an absolute game-changer for our remote workforce."</p>
+                                <p class="text-brand-dark text-base font-medium leading-relaxed mb-8 relative z-10">"Your service is a reflection of who you are as a company. Choose Rmax for exceptional service and support that truly shows they care about their customers."</p>
                             </div>
                             <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
-                                <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-lg">S</div>
+                                <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">D</div>
                                 <div>
-                                    <h4 class="font-bold text-brand-dark">Sarah Lin</h4>
-                                    <p class="text-sm text-brand-gray">VP Engineering, CloudWorks</p>
+                                    <h4 class="font-bold text-brand-dark">Kaviyarasan</h4>
+                                    <p class="text-xs text-brand-gray">IT-Administrator, DAEWON India Autoparts Pvt Ltd</p>
                                 </div>
                             </div>
                         </div>
