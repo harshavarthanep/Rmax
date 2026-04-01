@@ -810,11 +810,6 @@
             const jobModalContent = document.getElementById("jobModalContent");
             const closeJobModal = document.getElementById("closeJobModal");
 
-            if (isStandalone) {
-                onJobModalSequenceDone();
-                return;
-            }
-
             setTimeout(() => {
                 jobModal.classList.remove("opacity-0", "pointer-events-none");
                 jobModalContent.classList.remove("scale-95");
