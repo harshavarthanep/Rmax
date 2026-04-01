@@ -43,8 +43,6 @@
                     animation: {
                         'blob': 'blob 15s infinite alternate',
                         'marquee': 'marquee 25s linear infinite',
-                        'marquee-left': 'marqueeLeft 40s linear infinite',
-                        'marquee-right': 'marqueeRight 50s linear infinite',
                     },
                     keyframes: {
                         blob: {
@@ -54,14 +52,6 @@
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-50%)' }
-                        },
-                        marqueeLeft: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-50%)' }
-                        },
-                        marqueeRight: {
-                            '0%': { transform: 'translateX(-50%)' },
-                            '100%': { transform: 'translateX(0%)' }
                         }
                     }
                 }
@@ -100,7 +90,6 @@
         .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
 
-
         /* Bento Box Styles */
         .glass-panel { 
             background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(0, 0, 0, 0.03); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -124,17 +113,68 @@
         #mobile-menu { clip-path: circle(0% at 100% 0); transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1); }
         #mobile-menu.menu-open { clip-path: circle(150% at 100% 0); }
 
-        /* Masks for Marquee Edges */
-        .mask-edges {
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        /* --- NEW: Dynamic Marquee Logo CSS --- */
+        .marquee-track {
+            display: flex;
+            width: fit-content;
+            animation: scroll-left 50s linear infinite;
+        }
+        .marquee-track.reverse {
+            animation: scroll-right 50s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .logo-box {
+            width: 180px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            margin: 0 16px;
+            flex-shrink: 0;
+            padding: 1rem;
+        }
+        .logo-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+        .logo-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s ease;
+        }
+        .logo-box:hover img {
+            filter: grayscale(0%) opacity(1);
         }
 
-        /* Testimonial Card Hover Animations */
-        .testimonial-card:hover .quote-icon {
-            transform: scale(1.1) rotate(-10deg);
-            color: #dc2626;
+        /* --- NEW: Testimonial Carousel CSS --- */
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
+        .testimonial-card {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) { .testimonial-card { min-width: 50%; } }
+        @media (min-width: 1024px) { .testimonial-card { min-width: 33.3333%; } }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-red selection:text-white">
@@ -152,6 +192,7 @@
             <button id="closeInstallModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
+            
             <div class="text-center mb-6 md:mb-8 mt-6 md:mt-0">
                 <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/20 rounded-full px-4 py-1.5 text-[10px] md:text-xs font-bold text-brand-red mb-3 md:mb-4 uppercase tracking-widest">
                     <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Enhance Your Experience
@@ -159,6 +200,7 @@
                 <h2 class="text-2xl md:text-3xl font-extrabold text-brand-dark">Install <span class="text-brand-red">Rmax App</span></h2>
                 <p class="text-gray-500 mt-2 text-sm md:text-base px-2">Access our premium ISP services quickly and enjoy a smoother, dedicated app experience.</p>
             </div>
+
             <div class="space-y-4">
                 <button id="installAppBtn" class="block w-full text-center bg-brand-red text-white py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg shadow-lg shadow-brand-red/20 hover:bg-brand-redhover transition-all transform hover:-translate-y-0.5">Install Application Now</button>
                 <button id="ignoreInstallBtn" class="block w-full text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-gray-500 hover:bg-gray-50 hover:border-gray-300 transition-colors">Maybe Later</button>
@@ -171,6 +213,7 @@
             <button id="closeJobModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white transition-colors z-10 focus:outline-none">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
+            
             <div class="text-center mb-6 md:mb-8 mt-6 md:mt-0">
                 <div class="inline-flex items-center gap-2 bg-brand-red/10 border border-brand-red/20 rounded-full px-4 py-1.5 text-[10px] md:text-xs font-bold text-brand-red mb-3 md:mb-4 uppercase tracking-widest">
                     <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> Hiring Now
@@ -178,6 +221,7 @@
                 <h2 class="text-2xl md:text-4xl font-extrabold text-brand-dark">Current <span class="text-brand-red">Openings</span></h2>
                 <p class="text-gray-500 mt-2 text-sm md:text-base px-2">Join our dynamic team and build the future of connectivity.</p>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div class="border border-gray-200 rounded-2xl p-5 md:p-8 hover:border-brand-red hover:shadow-bento-hover transition-all duration-300 bg-white flex flex-col justify-between">
                     <div>
@@ -187,6 +231,7 @@
                     </div>
                     <a href="careers.html" class="job-link block text-center border-2 border-gray-200 py-2.5 md:py-3 rounded-xl font-bold text-sm md:text-base text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-colors w-full mt-auto">Apply Now</a>
                 </div>
+
                 <div class="border border-gray-200 rounded-2xl p-5 md:p-8 hover:border-brand-red hover:shadow-bento-hover transition-all duration-300 bg-white flex flex-col justify-between">
                     <div>
                         <div class="text-brand-red text-[10px] md:text-xs font-bold tracking-widest uppercase mb-3 md:mb-4">Field Operations</div>
@@ -407,102 +452,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-brand-light overflow-hidden border-y border-gray-200 relative">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 mb-16 text-center gs-reveal">
-            <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Trusted by the Best</span>
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2 text-brand-dark">Our Partners & Clients</h2>
-        </div>
-
-        <div class="mask-edges w-full relative">
-            <div class="mb-12 relative flex w-max animate-marquee-right hover:[animation-play-state:paused]">
-                <div id="tech-track-1" class="flex gap-12 items-center px-6"></div>
-                <div id="tech-track-2" class="flex gap-12 items-center px-6"></div>
-            </div>
-
-            <div class="relative flex w-max animate-marquee-left hover:[animation-play-state:paused]">
-                <div id="client-track-1" class="flex gap-12 items-center px-6"></div>
-                <div id="client-track-2" class="flex gap-12 items-center px-6"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-white relative">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="lg:w-1/3 gs-reveal">
-                    <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Testimonials</span>
-                    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2 mb-6 text-brand-dark">Hear it from our clients.</h2>
-                    <p class="text-lg text-brand-gray font-light leading-relaxed mb-8">
-                        Don't just take our word for it. See how our commitment to uptime, speed, and dedicated service has transformed businesses across diverse sectors.
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-brand-dark"><i class="fas fa-star text-brand-red"></i></div>
-                        <div class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-brand-dark"><i class="fas fa-thumbs-up text-brand-red"></i></div>
-                    </div>
-                </div>
-
-                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light">
-                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 bg-brand-dark rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">AC</div>
-                            <div>
-                                <h4 class="font-bold text-brand-dark text-lg">Apollo Clinics</h4>
-                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">Healthcare</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
-                            "Since switching to Rmax, our clinic's network uptime has been flawless. Their 24/7 NOC support and dedicated manager mean we never have to worry about connectivity disrupting patient care."
-                        </p>
-                    </div>
-
-                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light md:translate-y-8">
-                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 bg-brand-red rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-red/30">TI</div>
-                            <div>
-                                <h4 class="font-bold text-brand-dark text-lg">TechInnovate IT</h4>
-                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">IT & Software</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
-                            "The 1:1 Enterprise Leased Line exceeded our expectations. Our team requires massive bandwidth for cloud operations, and Rmax delivered true, symmetrical speeds without a single drop."
-                        </p>
-                    </div>
-
-                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light">
-                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 bg-brand-dark rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">GM</div>
-                            <div>
-                                <h4 class="font-bold text-brand-dark text-lg">Global Manufacturing</h4>
-                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">Industrial</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
-                            "Rmax completely overhauled our IT infrastructure and security solutions. The implementation was smooth, professional, and has drastically improved our factory's operational efficiency."
-                        </p>
-                    </div>
-
-                    <div class="glass-panel testimonial-card p-8 rounded-3xl relative gs-reveal bg-brand-light md:translate-y-8">
-                        <i class="fas fa-quote-right quote-icon text-gray-200 text-5xl absolute top-6 right-6 transition-all duration-300"></i>
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 bg-brand-red rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-red/30">EH</div>
-                            <div>
-                                <h4 class="font-bold text-brand-dark text-lg">EduHub Academy</h4>
-                                <p class="text-xs font-semibold tracking-wider uppercase text-brand-red">Education</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-[15px] leading-relaxed relative z-10">
-                            "Their Managed WiFi solution transformed our campus. Thousands of students and faculty connect simultaneously with ironclad security and zero latency. A truly exceptional ISP."
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-brand-dark text-white relative overflow-hidden md:rounded-[3rem] mx-0 md:mx-4 lg:mx-8 my-0 md:my-16 mt-16">
+    <section class="py-32 bg-brand-dark text-white relative overflow-hidden md:rounded-[3rem] mx-0 md:mx-4 lg:mx-8 my-0 md:my-16">
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-red/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"></div>
 
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
@@ -534,6 +484,127 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-brand-red">99.97% Uptime</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Experience unparallelled technical and operational reliability, ensuring minimal downtime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-light relative overflow-hidden border-t border-gray-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 mb-16 text-center gs-reveal">
+            <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Our Network</span>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2 text-brand-dark">Trusted by Industry Leaders</h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Collaborating with top technology providers and empowering businesses across the nation.</p>
+        </div>
+
+        <div class="mb-10 relative">
+            <div class="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-brand-light to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-brand-light to-transparent z-10 pointer-events-none"></div>
+            <div class="overflow-hidden whitespace-nowrap flex group">
+                <div class="marquee-track" id="client-logos-track">
+                    </div>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-brand-light to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-brand-light to-transparent z-10 pointer-events-none"></div>
+            <div class="overflow-hidden whitespace-nowrap flex group">
+                <div class="marquee-track reverse" id="partner-logos-track">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="absolute top-1/2 right-0 w-[400px] h-[400px] bg-red-100 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gs-reveal">
+                <div class="max-w-2xl">
+                    <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Client Stories</span>
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mt-2 text-brand-dark">Hear what our clients say.</h2>
+                </div>
+                <div class="flex gap-4 mt-8 md:mt-0">
+                    <button id="testi-prev" class="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center text-brand-dark hover:border-brand-red hover:text-brand-red hover:bg-red-50 transition-all shadow-sm"><i class="fas fa-arrow-left"></i></button>
+                    <button id="testi-next" class="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center text-brand-dark hover:border-brand-red hover:text-brand-red hover:bg-red-50 transition-all shadow-sm"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="overflow-hidden relative gs-reveal px-2 py-4" id="testimonial-viewport">
+                <div class="testimonial-track gap-0" id="testimonial-track">
+                    
+                    <div class="testimonial-card px-3">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                            <div>
+                                <div class="flex text-brand-red mb-6 text-sm gap-1">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"Rmax has completely transformed our operational efficiency. Their dedicated Enterprise Leased Line gives us the flawless connectivity we need to scale confidently without any downtime."</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center text-white font-bold text-lg">A</div>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark">Arun Kumar</h4>
+                                    <p class="text-sm text-brand-gray">CTO, TechCorp India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card px-3">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                            <div>
+                                <div class="flex text-brand-red mb-6 text-sm gap-1">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"The 24/7 NOC support is simply unmatched. Whenever we have a query regarding our IT infrastructure, their dedicated managers resolve it instantly. A highly reliable partner."</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white font-bold text-lg">P</div>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark">Priya Sharma</h4>
+                                    <p class="text-sm text-brand-gray">Operations Head, Global Logistics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card px-3">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                            <div>
+                                <div class="flex text-brand-red mb-6 text-sm gap-1">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"Since upgrading to Rmax's Managed WiFi and Security solutions, our campus network has never been safer or faster. Their hardware integration team is incredibly professional."</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">R</div>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark">Rahul Verma</h4>
+                                    <p class="text-sm text-brand-gray">IT Director, EduSmart Institutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card px-3">
+                        <div class="glass-panel p-8 md:p-10 rounded-[2rem] h-full flex flex-col justify-between">
+                            <div>
+                                <div class="flex text-brand-red mb-6 text-sm gap-1">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-brand-dark text-lg font-medium leading-relaxed mb-8">"Finding a service provider that actually delivers 99.97% uptime felt impossible until we partnered with Rmax. It's been an absolute game-changer for our remote workforce."</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-lg">S</div>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark">Sarah Lin</h4>
+                                    <p class="text-sm text-brand-gray">VP Engineering, CloudWorks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -620,34 +691,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <script>
-        // --- Dynamic Logo Generation Script ---
-        // Generates logos for the carousel so you don't have to manually code 87 image tags.
-        // Just ensure your images are in a folder named 'logos' and follow the 'tlogo1.png' and 'clogo1.png' format.
-        document.addEventListener("DOMContentLoaded", () => {
-            const generateLogos = (count, prefix, ext) => {
-                let html = '';
-                for(let i = 1; i <= count; i++) {
-                    // Defaulting to a placeholder if the image fails to load, so the design doesn't break
-                    html += `
-                        <div class="w-40 h-20 flex-shrink-0 flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                            <img src="logos/${prefix}${i}.${ext}" alt="${prefix} ${i}" class="max-w-full max-h-full object-contain" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'100\\\' height=\\\'40\\\'><rect width=\\\'100\\\' height=\\\'40\\\' fill=\\\'#e5e7eb\\\'/><text x=\\\'50%\\\' y=\\\'50%\\\' dominant-baseline=\\\'middle\\\' text-anchor=\\\'middle\\\' font-family=\\\'sans-serif\\\' font-size=\\\'12\\\' fill=\\\'#9ca3af\\\'>${prefix}${i}</text></svg>'">
-                        </div>
-                    `;
-                }
-                return html;
-            };
-
-            const techLogosHTML = generateLogos(31, 'tlogo', 'png');
-            const clientLogosHTML = generateLogos(56, 'clogo', 'png');
-
-            // Inject into DOM tracks for infinite seamless scroll
-            document.getElementById('tech-track-1').innerHTML = techLogosHTML;
-            document.getElementById('tech-track-2').innerHTML = techLogosHTML;
-            
-            document.getElementById('client-track-1').innerHTML = clientLogosHTML;
-            document.getElementById('client-track-2').innerHTML = clientLogosHTML;
-        });
-
         // --- 0. Production PWA & Standalone Mode Check ---
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
@@ -684,12 +727,8 @@
         }
 
         function showInstallModal() {
-            if (isStandalone || !deferredPrompt) {
-                console.log('PWA: Skipping install modal');
-                return;
-            }
+            if (isStandalone || !deferredPrompt) return;
             setTimeout(() => {
-                console.log('PWA: Showing custom install modal immediately');
                 installModal.classList.remove('opacity-0', 'pointer-events-none');
                 installModalContent.classList.remove('scale-95');
                 installModalContent.classList.add('scale-100');
@@ -721,7 +760,6 @@
         function onJobModalSequenceDone() {
             if (jobModalSequenceComplete) return; 
             jobModalSequenceComplete = true;
-            console.log('Sequence: Job modal sequence complete');
             
             if (!isStandalone && deferredPrompt) {
                 showInstallModal();
@@ -738,7 +776,7 @@
               .set("#preloader", { display: "none" });
         });
 
-        // --- 4. Initialize Standard Lenis Smooth Scroll (Wobble fixed) ---
+        // --- 4. Initialize Standard Lenis Smooth Scroll ---
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -764,7 +802,6 @@
                 return;
             }
 
-            // Always show modal after 3 seconds 
             setTimeout(() => {
                 jobModal.classList.remove("opacity-0", "pointer-events-none");
                 jobModalContent.classList.remove("scale-95");
@@ -865,6 +902,98 @@
             } else {
                 nav.style.background = 'rgba(255, 255, 255, 0.6)';
                 nav.style.borderBottom = '1px solid rgba(255,255,255,0.8)';
+            }
+        });
+
+        // ==============================================
+        // --- 11. DYNAMIC LOGO INJECTOR (NEW) ---
+        // ==============================================
+        document.addEventListener("DOMContentLoaded", () => {
+            const clientTrack = document.getElementById("client-logos-track");
+            const partnerTrack = document.getElementById("partner-logos-track");
+
+            // Generates HTML safely and gracefully handles missing images
+            const generateLogosHTML = (count, prefix, typeName) => {
+                let html = '';
+                for (let i = 1; i <= count; i++) {
+                    const fallbackSvg = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='50'><rect width='100' height='50' fill='%23f3f4f6' rx='8'/><text x='50%25' y='50%25' font-family='sans-serif' font-size='12' font-weight='bold' text-anchor='middle' dominant-baseline='middle' fill='%239ca3af'>${typeName} ${i}</text></svg>`;
+                    
+                    html += `
+                        <div class="logo-box">
+                            <img src="${prefix}${i}.png" alt="${typeName} ${i}" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+                        </div>`;
+                }
+                return html;
+            };
+
+            if (clientTrack) {
+                // Generate 56 corporate client logos and duplicate them to ensure an infinite seamless scroll
+                const clientLogos = generateLogosHTML(56, 'clogo', 'Client');
+                clientTrack.innerHTML = clientLogos + clientLogos; 
+            }
+
+            if (partnerTrack) {
+                // Generate 31 technology partner logos and duplicate
+                const partnerLogos = generateLogosHTML(31, 'plogo', 'Partner');
+                partnerTrack.innerHTML = partnerLogos + partnerLogos + partnerLogos; // Added an extra for standard width padding
+            }
+        });
+
+        // ==============================================
+        // --- 12. TESTIMONIAL CAROUSEL LOGIC (NEW) ---
+        // ==============================================
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById('testimonial-track');
+            const prevBtn = document.getElementById('testi-prev');
+            const nextBtn = document.getElementById('testi-next');
+            
+            if (track && prevBtn && nextBtn) {
+                let currentIndex = 0;
+                const cards = track.querySelectorAll('.testimonial-card');
+                const totalCards = cards.length;
+                let cardsPerView = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+
+                window.addEventListener('resize', () => {
+                    cardsPerView = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+                    updateSlider();
+                });
+
+                const updateSlider = () => {
+                    const maxIndex = Math.max(0, totalCards - cardsPerView);
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                    if (currentIndex < 0) currentIndex = 0;
+
+                    const offset = currentIndex * (100 / cardsPerView);
+                    track.style.transform = `translateX(-${offset}%)`;
+                };
+
+                nextBtn.addEventListener('click', () => {
+                    const maxIndex = totalCards - cardsPerView;
+                    if (currentIndex < maxIndex) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0; // Seamless loop back
+                    }
+                    updateSlider();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                    } else {
+                        currentIndex = totalCards - cardsPerView; 
+                    }
+                    updateSlider();
+                });
+
+                // Smooth Autoplay
+                let autoPlay = setInterval(() => nextBtn.click(), 6000);
+                
+                // Pause on Hover
+                track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
+                track.parentElement.addEventListener('mouseleave', () => {
+                    autoPlay = setInterval(() => nextBtn.click(), 6000);
+                });
             }
         });
     </script>
