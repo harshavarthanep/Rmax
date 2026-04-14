@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Leased Line (ILL) | Rmax ISP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], },
+                    colors: {
+                        brand: {
+                            white: '#FFFFFF', bg: '#F8F9FA', black: '#0A0A0A', red: '#E50914', redhover: '#CC0812',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'red-glow': '0 10px 30px -10px rgba(229,9,20,0.3)',
+                        'dropdown': '0 10px 40px -10px rgba(0,0,0,0.1)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F8F9FA; color: #0A0A0A; overflow-x: hidden; }
+        .reveal-up { animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .bento-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.04); border-radius: 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); border-color: rgba(229,9,20,0.2); }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+        .dropdown-menu { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateY(10px); }
+        .group:hover .dropdown-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+        .sub-dropdown { visibility: hidden; opacity: 0; transition: all 0.3s ease; transform: translateX(10px); left: 100%; top: 0; }
+        .group\/sub:hover .sub-dropdown { visibility: visible; opacity: 1; transform: translateX(0); }
+
+        #mobile-menu { clip-path: circle(0% at 100% 0); transition: clip-path 0.6s cubic-bezier(0.85, 0, 0.15, 1); }
+        #mobile-menu.menu-open { clip-path: circle(150% at 100% 0); }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-red selection:text-white">
+
+    <div id="wa-button" class="fixed bottom-8 right-8 z-40 transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+        <a href="https://wa.me/917200228880" target="_blank" class="bg-[#25D366] text-white w-16 h-16 rounded-full shadow-lg shadow-[#25D366]/30 flex items-center justify-center group border border-white/20">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <span class="absolute right-20 bg-brand-black/90 backdrop-blur-md text-white text-sm font-medium px-4 py-2 rounded-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">Start a conversation</span>
+        </a>
+    </div>
+
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-500 border-b-0 !rounded-none !border-x-0 !border-t-0" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer group hover-target">
+                    <h1 class="text-4xl font-extrabold text-brand-red tracking-tighter group-hover:text-red-500 transition-colors">Rmax</h1>
+                </a>
+                
+                <div class="hidden lg:flex space-x-6 items-center font-semibold text-sm text-gray-600">
+                    <a href="index.html" class="hover:text-brand-red transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-brand-red transition-colors">About Us</a>
+                    
+                    <div class="relative group py-6">
+                        <span class="text-brand-red transition-colors flex items-center gap-1 cursor-pointer font-bold">Services <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i></span>
+                        <div class="dropdown-menu absolute top-[70px] -left-4 w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                            <div class="group/sub relative px-2 py-1">
+                                <a href="services.html#internet" class="flex justify-between items-center px-4 py-3 text-brand-black hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">
+                                    Internet <i class="fa-solid fa-angle-right text-xs opacity-50"></i>
+                                </a>
+                                <div class="sub-dropdown absolute w-72 bg-white/95 backdrop-blur-xl border border-gray-100 shadow-dropdown rounded-2xl py-2 z-50">
+                                    <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Home</div>
+                                    <a href="fibernet-broadband.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Fibernet Broadband</a>
+                                    <a href="wireless-broadband.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg mb-2 transition-colors">Wireless Broadband</a>
+                                    <div class="px-4 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest border-t border-gray-100 pt-3">Business</div>
+                                    <a href="enterprise-broadband.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Enterprise Broadband</a>
+                                    <a href="leased-line.html" class="block px-4 py-2.5 text-sm text-brand-red bg-brand-red/5 mx-2 rounded-lg transition-colors font-bold">Internet Leased Line (ILL)</a>
+                                    <a href="iot-connectivity.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">IoT Connectivity</a>
+                                    <a href="point-to-point.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Point to Point</a>
+                                    <a href="managed-wifi.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">Managed WiFi</a>
+                                    <a href="mpls-vpn.html" class="block px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-brand-bg mx-2 rounded-lg transition-colors">MPLS & VPN</a>
+                                </div>
+                            </div>
+                            <div class="px-2 py-1">
+                                <a href="it-infrastructure.html" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">IT Infrastructure</a>
+                            </div>
+                            <div class="px-2 py-1">
+                                <a href="security-solutions.html" class="block px-4 py-3 text-brand-dark hover:bg-brand-bg hover:text-brand-red rounded-xl transition-colors">Safety & Security Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="plans.html" class="hover:text-brand-red transition-colors">Plans</a>
+                    <a href="partners.html" class="hover:text-brand-red transition-colors">Partners</a>
+                    <a href="careers.html" class="hover:text-brand-red transition-colors">Careers</a>
+                    <a href="help.html" class="hover:text-brand-red transition-colors">Get Help</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="contact.html" class="text-sm font-bold text-brand-dark hover:text-brand-red transition-colors">Get in touch</a>
+                        <a href="https://myaccount.rmaxisp.com/login" class="bg-brand-red text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-red-glow hover:bg-brand-redhover transition-colors">My Account</a>
+                    </div>
+                    
+                    <button id="hamburger" class="lg:hidden relative z-50 p-2 text-brand-dark focus:outline-none">
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-transform duration-300 origin-center" id="line1"></div>
+                        <div class="w-6 h-0.5 bg-current mb-1.5 transition-opacity duration-300" id="line2"></div>
+                        <div class="w-6 h-0.5 bg-current transition-transform duration-300 origin-center" id="line3"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 overflow-y-auto">
+        <div class="flex flex-col items-center justify-center min-h-full pt-28 pb-12 px-6 space-y-6 text-2xl font-bold text-brand-black">
+            <a href="index.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Home</a>
+            <a href="about.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">About Us</a>
+            <a href="services.html" class="mobile-link text-brand-red hover:text-brand-red transition-colors opacity-0 translate-y-4">Services</a>
+            <a href="plans.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Plans</a>
+            <a href="partners.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Partners</a>
+            <a href="careers.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Careers</a>
+            <a href="help.html" class="mobile-link hover:text-brand-red transition-colors opacity-0 translate-y-4">Get Help</a>
+            
+            <div class="pt-8 mt-4 w-full max-w-sm mobile-link opacity-0 translate-y-4 border-t border-gray-200">
+                <a href="contact.html" class="block text-center border-2 border-brand-dark text-brand-dark text-lg py-3 rounded-full mb-4 hover:bg-gray-50 transition-colors">Get in touch</a>
+                <a href="https://myaccount.rmaxisp.com/login" class="block text-center bg-brand-red text-white text-lg py-3 rounded-full shadow-lg shadow-red-600/20 hover:bg-red-700 transition-colors">My Account</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-24 border-b border-gray-100 bg-white overflow-hidden">
+        <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-red-50 rounded-full blur-[100px] -z-10 pointer-events-none transform -translate-y-1/2"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-left">
+                    <a href="services.html" class="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-brand-red transition-colors mb-6 reveal-up">
+                        <i class="fa-solid fa-arrow-left-long"></i> Back to Services
+                    </a>
+                    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-brand-black reveal-up leading-tight">
+                        Dedicated <br><span class="text-brand-red">Internet Leased Line</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-500 leading-relaxed reveal-up delay-100 mb-8">
+                        Experience uncompromising performance with our premium 1:1 unshared, symmetrical internet connection. Designed for corporations and institutions that require mission-critical stability and extreme throughput.
+                    </p>
+                    <div class="flex flex-wrap gap-4 reveal-up delay-200">
+                        <a href="contact.html" class="bg-brand-red text-white px-8 py-3.5 rounded-full font-bold shadow-red-glow hover:bg-brand-redhover transition-transform hover:-translate-y-1">Request a Quote</a>
+                        <a href="tel:+919150911101" class="border-2 border-gray-200 text-brand-black px-8 py-3.5 rounded-full font-bold hover:border-brand-black transition-colors">Talk to Sales</a>
+                    </div>
+                </div>
+                <div class="hidden lg:flex justify-end reveal-up delay-200">
+                    <div class="w-full max-w-md bg-brand-bg rounded-[2rem] p-8 border border-gray-100 relative">
+                        <div class="absolute -left-6 top-10 w-16 h-16 bg-brand-black rounded-2xl flex items-center justify-center text-white text-2xl shadow-xl shadow-black/10 animate-pulse-slow"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3 class="text-2xl font-bold text-brand-black mb-6 pl-8">The Leased Line Advantage</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-gray-600"><i class="fa-solid fa-circle-check text-brand-red"></i> 1:1 Symmetrical Bandwidth</li>
+                            <li class="flex items-center gap-3 text-gray-600"><i class="fa-solid fa-circle-check text-brand-red"></i> Zero Contention Ratio</li>
+                            <li class="flex items-center gap-3 text-gray-600"><i class="fa-solid fa-circle-check text-brand-red"></i> 99.9% Uptime Guarantee SLA</li>
+                            <li class="flex items-center gap-3 text-gray-600"><i class="fa-solid fa-circle-check text-brand-red"></i> Included Static Public IPs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-bg relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-black mb-4">Unshared, Unstoppable Connectivity</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Unlike standard broadband, an Internet Leased Line provides a private, dedicated pipeline directly to our core network backbone.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bento-card p-8 group">
+                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-black mb-3">1:1 Symmetrical Speeds</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Your upload speed perfectly matches your download speed. Essential for large data backups, cloud computing, and heavy outbound traffic.</p>
+                </div>
+                
+                <div class="bento-card p-8 group">
+                    <div class="w-14 h-14 bg-gray-100 text-brand-black rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-black mb-3">Ironclad SLAs</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Backed by strict Service Level Agreements guaranteeing up to 99.9% uptime, incredibly low latency, and minimized packet loss.</p>
+                </div>
+
+                <div class="bento-card p-8 group">
+                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-users-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-black mb-3">Zero Contention</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">No shared bandwidth. During peak hours, your speeds will never drop because your pipeline is exclusively dedicated to your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-black text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[80px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Built for <br><span class="text-brand-red">Mission-Critical Operations.</span></h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        For organizations where downtime directly translates to lost revenue, Rmax ILL provides the foundation for ultimate stability. We implement robust optical fiber rings with self-healing architectures to ensure continuous connectivity.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Every Leased Line connection includes enterprise-grade routing hardware and a pool of Static IPv4/IPv6 addresses, making it perfect for hosting localized servers or managing secure VPN access.
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="text-center">
+                            <h4 class="text-3xl font-extrabold text-white">1:1</h4>
+                            <p class="text-xs text-brand-red font-bold uppercase tracking-widest mt-1">Contention</p>
+                        </div>
+                        <div class="w-px h-12 bg-white/20"></div>
+                        <div class="text-center">
+                            <h4 class="text-3xl font-extrabold text-white"><i class="fa-solid fa-infinity"></i></h4>
+                            <p class="text-xs text-brand-red font-bold uppercase tracking-widest mt-1">Data Limits</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/5 border border-white/10 p-8 rounded-[2rem] backdrop-blur-md">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-server text-brand-red"></i> Enterprise Infrastructure</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5">
+                            <i class="fa-solid fa-globe text-brand-red mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm mb-1">Static Public IPs Included</h4>
+                                <p class="text-xs text-gray-400">Host web servers, mail servers, and configure secure remote desktop/VPN access directly to your office network.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5">
+                            <i class="fa-solid fa-user-shield text-brand-red mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-sm mb-1">Proactive NOC Monitoring</h4>
+                                <p class="text-xs text-gray-400">Our Network Operations Center monitors your connection 24/7/365, often resolving potential issues before you even notice them.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-black text-white pt-20 pb-8 border-t-[8px] border-brand-red">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 lg:col-span-1">
+                    <a href="index.html" class="text-4xl font-extrabold text-brand-red tracking-tighter mb-4 hover-target inline-block">Rmax</a>
+                    <address class="text-gray-400 not-italic text-sm leading-relaxed mb-6">
+                        <strong>Corporate Office:</strong><br>
+                        6th Floor, Rajiv Gandhi Salai,<br>
+                        Srinivasa Nagar, Kandanchavadi,<br>
+                        Perungudi, Chennai,<br>
+                        Tamil Nadu - 600096
+                    </address>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Get in Touch</h4>
+                    <ul class="space-y-6 text-sm">
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Business Enquiry</p>
+                            <a href="tel:+919150911101" class="text-xl font-bold hover:text-brand-red transition-colors">+91 915 091 1101</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">24/7 Customer Support</p>
+                            <a href="tel:+917200228880" class="text-xl font-bold hover:text-brand-red transition-colors">+91 720 022 8880</a>
+                        </li>
+                        <li>
+                            <p class="text-gray-500 uppercase text-xs font-bold tracking-wider mb-1">Email Us</p>
+                            <a href="mailto:info@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">info@rmax.in</a></br>
+                            <a href="mailto:support@rmax.in" class="text-base font-semibold hover:text-brand-red transition-colors">support@rmax.in</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="plans.html" class="hover:text-white transition-colors">Plans</a></li>
+                        <li><a href="partners.html" class="hover:text-white transition-colors">Franchise & Partners</a></li>
+                        <li><a href="careers.html" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="help.html" class="hover:text-white transition-colors">Get Help / Speed Test</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-white/10 pb-2">Location</h4>
+                    <div class="w-full h-48 bg-gray-800 rounded-xl overflow-hidden border border-white/10 relative">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.828692737526!2d80.2442!3d12.9699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzExLjYiTiA4MMKwMTQnMzkuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: grayscale(1) opacity(0.8);" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p class="text-center md:text-left">© 2026 Rmax ISP. All rights reserved.</p>
+                <div class="flex space-x-6 mt-2 md:mt-0">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
+                    <a href="disclaimer.html" class="hover:text-white transition-colors">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const waButton = document.getElementById('wa-button');
+        let menuOpen = false;
+
+        hamburger.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
+                document.getElementById('line1').style.transform = 'translateY(8px) rotate(45deg)';
+                document.getElementById('line2').style.opacity = '0';
+                document.getElementById('line3').style.transform = 'translateY(-8px) rotate(-45deg)';
+                
+                mobileMenu.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+                
+                if(waButton) {
+                    waButton.style.opacity = '0';
+                    waButton.style.pointerEvents = 'none';
+                    waButton.style.transform = 'scale(0.8)';
+                }
+                
+                gsap.to(mobileLinks, { y: 0, opacity: 1, stagger: 0.05, duration: 0.5, ease: 'power3.out', delay: 0.2 });
+            } else {
+                document.getElementById('line1').style.transform = 'none';
+                document.getElementById('line2').style.opacity = '1';
+                document.getElementById('line3').style.transform = 'none';
+                
+                mobileMenu.classList.remove('menu-open');
+                document.body.style.overflow = '';
+                
+                if(waButton) {
+                    waButton.style.opacity = '1';
+                    waButton.style.pointerEvents = 'auto';
+                    waButton.style.transform = 'scale(1)';
+                }
+                
+                gsap.to(mobileLinks, { y: 20, opacity: 0, duration: 0.2 });
+            }
+        });
+    </script>
+</body>
+</html>
